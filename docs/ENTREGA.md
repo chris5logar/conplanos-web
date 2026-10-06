@@ -18,13 +18,15 @@ La vía Sites se detuvo: la revisión automática rechazó pasar su credencial a
 
 Inicio `/`, `/proyectos-construccion`, `/ejecucion-obra`, `/levantamientos-topograficos`, `/titulaciones`, `/comunidades-campesinas`, `/declaratoria-fabrica`, `/puntos-geodesicos`, `/habilitaciones-urbanas`, `/asesoramiento-legal`. Incluye 404.
 
-Cada servicio contiene introducción propia, alcance, información inicial, proceso, preguntas frecuentes, servicios relacionados, WhatsApp, dirección y fotografía de oficina.
+Cada servicio contiene introducción propia, qué resuelve, alcance, información inicial, proceso, preguntas frecuentes, servicios relacionados elegidos en content/services.json, WhatsApp, dirección y fotografía de oficina. La portada agrupa los servicios en tres áreas: Topografía y geodesia, Saneamiento y propiedad, y Proyectos y obras.
 
 ## Textos y contacto
 
-Hero: «Tu proyecto. Tu patrimonio. En buenas manos.»
+Hero: «Ingeniería, topografía y saneamiento de predios en Cusco»
 
-«Desde los planos y la obra hasta la documentación de tu propiedad. Conectamos el trabajo técnico y legal para ayudarte a dar el siguiente paso.»
+«Medimos tu terreno, desarrollamos tu proyecto u obra y ordenamos la documentación de tu propiedad, con ingenieros, arquitectos y abogados trabajando de forma coordinada.»
+
+Paleta tomada del logotipo original: amarillo #FFC63A sobre negro y blanco. Las variables de color, tipografía, espaciado, radios y anchos están al inicio de dist/assets/styles.css.
 
 Identidad conservada: CONPLANOS, REGISTRA Y CONSTRUYE, ABOGADOS - ARQUITECTOS - INGENIEROS y CONSTRUIMOS CONFIANZA, ASEGURAMOS TU PATRIMONIO.
 
@@ -36,11 +38,11 @@ Ing. Kimberly Peñalva, +51 927 003 900, y Per. Ernesto, +51 955 593 110, se mue
 
 ## SEO
 
-Titles y descripciones propios por página; H1 único; canonical; Open Graph y tarjeta de marca; favicon; sitemap de diez URLs; robots; JSON-LD ProfessionalService con nombre, contacto, dirección y coordenadas comprobadas en Maps. No se añaden reseñas, horarios, matrículas o garantías sin verificar.
+Titles y descripciones propios por página; H1 único; canonical; Open Graph y tarjeta de marca; favicon; sitemap de diez URLs; robots; JSON-LD ProfessionalService con nombre, contacto, dirección, coordenadas comprobadas en Maps y área atendida (Cusco y Perú), más BreadcrumbList en las páginas de servicio. No se añaden reseñas, horarios, matrículas o garantías sin verificar.
 
 La preview debe permanecer noindex. El build final para conplanos.com habilita indexación. Publicar archivos SEO no garantiza posiciones en Google: luego deben verificarse dominio, rastreo y contenido en Search Console.
 
-HTML renderizado sin JavaScript, fuentes del sistema, sin frameworks de cliente ni dependencias, WebP responsive, dimensiones reservadas, lazy loading excepto imagen principal. Menú móvil, foco visible, enlace de salto, alt descriptivos, respeto a movimiento reducido. No se afirma una puntuación Lighthouse sin medirla.
+HTML renderizado sin JavaScript, fuentes del sistema, sin frameworks de cliente ni dependencias, WebP responsive, dimensiones reservadas, lazy loading excepto imagen principal. Menú móvil (sin JavaScript la navegación se muestra como fila de enlaces), foco visible, enlace de salto, alt descriptivos, respeto a movimiento reducido. No se afirma una puntuación Lighthouse sin medirla.
 
 ## Cloudflare Pages: publicación gratuita sin DNS
 

@@ -2,16 +2,21 @@
   {
     "slug": "proyectos-construccion",
     "name": "Proyectos de construcción",
-    "num": "01",
-    "headline": "Del primer plano a un proyecto bien definido.",
-    "description": "Diseño arquitectónico y coordinación de especialidades para convertir tu idea en un proyecto de construcción.",
-    "category": "Arquitectura e ingeniería",
+    "area": "proyectos",
+    "summary": "Diseño arquitectónico y coordinación de especialidades.",
+    "headline": "Del primer plano a un proyecto listo para construir.",
+    "description": "Diseño arquitectónico y coordinación de especialidades para convertir tu idea en un proyecto de construcción en Cusco.",
     "image": "arquitectura-conplanos",
+    "solves": [
+      "Tienes un terreno y quieres saber qué puedes construir en él.",
+      "Necesitas planos para tramitar una licencia de construcción.",
+      "Quieres ampliar o remodelar con un proyecto bien definido antes de gastar en obra."
+    ],
     "scope": [
-      "Evaluación de necesidades, terreno y documentación disponible.",
+      "Evaluación de tus necesidades, del terreno y de la documentación disponible.",
       "Diseño de espacios y desarrollo de planos según el alcance acordado.",
       "Coordinación de arquitectura, estructuras e instalaciones.",
-      "Preparación de documentación técnica para licencias, cuando corresponda."
+      "Preparación de la documentación técnica para licencias, cuando corresponda."
     ],
     "requirements": [
       "Idea y uso previsto del inmueble",
@@ -27,21 +32,27 @@
         "¿El proyecto incluye todas las especialidades?",
         "El alcance se acuerda en la cotización. Identificamos contigo las especialidades y entregables que requiere tu proyecto."
       ]
-    ]
+    ],
+    "related": ["ejecucion-obra", "levantamientos-topograficos", "declaratoria-fabrica"]
   },
   {
     "slug": "ejecucion-obra",
     "name": "Ejecución de obra",
-    "num": "02",
-    "headline": "Construir empieza con una buena planificación.",
+    "area": "proyectos",
+    "summary": "Planificación, presupuesto por partidas y seguimiento de la obra.",
+    "headline": "Construye con planificación, presupuesto y seguimiento.",
     "description": "Planificación y ejecución de obras con coordinación técnica, seguimiento de avances y un alcance definido desde el inicio.",
-    "category": "Construcción",
     "image": "construccion-conplanos",
+    "solves": [
+      "Ya tienes el proyecto y necesitas un equipo que ejecute la obra.",
+      "Quieres un presupuesto por partidas antes de empezar a construir.",
+      "Tu obra necesita coordinación técnica y seguimiento de avances."
+    ],
     "scope": [
-      "Revisión de planos y condiciones del lugar de intervención.",
+      "Revisión de planos y de las condiciones del lugar de intervención.",
       "Definición de partidas, presupuesto y secuencia de trabajo.",
       "Coordinación de equipos y seguimiento de la ejecución.",
-      "Revisión de avances y comunicación durante el proyecto."
+      "Revisión de avances y comunicación durante la obra."
     ],
     "requirements": [
       "Planos y alcance de la obra",
@@ -57,21 +68,27 @@
         "¿Cómo se define el presupuesto?",
         "A partir del proyecto, las condiciones del lugar y las partidas acordadas. Solicita una evaluación para recibir una propuesta para tu caso."
       ]
-    ]
+    ],
+    "related": ["proyectos-construccion", "declaratoria-fabrica", "levantamientos-topograficos"]
   },
   {
     "slug": "levantamientos-topograficos",
     "name": "Levantamientos topográficos",
-    "num": "03",
-    "headline": "Conoce tu terreno con información de campo.",
-    "description": "Levantamientos topográficos para proyectos, delimitación de predios y planificación del territorio en Cusco.",
-    "category": "Topografía",
+    "area": "topografia",
+    "summary": "Medidas, áreas, linderos y relieve del terreno.",
+    "headline": "Conoce las medidas, linderos y relieve reales de tu terreno.",
+    "description": "Levantamientos topográficos en Cusco para proyectos, delimitación de predios, saneamiento y planificación de obras, con medición en campo.",
     "image": "conplanos-medicion-gnss-campo",
+    "solves": [
+      "Necesitas un plano con las medidas y el área reales de tu predio.",
+      "Vas a diseñar o construir y requieres conocer el relieve y los niveles del terreno.",
+      "Tu trámite de saneamiento, titulación o habilitación necesita información topográfica del predio."
+    ],
     "scope": [
-      "Evaluación de ubicación, acceso y finalidad del levantamiento.",
-      "Medición de campo con metodología acorde al encargo.",
-      "Procesamiento de datos y elaboración de planos topográficos.",
-      "Definición del sistema de referencia y entregables requeridos."
+      "Evaluación de la ubicación, el acceso y la finalidad del levantamiento.",
+      "Medición en campo con equipo y metodología acordes al encargo.",
+      "Procesamiento de datos y elaboración de planos topográficos, perimétricos o de ubicación, según corresponda.",
+      "Definición del sistema de referencia y de los entregables requeridos."
     ],
     "requirements": [
       "Ubicación o enlace del predio",
@@ -81,27 +98,33 @@
     "faq": [
       [
         "¿Qué debo enviar para cotizar?",
-        "La ubicación, área aproximada y el uso que tendrá el levantamiento. Si tienes planos anteriores, puedes compartirlos para la evaluación."
+        "La ubicación, el área aproximada y el uso que tendrá el levantamiento. Si tienes planos anteriores, puedes compartirlos para la evaluación."
       ],
       [
-        "¿El servicio puede ser georreferenciado?",
-        "Sí, podemos evaluar el sistema de referencia y la metodología que requiere tu encargo. Los alcances y requisitos se precisan en la propuesta."
+        "¿El levantamiento puede ser georreferenciado?",
+        "Sí. Evaluamos el sistema de referencia y la metodología que requiere tu encargo. Los alcances y requisitos se precisan en la propuesta."
       ]
-    ]
+    ],
+    "related": ["puntos-geodesicos", "titulaciones", "habilitaciones-urbanas"]
   },
   {
     "slug": "titulaciones",
     "name": "Titulaciones",
-    "num": "04",
-    "headline": "Ordena la información de tu propiedad.",
-    "description": "Evaluación técnica y legal para orientar procesos de titulación de predios urbanos y rurales, según sus antecedentes.",
-    "category": "Propiedad y patrimonio",
+    "area": "saneamiento",
+    "summary": "Saneamiento físico legal para formalizar la propiedad de tu predio.",
+    "headline": "Ordena la situación de tu predio para formalizar su propiedad.",
+    "description": "Evaluación técnica y legal para la titulación y el saneamiento físico legal de predios urbanos y rurales en Cusco, según sus antecedentes.",
     "image": "conplanos-visita-tecnica-predio-rural",
+    "solves": [
+      "Tu predio no cuenta con título inscrito o sus antecedentes están incompletos.",
+      "Las medidas o linderos de tus documentos no coinciden con la realidad del terreno.",
+      "No sabes qué procedimiento corresponde a tu caso ni por dónde empezar."
+    ],
     "scope": [
       "Revisión de documentos y antecedentes del predio.",
       "Identificación de observaciones técnicas y legales.",
       "Coordinación de planos y documentación según el procedimiento aplicable.",
-      "Acompañamiento en el alcance de gestión acordado."
+      "Acompañamiento en la gestión, dentro del alcance acordado."
     ],
     "requirements": [
       "Ubicación del predio",
@@ -111,27 +134,33 @@
     "faq": [
       [
         "¿Todos los predios siguen el mismo trámite?",
-        "No. La ruta depende de los antecedentes, la situación del predio y los requisitos de la entidad competente. Primero se evalúa cada caso."
+        "No. La ruta depende de los antecedentes, la situación del predio y los requisitos de la entidad competente. Primero evaluamos cada caso."
       ],
       [
-        "¿Se puede asegurar un plazo o resultado?",
-        "La propuesta define nuestro alcance. Los tiempos y decisiones de las entidades competentes dependen de cada expediente; no se promete aprobación automática."
+        "¿Se puede asegurar un plazo o un resultado?",
+        "La propuesta define nuestro alcance. Los tiempos y decisiones de las entidades competentes dependen de cada expediente; no prometemos aprobaciones automáticas."
       ]
-    ]
+    ],
+    "related": ["levantamientos-topograficos", "asesoramiento-legal", "declaratoria-fabrica"]
   },
   {
     "slug": "comunidades-campesinas",
     "name": "Comunidades campesinas",
-    "num": "05",
-    "headline": "Territorio y documentación, con una visión integral.",
+    "area": "saneamiento",
+    "summary": "Áreas, linderos y documentación del territorio comunal.",
+    "headline": "Apoyo técnico y legal para el territorio de tu comunidad.",
     "description": "Apoyo técnico y legal para comunidades campesinas: evaluación territorial, áreas, linderos y documentación de sus predios.",
-    "category": "Territorio",
     "image": "conplanos-visita-tecnica-predio-rural",
+    "solves": [
+      "La comunidad necesita conocer o actualizar sus áreas y linderos.",
+      "Existen diferencias de linderos con predios o comunidades colindantes.",
+      "Se requiere ordenar la documentación técnica del territorio comunal."
+    ],
     "scope": [
       "Revisión de antecedentes y documentación de la comunidad.",
-      "Evaluación de áreas, linderos y necesidades de campo.",
-      "Preparación de información técnica para el encargo.",
-      "Coordinación con representantes en el alcance acordado."
+      "Evaluación de áreas, linderos y necesidades de trabajo de campo.",
+      "Preparación de la información técnica del encargo.",
+      "Coordinación con los representantes, dentro del alcance acordado."
     ],
     "requirements": [
       "Nombre y ubicación de la comunidad",
@@ -141,26 +170,32 @@
     "faq": [
       [
         "¿Trabajan con áreas y linderos?",
-        "Podemos evaluar necesidades de medición, deslinde y documentación técnica, de acuerdo con los antecedentes del territorio."
+        "Sí. Evaluamos las necesidades de medición, deslinde y documentación técnica de acuerdo con los antecedentes del territorio."
       ],
       [
         "¿Cómo empieza la coordinación?",
         "El representante puede contactarnos con la ubicación y una descripción del encargo para concertar una evaluación inicial."
       ]
-    ]
+    ],
+    "related": ["levantamientos-topograficos", "puntos-geodesicos", "titulaciones"]
   },
   {
     "slug": "declaratoria-fabrica",
     "name": "Declaratoria de fábrica",
-    "num": "06",
-    "headline": "Documenta lo que has construido.",
-    "description": "Evaluación y preparación de documentación técnica y legal para declaratoria de fábrica y regularización de edificaciones.",
-    "category": "Edificación y registro",
+    "area": "saneamiento",
+    "summary": "Documentación para regularizar e inscribir lo construido.",
+    "headline": "Regulariza y documenta lo que has construido.",
+    "description": "Evaluación y preparación de la documentación técnica y legal para declaratoria de fábrica y regularización de edificaciones en Cusco.",
     "image": "arquitectura-conplanos",
+    "solves": [
+      "Construiste o ampliaste y la edificación no figura en los registros.",
+      "Necesitas regularizar la construcción antes de vender, heredar o realizar otros actos sobre el inmueble.",
+      "Quieres saber qué documentación técnica requiere tu edificación."
+    ],
     "scope": [
       "Revisión de antecedentes de propiedad y de la edificación.",
-      "Evaluación de planos y estado físico del inmueble.",
-      "Elaboración de documentación técnica según el caso.",
+      "Evaluación de planos y del estado físico del inmueble.",
+      "Elaboración de la documentación técnica que requiera el caso.",
       "Orientación sobre la vía municipal o registral que corresponda."
     ],
     "requirements": [
@@ -171,24 +206,30 @@
     "faq": [
       [
         "¿Necesito tener planos anteriores?",
-        "Si los tienes, facilitan la revisión. Si no, podemos evaluar qué información y trabajo de campo necesita tu caso."
+        "Si los tienes, facilitan la revisión. Si no, evaluamos qué información y trabajo de campo necesita tu caso."
       ],
       [
         "¿La declaratoria incluye independización?",
-        "Son alcances que se evalúan según el inmueble y el objetivo. La cotización precisa si se incluye una independización y qué documentación requiere."
+        "Son alcances distintos que se evalúan según el inmueble y el objetivo. La cotización precisa si se incluye una independización y qué documentación requiere."
       ]
-    ]
+    ],
+    "related": ["titulaciones", "proyectos-construccion", "asesoramiento-legal"]
   },
   {
     "slug": "puntos-geodesicos",
     "name": "Puntos geodésicos",
-    "num": "07",
-    "headline": "Una referencia precisa para tu proyecto.",
-    "description": "Evaluación, planificación y medición de puntos geodésicos para trabajos de ingeniería, topografía y referencia territorial.",
-    "category": "Geodesia y GNSS",
+    "area": "topografia",
+    "summary": "Medición GNSS de puntos de referencia para proyectos y georreferenciación.",
+    "headline": "Una referencia precisa y georreferenciada para tu proyecto.",
+    "description": "Planificación y medición de puntos geodésicos con GNSS en Cusco para proyectos de ingeniería, topografía y saneamiento de predios.",
     "image": "conplanos-medicion-gnss-campo",
+    "solves": [
+      "Tu proyecto necesita puntos de control con coordenadas confiables.",
+      "Debes georreferenciar un levantamiento topográfico.",
+      "Te solicitan información geodésica para un expediente técnico."
+    ],
     "scope": [
-      "Definición de la finalidad y requisitos del punto.",
+      "Definición de la finalidad y los requisitos del punto.",
       "Evaluación de ubicación, accesibilidad y condiciones de observación.",
       "Medición GNSS y procesamiento según el alcance técnico.",
       "Preparación de información para la certificación ante el IGN, si se contrata."
@@ -204,24 +245,30 @@
         "Se especifica en la propuesta. La certificación corresponde al IGN y está sujeta a sus requisitos y evaluación; no se ofrece como resultado automático."
       ],
       [
-        "¿Pueden trabajar con GNSS?",
-        "Sí, evaluamos la metodología GNSS y los entregables adecuados para el proyecto y sus requisitos de referencia."
+        "¿Trabajan con GNSS?",
+        "Sí. Evaluamos la metodología GNSS y los entregables adecuados para el proyecto y sus requisitos de referencia."
       ]
-    ]
+    ],
+    "related": ["levantamientos-topograficos", "habilitaciones-urbanas", "comunidades-campesinas"]
   },
   {
     "slug": "habilitaciones-urbanas",
     "name": "Habilitaciones urbanas",
-    "num": "08",
-    "headline": "Planifica el desarrollo de tu terreno.",
-    "description": "Evaluación técnica y legal para habilitaciones urbanas, lotizaciones y parcelaciones, con coordinación de planos y documentación.",
-    "category": "Desarrollo urbano",
+    "area": "proyectos",
+    "summary": "Evaluación, planos y documentación para lotizar, parcelar o habilitar.",
+    "headline": "Planifica la lotización o habilitación de tu terreno.",
+    "description": "Evaluación técnica y legal para habilitaciones urbanas, lotizaciones y parcelaciones en Cusco, con coordinación de planos y documentación.",
     "image": "arquitectura-conplanos",
+    "solves": [
+      "Quieres dividir un terreno en lotes o parcelas.",
+      "Necesitas saber si tu terreno puede habilitarse y qué condicionantes tiene.",
+      "Debes coordinar topografía, diseño y documentación antes de presentarte ante la entidad competente."
+    ],
     "scope": [
-      "Revisión de antecedentes y situación del terreno.",
-      "Evaluación del objetivo de desarrollo y condicionantes.",
-      "Coordinación de diseño y documentación técnica.",
-      "Orientación sobre requisitos de la entidad competente."
+      "Revisión de antecedentes y de la situación del terreno.",
+      "Evaluación del objetivo de desarrollo y sus condicionantes.",
+      "Coordinación del diseño y la documentación técnica.",
+      "Orientación sobre los requisitos de la entidad competente."
     ],
     "requirements": [
       "Ubicación, área y documentos del terreno",
@@ -237,21 +284,27 @@
         "¿La consulta equivale a una autorización?",
         "No. La evaluación ayuda a definir la ruta de trabajo. Las autorizaciones corresponden a las entidades competentes."
       ]
-    ]
+    ],
+    "related": ["levantamientos-topograficos", "titulaciones", "proyectos-construccion"]
   },
   {
     "slug": "asesoramiento-legal",
     "name": "Asesoramiento legal",
-    "num": "09",
-    "headline": "Decide con una revisión de tus antecedentes.",
-    "description": "Asesoramiento legal vinculado a predios y patrimonio: revisión documental y coordinación con el trabajo técnico de tu propiedad.",
-    "category": "Respaldo legal",
+    "area": "saneamiento",
+    "summary": "Revisión documental y orientación legal sobre predios.",
+    "headline": "Revisa los antecedentes antes de decidir sobre tu predio.",
+    "description": "Asesoramiento legal vinculado a predios y patrimonio en Cusco: revisión documental y coordinación con el trabajo técnico de tu propiedad.",
     "image": "conplanos-visita-tecnica-predio-rural",
+    "solves": [
+      "Vas a comprar, vender o heredar un inmueble y quieres revisar sus documentos.",
+      "Recibiste una observación o notificación relacionada con tu predio.",
+      "Necesitas que la parte legal y la técnica de tu caso avancen coordinadas."
+    ],
     "scope": [
       "Revisión de antecedentes y documentos relacionados con la consulta.",
       "Identificación de aspectos que requieren evaluación legal.",
       "Orientación sobre alternativas según la situación del predio.",
-      "Coordinación de información legal y técnica."
+      "Coordinación de la información legal y técnica."
     ],
     "requirements": [
       "Descripción breve de tu consulta",
@@ -261,12 +314,13 @@
     "faq": [
       [
         "¿Atienden consultas sobre saneamiento de predios?",
-        "Podemos evaluar tu consulta y la documentación disponible para definir el alcance del asesoramiento."
+        "Sí. Evaluamos tu consulta y la documentación disponible para definir el alcance del asesoramiento."
       ],
       [
         "¿Qué documentos envío primero?",
-        "Empieza con una descripción general. El profesional te indicará qué documentos son necesarios y cómo compartirlos para la revisión."
+        "Empieza con una descripción general. Te indicaremos qué documentos son necesarios y cómo compartirlos para la revisión."
       ]
-    ]
+    ],
+    "related": ["titulaciones", "declaratoria-fabrica", "comunidades-campesinas"]
   }
 ]
