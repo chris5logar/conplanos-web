@@ -4,6 +4,16 @@
 
 Sitio comercial completamente separado de conplanos-app y conplanos-gnss. No se han modificado los repositorios existentes, app.conplanos.com, DNS, Render o Neon. No se han realizado pagos ni upgrades.
 
+## Estado de entrega
+
+Repositorio creado y primera versión subida: https://github.com/chris5logar/conplanos-web, rama main.
+
+Proyecto temporal creado en Cloudflare Pages: `conplanos-web-preview`. El panel confirma el hostname `conplanos-web-preview.pages.dev`, pero la carga no terminó: la extensión ChatGPT de Edge requiere habilitar «Permitir el acceso a las direcciones URL de archivo». No se debe presentar esa dirección como una preview publicada hasta completar la carga y verificar el despliegue.
+
+Alternativa manual: abrir el proyecto de carga directa en Cloudflare y subir `conplanos-cloudflare-preview.zip`, después pulsar Deploy site. El ZIP tiene index.html en raíz, imágenes y noindex. No contiene credenciales. El proyecto definitivo puede crearse aparte con integración Git, nombre conplanos-web y salida dist.
+
+La vía Sites se detuvo: la revisión automática rechazó pasar su credencial al proceso de publicación. No se ejecutó ese paso ni se publicó el borrador de Sites. El proyecto estático y GitHub están completos.
+
 ## Páginas
 
 Inicio `/`, `/proyectos-construccion`, `/ejecucion-obra`, `/levantamientos-topograficos`, `/titulaciones`, `/comunidades-campesinas`, `/declaratoria-fabrica`, `/puntos-geodesicos`, `/habilitaciones-urbanas`, `/asesoramiento-legal`. Incluye 404.
