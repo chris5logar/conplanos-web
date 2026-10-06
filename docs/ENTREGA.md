@@ -32,7 +32,7 @@ WhatsApp principal: +51 928 400 600, Ing. Loaiza. Todos los botones utilizan: «
 
 Dirección comprobada en la ficha de Google Maps: Av. Micaela Bastidas 321, Cusco. Se evita publicar el horario de 24 horas sin confirmarlo. Visitas por coordinación. Botón al enlace suministrado: https://maps.app.goo.gl/65JH3DPn1SEizeC67. No mapa embebido, API ni facturación.
 
-Ing. Kimberly, 927003900, y Per. Ernesto, 955593110, están preparados en content/contacts.json y desactivados. Para mostrarlos, activar enabled y regenerar. No se inventan perfiles profesionales ni credenciales.
+Ing. Kimberly Peñalva, +51 927 003 900, y Per. Ernesto, +51 955 593 110, se muestran como contactos adicionales en la sección de contacto y el footer. Todos los contactos y el mensaje de WhatsApp se editan en content/contacts.json; para ocultar uno, desactivar enabled y regenerar. No se inventan perfiles profesionales ni credenciales.
 
 ## SEO
 

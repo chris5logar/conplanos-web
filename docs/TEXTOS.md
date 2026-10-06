@@ -373,7 +373,10 @@ ARQUITECTURA · INGENIERÍA · DERECHO
 
  Solicitar asesoría por WhatsApp CONTACTO PRINCIPAL Ing. Loaiza +51 928 400 600 
 
+ CONTACTO ADICIONAL Ing. Kimberly Peñalva +51 927 003 900 
+
+ CONTACTO ADICIONAL Per. Ernesto +51 955 593 110 
+
  VISÍTANOS EN CUSCO Av. Micaela Bastidas 321 Coordina tu visita por WhatsApp.
 
  Ver ubicación en Google Maps Nuestra oficina · Cusco
-

@@ -9,7 +9,7 @@ Web pública comercial estática, independiente de conplanos-app y conplanos-gns
 - `dist/assets/images/projects/`: fotografías reales de campo, WebP responsive.
 - `dist/assets/images/services/`: oficina real e imágenes conceptuales de apoyo.
 - `content/services.json`: textos editables de las nueve páginas de servicio.
-- `content/contacts.json`: contacto principal y contactos adicionales preparados, desactivados.
+- `content/contacts.json`: fuente única de contactos. Contacto principal (también número de WhatsApp), contactos adicionales y mensaje predeterminado de WhatsApp.
 - `scripts/build.mjs`: generador de HTML con Node, sin paquetes externos.
 - `scripts/serve.mjs`: servidor local estático, puerto 4173.
 - `scripts/check.mjs`: verificación de rutas, recursos y metadatos.

@@ -1,8 +1,8 @@
 {
+  "whatsappMessage": "Hola, vengo de conplanos.com y quisiera información sobre sus servicios.",
   "primary": {"name":"Ing. Loaiza","phone":"+51928400600","enabled":true},
   "additional": [
-    {"name":"Ing. Kimberly","phone":"+51927003900","enabled":false},
-    {"name":"Per. Ernesto","phone":"+51955593110","enabled":false}
+    {"name":"Ing. Kimberly Peñalva","phone":"+51927003900","enabled":true},
+    {"name":"Per. Ernesto","phone":"+51955593110","enabled":true}
   ]
 }
-
