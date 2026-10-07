@@ -33,6 +33,13 @@ for(const file of files){
  }
  for(const match of html.matchAll(/srcset="([^"]+)"/g))for(const item of match[1].split(', ')){assert(fs.existsSync(path.join(root,item.split(' ')[0])),'Srcset no encontrado');}
 }
+for (const file of files) {
+  const html = fs.readFileSync(file, 'utf8');
+  assert.equal((html.match(/https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-7DCRJN061J/g) || []).length, 1, `${file}: etiqueta GA4 duplicada o ausente`);
+  assert.equal((html.match(/gtag\('config','G-7DCRJN061J'\)/g) || []).length, 1, `${file}: configuración GA4 duplicada o ausente`);
+  assert.equal((html.match(/GTM-[A-Z0-9]+/g) || []).length, 0, `${file}: Google Tag Manager no corresponde`);
+  assert.equal((html.match(/G-[A-Z0-9]+/g) || []).length, 2, `${file}: ID de medición inesperado`);
+}
 assert.equal(files.length,11,'Diez páginas y 404');
 assert.equal((fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').match(/<loc>/g)||[]).length,10);
 console.log(`OK: ${files.length} documentos HTML, ${refs} enlaces/recursos locales, H1, titles únicos, metadatos, JSON-LD, alt, srcset, WhatsApp, ${team.length} contactos y sitemap.`);
