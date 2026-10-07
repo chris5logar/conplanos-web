@@ -151,9 +151,10 @@ if (!process.argv.includes('--home-only')) {
   }
   fs.writeFileSync(path.join(dist, '404.html'), notFound());
 }
-fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${['', ...services.map(s => s.slug)].map(slug => `<url><loc>${origin}/${slug}</loc></url>`).join('')}</urlset>`);
+const sitemapUrls = [origin + '/', ...services.map(s => `${origin}/${s.slug}/`)];
+fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(loc => `<url><loc>${loc}</loc></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(dist, 'robots.txt'), preview ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
-fs.writeFileSync(path.join(dist, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  X-Frame-Options: SAMEORIGIN\n${preview ? '  X-Robots-Tag: noindex, nofollow\n' : ''}/assets/*\n  Cache-Control: public, max-age=86400\n`);
+fs.writeFileSync(path.join(dist, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  X-Frame-Options: SAMEORIGIN\n${preview ? '  X-Robots-Tag: noindex, nofollow\n' : ''}/sitemap.xml\n  Content-Type: application/xml; charset=utf-8\n/assets/*\n  Cache-Control: public, max-age=86400\n`);
 fs.writeFileSync(path.join(dist, '_redirects'), '/index.html / 301\n' + services.map(s => `/${s.slug}/index.html /${s.slug} 301`).join('\n') + '\n');
 
 const homeText = homepage().split('<main id="contenido">')[1].split('</main>')[0].replace(/<\/(h[1-6]|p|li|section|article|figcaption)>/g, '\n\n').replace(/<[^>]+>/g, ' ').replace(/ +/g, ' ').replace(/\n /g, '\n').replace(/\n{3,}/g, '\n\n').trim();
