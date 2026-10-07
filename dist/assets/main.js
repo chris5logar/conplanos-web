@@ -18,8 +18,40 @@ document.addEventListener('keydown', event => {
     toggle.focus();
   }
 });
-// Evento local para futura medición. No transmite datos ni carga analítica externa.
-document.querySelectorAll('[data-contact="whatsapp"]').forEach(link => {
-  link.addEventListener('click', () => document.dispatchEvent(new CustomEvent('conplanos:contact', { detail: { channel: 'whatsapp', page: location.pathname } })));
+function safePagePath() {
+  const path = location.pathname;
+  return /^\/(?:[a-z0-9-]+\/?)?$/.test(path) ? path : '/';
+}
+function serviceSlug(path) {
+  const slug = path.replace(/^\/|\/$/g, '');
+  return /^[a-z0-9-]+$/.test(slug) ? slug : '';
+}
+function buttonLocation(link) {
+  const places = [['.header', 'header'], ['.site-footer', 'footer'], ['.wa-float', 'float'], ['.hero', 'hero'], ['#contacto', 'contact'], ['#equipo', 'team'], ['#trabajos', 'field'], ['.start', 'start'], ['.more', 'topics'], ['.not-found', 'not-found']];
+  for (const [selector, name] of places) if (link.closest(selector)) return name;
+  return 'page';
+}
+function trackLead(name, link, contactType) {
+  if (typeof window.gtag !== 'function') return;
+  const pagePath = safePagePath();
+  window.gtag('event', name, {
+    page_path: pagePath,
+    page_title: document.title,
+    service_slug: serviceSlug(pagePath),
+    button_location: buttonLocation(link),
+    contact_type: contactType
+  });
+}
+document.addEventListener('click', event => {
+  const link = event.target.closest('a');
+  if (!link) return;
+  const href = link.getAttribute('href') || '';
+  if (link.dataset.contact === 'whatsapp' || href.includes('wa.me/')) {
+    document.dispatchEvent(new CustomEvent('conplanos:contact', { detail: { channel: 'whatsapp', page: location.pathname } }));
+    trackLead('click_whatsapp', link, 'whatsapp');
+    if (link.dataset.lead === 'quote') trackLead('quote_request', link, 'whatsapp');
+  } else if (href.startsWith('tel:')) {
+    trackLead('click_phone', link, 'phone');
+  }
 });
 

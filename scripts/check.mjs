@@ -40,6 +40,10 @@ for (const file of files) {
   assert.equal((html.match(/GTM-[A-Z0-9]+/g) || []).length, 0, `${file}: Google Tag Manager no corresponde`);
   assert.equal((html.match(/G-[A-Z0-9]+/g) || []).length, 2, `${file}: ID de medición inesperado`);
 }
+const analytics = fs.readFileSync(path.join(root, 'assets', 'main.js'), 'utf8');
+for (const name of ['click_whatsapp', 'click_phone', 'quote_request']) assert.equal((analytics.match(new RegExp(`'${name}'`, 'g')) || []).length, 1, `Evento ${name}`);
+assert.equal((analytics.match(/document\.addEventListener\('click'/g) || []).length, 1, 'Listener de conversiones duplicado');
+assert(!/\+51|text=|@/.test(analytics), 'La medición no debe incluir datos de contacto');
 assert.equal(files.length,11,'Diez páginas y 404');
 assert.equal((fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').match(/<loc>/g)||[]).length,10);
 console.log(`OK: ${files.length} documentos HTML, ${refs} enlaces/recursos locales, H1, titles únicos, metadatos, JSON-LD, alt, srcset, WhatsApp, ${team.length} contactos y sitemap.`);
