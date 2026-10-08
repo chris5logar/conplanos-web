@@ -1,10 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const root = path.resolve(import.meta.dirname, '..');
 const dist = path.join(root, 'dist');
 const origin = process.env.SITE_ORIGIN || 'https://conplanos.com';
 const preview = process.env.SITE_MODE === 'preview';
+// Change the script URL whenever its contents change, including on rebuilds.
+const mainVersion = createHash('sha256').update(fs.readFileSync(path.join(dist, 'assets', 'main.js'), 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 12);
 const readJson = file => JSON.parse(fs.readFileSync(path.join(root, 'content', file), 'utf8'));
 
 const contacts = readJson('contacts.json');
@@ -74,8 +77,8 @@ function head(title, description, route = '', extraSchema = []) {
   };
   const schemas = [business, ...extraSchema].map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('');
   const measurementId = 'G-7DCRJN061J';
-  const ga = preview ? '' : `<script async src="https://www.googletagmanager.com/gtag/js?id=${measurementId}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${measurementId}');</script>`;
-  return `<!doctype html><html lang="es-PE"><head>${ga}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="${preview ? 'noindex, nofollow' : 'index, follow'}"><meta name="theme-color" content="#0B0B0C"><link rel="canonical" href="${url}"><link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg"><meta property="og:type" content="website"><meta property="og:locale" content="es_PE"><meta property="og:site_name" content="CONPLANOS"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/assets/brand/conplanos-social.webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="CONPLANOS. Registra y construye. Abogados, arquitectos e ingenieros."><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/assets/styles.css"><script>document.documentElement.classList.add('js')</script><script src="/assets/main.js" defer></script>${schemas}</head><body>`;
+  const ga = preview ? '' : `<script async src="https://www.googletagmanager.com/gtag/js?id=${measurementId}"></script><script>window.dataLayer=window.dataLayer||[];window.gtag=function gtag(){window.dataLayer.push(arguments);};gtag('js',new Date());gtag('config','${measurementId}');</script>`;
+  return `<!doctype html><html lang="es-PE"><head>${ga}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="${preview ? 'noindex, nofollow' : 'index, follow'}"><meta name="theme-color" content="#0B0B0C"><link rel="canonical" href="${url}"><link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg"><meta property="og:type" content="website"><meta property="og:locale" content="es_PE"><meta property="og:site_name" content="CONPLANOS"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${origin}/assets/brand/conplanos-social.webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="CONPLANOS. Registra y construye. Abogados, arquitectos e ingenieros."><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/assets/styles.css"><script>document.documentElement.classList.add('js')</script><script src="/assets/main.js?v=${mainVersion}" defer></script>${schemas}</head><body>`;
 }
 
 const logo = (extra = '') => `<img src="/assets/brand/conplanos-logo.webp" width="1100" height="128" alt="CONPLANOS"${extra}>`;

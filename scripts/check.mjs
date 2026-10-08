@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 const root=path.resolve(import.meta.dirname,'../dist');
 const contacts=JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname,'../content/contacts.json'),'utf8'));
 const team=[contacts.primary,...contacts.additional.filter(c=>c.enabled)];
@@ -9,6 +10,7 @@ assert(contacts.whatsappMessage?.trim(),'Mensaje de WhatsApp ausente');
 const files=[];
 function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(p.endsWith('.html'))files.push(p)}}
 walk(root);
+const mainVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/main.js'), 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 12);
 const titles=new Set();
 let refs=0;
 for(const file of files){
@@ -16,6 +18,10 @@ for(const file of files){
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`${file}: H1 único`);
  const title=html.match(/<title>(.*?)<\/title>/)[1];
  assert(!titles.has(title),'Title duplicado');titles.add(title);
+ assert.equal((html.match(new RegExp('src="/assets/main\\.js\\?v=' + mainVersion + '" defer', 'g')) || []).length, 1, 'Script único y versión actual');
+ assert(html.includes('window.gtag=function gtag()'), 'gtag global explícito');
+ for (const tag of html.matchAll(/<a\b[^>]*data-lead="quote"[^>]*>/g)) assert(tag[0].includes('data-contact="whatsapp"'), 'Cotización debe ser WhatsApp');
+ assert(html.includes('data-lead="quote"'), 'Cotización sin marcar');
  assert(html.includes('name="description"'),'Description ausente');
  assert(html.includes('rel="canonical"'),'Canonical ausente');
  assert(html.includes('property="og:image"'),'Open Graph ausente');
@@ -23,7 +29,7 @@ for(const file of files){
  for(const c of team)assert((html.match(new RegExp(`href="tel:\\${c.phone}"`,'g'))||[]).length>=(html.includes('id="contacto"')?2:1),`${file}: falta ${c.name} en contacto o footer`);
  assert(html.includes('class="wa-float"'),`${file}: WhatsApp principal ausente`);
  for(const match of html.matchAll(/(?:src|href)="(\/[^"#]*)/g)){
-  let ref=decodeURIComponent(match[1].split('#')[0]);let target=path.join(root,ref);
+  let ref=decodeURIComponent(match[1].split(/[?#]/)[0]);let target=path.join(root,ref);
   if(fs.existsSync(target)&&fs.statSync(target).isDirectory())target=path.join(target,'index.html');
   assert(fs.existsSync(target),`${file}: referencia no encontrada ${ref}`);refs++;
  }
