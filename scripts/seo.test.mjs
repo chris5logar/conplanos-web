@@ -139,6 +139,8 @@ const mutations = [
   ['duplicate GA4 config', page, '</head>', "<script>gtag('config','G-7DCRJN061J');</script></head>", /configuración GA4 duplicada/],
   ['redirect has intermediate hop', 'dist/_redirects', '/proyectos-construccion/index.html /proyectos-construccion/ 301', '/proyectos-construccion/index.html /proyectos-construccion 301', /Redirecciones directas/],
   ['redirect loop', 'dist/_redirects', '/proyectos-construccion /proyectos-construccion/ 301', '/proyectos-construccion/ /proyectos-construccion/ 301', /Redirecciones directas/],
+  ['unversioned stylesheet', page, 'href="/assets/styles.css?v=', 'href="/assets/styles.css?old=', /hoja de estilos/],
+  ['unversioned images cached as immutable', 'dist/_headers', '/assets/images/*\n  Cache-Control: public, max-age=604800', '/assets/images/*\n  Cache-Control: public, max-age=31536000, immutable', /Caché inmutable/],
   ['business alternate name missing', page, '"alternateName":"CON PLANOS",', '', /nombre alternativo del negocio/],
   ['duplicate analytics event', 'dist/assets/main.js', "names.push('click_whatsapp');", "names.push('click_whatsapp'); names.push('click_whatsapp');", /Evento click_whatsapp/]
 ];

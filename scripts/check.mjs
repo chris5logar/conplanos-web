@@ -31,7 +31,9 @@ assert(contacts.whatsappMessage?.trim(),'Mensaje de WhatsApp ausente');
 const files=[];
 function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(p.endsWith('.html'))files.push(p)}}
 walk(root);
-const mainVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/main.js'), 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 12);
+const assetVersion = file => createHash('sha256').update(fs.readFileSync(path.join(root, 'assets', file), 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 12);
+const mainVersion = assetVersion('main.js');
+const stylesVersion = assetVersion('styles.css');
 const titles=new Set();
 let refs=0;
 for(const file of files){
@@ -40,6 +42,7 @@ for(const file of files){
  const title=html.match(/<title>(.*?)<\/title>/)[1];
  assert(!titles.has(title),'Title duplicado');titles.add(title);
  assert.equal((html.match(new RegExp('src="/assets/main\\.js\\?v=' + mainVersion + '" defer', 'g')) || []).length, 1, 'Script único y versión actual');
+ assert.equal((html.match(new RegExp('href="/assets/styles\\.css\\?v=' + stylesVersion + '"', 'g')) || []).length, 1, `${file}: hoja de estilos única y versión actual`);
  assert.equal(html.includes('window.gtag=function gtag()'), !preview, 'gtag global solo en producción');
  for (const tag of html.matchAll(/<a\b[^>]*data-lead="quote"[^>]*>/g)) assert(tag[0].includes('data-contact="whatsapp"'), 'Cotización debe ser WhatsApp');
  assert(html.includes('data-lead="quote"'), 'Cotización sin marcar');
@@ -120,6 +123,10 @@ for (const [source, destination] of redirects) {
 assert.equal(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8').trim(), preview ? 'User-agent: *\nDisallow: /' : `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml`, 'robots.txt correcto');
 const headers = fs.readFileSync(path.join(root, '_headers'), 'utf8');
 assert.equal(headers.includes('/*\n  X-Content-Type-Options: nosniff'), true, 'Cabeceras de seguridad conservadas');
+// Only versioned files (?v=hash) may be cached as immutable; rules must not overlap, or Cloudflare joins their values.
+const cacheRules = [...headers.matchAll(/^(\/\S*)\n  Cache-Control: (.*)$/gm)].map(m => [m[1], m[2]]);
+assert.deepEqual(cacheRules.filter(([, v]) => v.includes('immutable')).map(([p]) => p).sort(), ['/assets/main.js', '/assets/styles.css'], 'Caché inmutable solo para archivos versionados');
+assert(!cacheRules.some(([p]) => p === '/assets/*' || p === '/*'), 'Reglas de caché sin solapamiento');
 assert.equal(headers.includes('  X-Robots-Tag: noindex, nofollow'), preview, 'Cabecera noindex global solo en preview');
 console.log(`OK (${preview ? 'preview' : 'producción'}): ${validations} validaciones, ${files.length} documentos HTML, ${refs} enlaces/recursos locales, 10 canonical/sitemap, breadcrumbs, redirecciones, 404, GA4, H1, titles, metadatos, JSON-LD, alt, srcset, WhatsApp y ${team.length} contactos.`);
 
