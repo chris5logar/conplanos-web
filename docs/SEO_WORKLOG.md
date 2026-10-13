@@ -107,3 +107,12 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Commit final: `efe9ee1` en `main`. La actualización de esta documentación va en un commit posterior de solo documentación.
 - Pendientes: ninguno de la Fase 1. Seguimiento recomendado en Search Console de la recogida de los canonical nuevos.
 - Siguiente paso: el orquestador decide sobre la Fase 2 (PR #2, en borrador).
+
+## 2026-10-13 — Nombre alternativo «CON PLANOS» en los datos estructurados
+
+- Agente: Claude Code.
+- Objetivo: aplicar la decisión del propietario de usar los dos nombres («quiero usar los 2. conplanos y con planos»).
+- Rama: `seo/nombre-alternativo`, desde `main` (`6946b7b`).
+- Cambios: `alternateName: "CON PLANOS"` en el JSON-LD `ProfessionalService`; `check.mjs` valida `name` y `alternateName`; `seo.test.mjs` añade una regresión (falta el nombre alternativo). Sin cambios de texto visible ni en Google Business.
+- Pruebas (Node 22.22.0): `npm run build` y `npm run check` OK (1632 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 26/26.
+- Siguiente paso: revisión y merge del PR. Validar en producción con la prueba de resultados enriquecidos de Google.

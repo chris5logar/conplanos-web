@@ -45,7 +45,7 @@ El propietario no ha asignado cada página a una prioridad. Como referencia, la 
 
 ## Google Business Profile (último estado conocido, informado por el propietario el 2026-10-13, no verificado por un agente)
 
-- Nombre: CON PLANOS. Ficha verificada.
+- Nombre: CON PLANOS. Ficha verificada. Se mantiene: el propietario decidió usar los dos nombres (ver SEO_DECISIONS, 2026-10-13); la web declara «CON PLANOS» como `alternateName`.
 - Web: https://conplanos.com
 - Teléfono: +51 928 400 600. WhatsApp configurado.
 - Categoría principal: Ingeniero. Sin categorías secundarias en la última revisión.

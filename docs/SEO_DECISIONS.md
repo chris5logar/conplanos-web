@@ -87,3 +87,10 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Motivo: las previews automáticas se compilaban en modo producción, con `index, follow` y GA4 activo, porque Cloudflare no recibía `SITE_MODE`. Depender de una variable configurada a mano en el panel es frágil.
 - Consecuencias: la regla vive en `scripts/site-mode.mjs` y la usan `build.mjs` y `check.mjs`. En una preview de Cloudflare el origen de canonical, og:url y sitemap es `CF_PAGES_URL` (la URL del despliegue), salvo que se defina `SITE_ORIGIN`. No hay que configurar variables en el panel de Cloudflare. Si algún día cambia la rama de producción, hay que cambiar `productionBranch` en ese archivo.
 - Estado: Activa. Aprobada por el propietario el 2026-10-13.
+
+## 2026-10-13 — se usan los dos nombres: CONPLANOS y CON PLANOS
+
+- Decisión: el propietario quiere usar los dos nombres. La web sigue usando «CONPLANOS» (logo, títulos, `og:site_name`) y la ficha de Google Business se mantiene como «CON PLANOS». El JSON-LD `ProfessionalService` declara `name: "CONPLANOS"` y `alternateName: "CON PLANOS"`.
+- Motivo: Google relaciona mejor la web con la ficha cuando el dato estructurado reconoce el nombre de la ficha, y los clientes buscan de las dos formas. No hay que renombrar nada.
+- Consecuencias: `check.mjs` exige los dos valores en cada página con `ProfessionalService`. En directorios y perfiles externos puede usarse cualquiera de los dos, pero siempre con la misma dirección y el mismo teléfono. El nombre de la ficha de Google no se cambia.
+- Estado: Activa. Decidida por el propietario el 2026-10-13.
