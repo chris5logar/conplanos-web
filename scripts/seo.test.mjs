@@ -143,6 +143,8 @@ const mutations = [
   ['guide breadcrumb skips the guides hub', 'dist/guias/declaratoria-de-fabrica/index.html', '"item":"https://conplanos.com/guias/"', '"item":"https://conplanos.com/"', /BreadcrumbList/],
   ['guide without Article schema', 'dist/guias/declaratoria-de-fabrica/index.html', '"@type":"Article","@id"', '"@type":"WebPage","@id"', /Article JSON-LD/],
   ['service schema not linked to the business', page, '"provider":{"@id":"https://conplanos.com/#business"}', '"provider":{"@id":"https://conplanos.com/"}', /Service enlazado/],
+  ['unversioned stylesheet', page, 'href="/assets/styles.css?v=', 'href="/assets/styles.css?old=', /hoja de estilos/],
+  ['unversioned images cached as immutable', 'dist/_headers', '/assets/images/*\n  Cache-Control: public, max-age=604800', '/assets/images/*\n  Cache-Control: public, max-age=31536000, immutable', /Caché inmutable/],
   ['duplicate analytics event', 'dist/assets/main.js', "names.push('click_whatsapp');", "names.push('click_whatsapp'); names.push('click_whatsapp');", /Evento click_whatsapp/]
 ];
 for (const [name, file, before, after, diagnostic] of mutations) {

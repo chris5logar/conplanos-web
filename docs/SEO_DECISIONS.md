@@ -88,6 +88,13 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Consecuencias: la regla vive en `scripts/site-mode.mjs` y la usan `build.mjs` y `check.mjs`. En una preview de Cloudflare el origen de canonical, og:url y sitemap es `CF_PAGES_URL` (la URL del despliegue), salvo que se defina `SITE_ORIGIN`. No hay que configurar variables en el panel de Cloudflare. Si algún día cambia la rama de producción, hay que cambiar `productionBranch` en ese archivo.
 - Estado: Activa. Aprobada por el propietario el 2026-10-13.
 
+## 2026-10-13 — política de caché de recursos estáticos
+
+- Decisión: `main.js` y `styles.css` se sirven siempre con `?v=<hash>` y `Cache-Control: public, max-age=31536000, immutable`. Imágenes (`/assets/images/*`) y marca (`/assets/brand/*`) con `max-age=604800` (7 días), porque sus nombres no llevan versión. No se usan reglas genéricas que se solapen con estas.
+- Motivo: mejorar visitas repetidas sin riesgo de servir CSS o JS antiguos; Cloudflare Pages une los valores de varias reglas `_headers` que coinciden con la misma ruta.
+- Consecuencias: si se reemplaza una imagen con el mismo nombre, puede tardar hasta 7 días en renovarse en navegadores; para cambios urgentes, usar un nombre nuevo. `check.mjs` impide marcar como inmutable un archivo sin versión.
+- Estado: Activa. Implementada en la rama `perf/core-web-vitals`, pendiente de merge.
+
 ## 2026-10-13 — asignación de páginas a la prioridad comercial
 
 - Decisión: «Ingeniería» agrupa `levantamientos-topograficos`, `puntos-geodesicos` y `habilitaciones-urbanas`; «Construcción», `proyectos-construccion` y `ejecucion-obra`; «Saneamiento de predios», `titulaciones`, `comunidades-campesinas` y `asesoramiento-legal`; «Declaratoria de fábrica», `declaratoria-fabrica`.

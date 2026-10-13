@@ -104,6 +104,14 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - Revisión legal del propietario (comentario en el PR #2) aplicada: límite del 31/12/2016 para la vía Ley 27157/30830; modalidades A/B/C/D remitidas a la Ley 29090, reglamento vigente y TUPA; comunidades campesinas con Ley 24657 y modificatorias, autoridad agraria regional y papel técnico de CONPLANOS; WGS84/UTM, Ministerio de Cultura y requisitos municipales «según el caso».
 - Preview de `df04c37` validada por HTTP el 2026-10-13 desde el equipo del propietario (detalle en el worklog): 15 URLs con 200, `noindex, nofollow`, sin GA4, canonical = og:url, redirecciones de `/guias/` en un salto, sitemap con 15 URLs, 404 correcto y JSON-LD `Service`/`Article`. El entorno cloud de Claude no puede abrir `*.pages.dev` ni `conplanos.com` (proxy 403).
 
+## Fase 3 velocidad y Core Web Vitals: EN CURSO
+
+- Rama `perf/core-web-vitals`, PR en borrador, independiente del PR #2.
+- Cambios: variantes de imagen intermedias, logo ligero con srcset, `styles.css` versionado, caché inmutable solo para `main.js` y `styles.css`, 7 días para imágenes, nombre accesible del enlace de la marca.
+- Lighthouse móvil local: 96 a 100 antes y 97 a 100 después; CLS 0 y TBT 0. Sin datos de campo (CrUX/PSI) todavía.
+- Preview `https://58fc57e4.conplanos-web.pages.dev` validada por HTTP desde el equipo del propietario: `styles.css?v=` y `main.js?v=` con `public, max-age=31536000, immutable` (un solo valor), imágenes y marca con `public, max-age=604800`, HTML con `max-age=0, must-revalidate`, noindex y sin GA4, sitemap 10 URLs, 404 correcto.
+- Pendiente: aprobación de merge del propietario; tras el merge, medir producción con PageSpeed Insights.
+
 ## Observaciones menores
 
 - `dist/robots.txt` versionado termina con una línea en blanco extra respecto a lo que genera el build. Sin efecto: Cloudflare regenera el archivo al compilar.
