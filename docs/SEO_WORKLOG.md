@@ -107,3 +107,13 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Commit final: `efe9ee1` en `main`. La actualización de esta documentación va en un commit posterior de solo documentación.
 - Pendientes: ninguno de la Fase 1. Seguimiento recomendado en Search Console de la recogida de los canonical nuevos.
 - Siguiente paso: el orquestador decide sobre la Fase 2 (PR #2, en borrador).
+
+## 2026-10-13 — Fase 4: paquete de SEO local y Google Business Profile
+
+- Agente: Claude Code.
+- Objetivo: preparar todo lo que el propietario necesita para la ficha de Google sin que ningún agente la modifique.
+- Rama: `docs/seo-local-gbp`, desde `main` (`6946b7b`). Solo documentación.
+- Trabajo realizado: `docs/SEO_LOCAL_GBP.md` con coherencia de datos (incluida la diferencia «CONPLANOS» / «CON PLANOS»), enlace con UTM, propuesta de categorías secundarias, correspondencia de los 10 servicios de la ficha con las 9 páginas y descripciones de hasta 300 caracteres, programa de reseñas con plantillas, fotos, cuatro publicaciones por prioridad comercial, directorios y un registro de cambios de la ficha.
+- Pruebas: sin cambios de código ni de `dist/`; `npm run check` OK sobre el `dist/` de `main`.
+- Resultado: pendiente de revisión del propietario. Ningún cambio aplicado en la ficha.
+- Siguiente paso: el propietario decide el nombre único y las categorías secundarias, y empieza a pedir reseñas.
