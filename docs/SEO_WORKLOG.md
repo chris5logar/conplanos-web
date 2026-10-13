@@ -242,3 +242,16 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Lighthouse 13.5.0 (móvil simulado, local, sin GA4): portada 97 (LCP 2,4 s, TBT 80 ms), `/titulaciones/` 98 (LCP 2,4 s), `/guias/` 100 (LCP 1,4 s), guía de declaratoria 100 (LCP 1,5 s); CLS 0 en todas; accesibilidad, buenas prácticas y SEO 100. Sin datos de campo todavía.
 - Errores: ninguno. Pendiente menor ya conocido: `main.js?v=c20b25d30fed` servido desde caché de borde con `max-age=86400` hasta que caduque.
 - Siguiente paso: acciones del propietario en Search Console y Google Business; Fase 5 con datos de GSC/GA4.
+
+
+## 2026-10-13 — Fase 5: línea base verificada y seguimiento automático
+
+- Agente: ChatGPT.
+- Search Console verificado directamente mediante GSC Wizard con acceso a `sc-domain:conplanos.com`.
+- Sitemap oficial `https://conplanos.com/sitemap.xml`: 15 URLs, 0 advertencias y 0 errores; Google lo descargó tras el reenvío del 2026-10-13.
+- Indexación inicial: `/guias/`, licencia, declaratoria y saneamiento aún eran desconocidas para Google; la guía de levantamiento topográfico figuraba como «Descubierta: actualmente sin indexar».
+- Rendimiento inicial disponible: 1 clic, 8 impresiones, CTR 12,5 %, posición media 6,125. El volumen es demasiado pequeño para decisiones de contenido.
+- No se requiere exportación manual de CSV de Search Console: ChatGPT puede consultar consultas, páginas, CTR, posiciones, sitemap e inspecciones directamente con GSC Wizard.
+- GA4 sigue sin autorización OAuth dentro de GSC Wizard; requiere una única acción manual de conexión. No es un fallo de la web.
+- Decisión de medición: `quote_request` y `click_phone` como eventos clave. `click_whatsapp` permanece informativo para evitar doble conteo cuando un mismo clic también dispara `quote_request`.
+- El seguimiento de indexación queda automatizado. No abrir nuevas páginas SEO solo por esta línea base mientras el volumen siga siendo insuficiente.
