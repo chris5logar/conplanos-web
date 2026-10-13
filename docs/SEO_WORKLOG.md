@@ -137,6 +137,15 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
   - `/sitemap.xml` con 10 URLs; `/no-existe-xyz/` devuelve 404.
 - Siguiente paso: aprobación de merge del propietario; después, PageSpeed Insights sobre producción.
 
+## 2026-10-13 — Nombre alternativo «CON PLANOS» en los datos estructurados
+
+- Agente: Claude Code.
+- Objetivo: aplicar la decisión del propietario de usar los dos nombres («quiero usar los 2. conplanos y con planos»).
+- Rama: `seo/nombre-alternativo`, desde `main` (`6946b7b`).
+- Cambios: `alternateName: "CON PLANOS"` en el JSON-LD `ProfessionalService`; `check.mjs` valida `name` y `alternateName`; `seo.test.mjs` añade una regresión (falta el nombre alternativo). Sin cambios de texto visible ni en Google Business.
+- Pruebas (Node 22.22.0): `npm run build` y `npm run check` OK (1632 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 26/26.
+- Siguiente paso: revisión y merge del PR. Validar en producción con la prueba de resultados enriquecidos de Google.
+
 ## 2026-10-13 — Fase 2: plan SEO, contenido de servicios, guías y datos estructurados
 
 - Agente: Claude Code (hilo del proyecto dedicado al SEO).
@@ -190,4 +199,5 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Objetivo: mantener el PR #2 al día con `main` (`217672f`, Fase 3 mergeada). Sin cambios de contenido ni de guías.
 - Conflictos resueltos: `head()` conserva `og:type` variable (guías como `article`) y la hoja de estilos versionada; la cabecera conserva el enlace «Guías» y el nuevo nombre accesible de la marca; pruebas y documentación de ambas ramas se suman.
 - Pruebas (Node 22.22.0): `npm run build` 15 páginas; `npm run check` OK (2599 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 30/30.
+- Actualización: segunda sincronización con `main` (`e650035`, PR #6 con `alternateName`); pruebas otra vez en verde (31/31).
 - Siguiente paso: revisión legal final del propietario y su merge.
