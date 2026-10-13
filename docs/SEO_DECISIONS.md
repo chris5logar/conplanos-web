@@ -93,7 +93,7 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Decisión: `main.js` y `styles.css` se sirven siempre con `?v=<hash>` y `Cache-Control: public, max-age=31536000, immutable`. Imágenes (`/assets/images/*`) y marca (`/assets/brand/*`) con `max-age=604800` (7 días), porque sus nombres no llevan versión. No se usan reglas genéricas que se solapen con estas.
 - Motivo: mejorar visitas repetidas sin riesgo de servir CSS o JS antiguos; Cloudflare Pages une los valores de varias reglas `_headers` que coinciden con la misma ruta.
 - Consecuencias: si se reemplaza una imagen con el mismo nombre, puede tardar hasta 7 días en renovarse en navegadores; para cambios urgentes, usar un nombre nuevo. `check.mjs` impide marcar como inmutable un archivo sin versión.
-- Estado: Activa. Implementada en la rama `perf/core-web-vitals`, pendiente de merge.
+- Estado: Activa. Mergeada en `main` con el PR #4 (`217672f`) el 2026-10-13.
 
 ## 2026-10-13 — se usan los dos nombres: CONPLANOS y CON PLANOS
 

@@ -146,6 +146,24 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Pruebas (Node 22.22.0): `npm run build` y `npm run check` OK (1632 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 26/26.
 - Siguiente paso: revisión y merge del PR. Validar en producción con la prueba de resultados enriquecidos de Google.
 
+## 2026-10-13 — Fase 4: paquete de SEO local y Google Business Profile
+
+- Agente: Claude Code.
+- Objetivo: preparar todo lo que el propietario necesita para la ficha de Google sin que ningún agente la modifique.
+- Rama: `docs/seo-local-gbp`, desde `main` (`6946b7b`). Solo documentación.
+- Trabajo realizado: `docs/SEO_LOCAL_GBP.md` con coherencia de datos (incluida la diferencia «CONPLANOS» / «CON PLANOS»), enlace con UTM, propuesta de categorías secundarias, correspondencia de los 10 servicios de la ficha con las 9 páginas y descripciones de hasta 300 caracteres, programa de reseñas con plantillas, fotos, cuatro publicaciones por prioridad comercial, directorios y un registro de cambios de la ficha.
+- Pruebas: sin cambios de código ni de `dist/`; `npm run check` OK sobre el `dist/` de `main`.
+- Resultado: pendiente de revisión del propietario. Ningún cambio aplicado en la ficha.
+- Siguiente paso: el propietario decide el nombre único y las categorías secundarias, y empieza a pedir reseñas.
+
+## 2026-10-13 — Fase 3: validación HTTP de producción tras el PR #4
+
+- Agente: Claude Code (curl de solo lectura desde el equipo del propietario).
+- `main`: `217672f` (PR #4) y después `e650035` (PR #6).
+- Correcto: `/` y `/levantamientos-topograficos/` con 200, `index, follow`, una sola carga de GA4 y canonical con barra; HTML referencia `styles.css?v=629294dcc573` y `main.js?v=c20b25d30fed`; `styles.css?v=` con `public, max-age=31536000, immutable`; logo 360 e imagen 640 con `public, max-age=604800`; HTML `max-age=0, must-revalidate`; sitemap 10 URLs; robots permite rastreo; 404 correcto; `www` y `http://` con 301 a `https://conplanos.com/`.
+- Incidencia menor: `main.js?v=c20b25d30fed` llega con `public, max-age=86400` desde la caché de borde de Cloudflare (HIT, Age ~20000 s). El hash no cambió con el PR #4 (el JS es el mismo), así que la URL ya estaba en caché con la cabecera anterior. Pedida al origen con otro parámetro devuelve `immutable`: la regla funciona. Se corrige sola al caducar o purgando esa URL. Las URLs sin versión `/assets/styles.css` y `/assets/main.js` también devuelven `max-age=86400` desde caché; el HTML no las usa.
+- Siguiente paso: opcionalmente purgar en Cloudflare la URL de `main.js`; volver a comprobarla después de la caducidad.
+
 ## 2026-10-13 — Fase 2: plan SEO, contenido de servicios, guías y datos estructurados
 
 - Agente: Claude Code (hilo del proyecto dedicado al SEO).
