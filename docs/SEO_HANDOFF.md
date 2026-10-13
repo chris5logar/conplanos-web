@@ -2,7 +2,7 @@
 
 Estado real del proyecto. Actualizar al terminar cada tarea importante. Historial en `SEO_WORKLOG.md`; decisiones en `SEO_DECISIONS.md`; reglas en `../AGENTS.md`.
 
-Última actualización: 2026-10-13, Claude Code, tras sincronizar el PR #2 con `main` y aplicar la revisión legal del propietario.
+Última actualización: 2026-10-13, ChatGPT, tras validar Search Console con GSC Wizard y preparar la línea base de la Fase 5.
 
 ## Proyecto
 
@@ -24,13 +24,13 @@ Asignación de páginas por defecto (decisión «asignación de páginas a la pr
 ## Arquitectura
 
 - HTML estático generado por `scripts/build.mjs`, sin dependencias.
-- En producción: portada + 9 páginas de servicio + 404 (el PR #2 añade `/guias/` y 4 guías). Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
-- `sitemap.xml` (10 URLs), `robots.txt`, `_headers`, `_redirects`.
+- En producción: portada + 9 páginas de servicio + `/guias/` + 4 guías + 404. Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
+- `sitemap.xml` (15 URLs), `robots.txt`, `_headers`, `_redirects`.
 - JSON-LD `ProfessionalService` en todas las páginas comerciales y `BreadcrumbList` en los servicios.
 - Imágenes WebP con srcset y lazy loading.
 - GA4 directo.
 
-## Search Console (último estado conocido, informado por el propietario el 2026-10-13, no verificado por un agente)
+## Search Console (verificado directamente por ChatGPT mediante GSC Wizard el 2026-10-13)
 
 - Propiedad conplanos.com verificada.
 - Sitemap aceptado: https://conplanos.com/sitemap.xml
@@ -115,6 +115,14 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - Producción validada por HTTP el 2026-10-13 (ver SEO_WORKLOG): todo correcto salvo `main.js?v=c20b25d30fed`, que Cloudflare sigue sirviendo desde una copia de borde anterior al merge con `max-age=86400`. Se corrige solo al caducar (antes del 2026-10-14 ~17:00 UTC) o purgando esa URL en Cloudflare (acción del propietario). Sin efecto en SEO.
 - Pendiente: medir con PageSpeed Insights / Search Console (Core Web Vitals) cuando haya datos.
 
+## Fase 5 datos y medición: LÍNEA BASE REGISTRADA
+
+- Search Console, últimos 28 días disponibles a 2026-10-13: 1 clic, 8 impresiones, CTR 12,5 %, posición media 6,1.
+- Páginas con impresiones: portada (4 impresiones, 1 clic, posición media 3,25); `/puntos-geodesicos/` (3 impresiones, posición 10); `/proyectos-construccion/` (1, posición 4); `/titulaciones/` (1, posición 6). Consulta visible: «planos» (1 impresión, posición 5).
+- Volumen demasiado pequeño para decidir: no abrir nuevas páginas SEO ni cambiar títulos o contenido por estos datos.
+- Search Console ya puede consultarse directamente mediante GSC Wizard; no hace falta exportar CSV manualmente.
+- GA4 todavía requiere una autorización OAuth manual dentro de GSC Wizard. En GA4, usar `quote_request` y `click_phone` como eventos clave; mantener `click_whatsapp` como informativo para evitar doble conteo.
+
 ## Observaciones menores
 
 - `dist/robots.txt` versionado termina con una línea en blanco extra respecto a lo que genera el build. Sin efecto: Cloudflare regenera el archivo al compilar.
@@ -125,4 +133,4 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 
 ## Próximo paso
 
-Fases 1 a 3 en producción y paquete de la Fase 4 entregado. Acciones del propietario: enviar de nuevo el sitemap en Search Console (15 URLs) y pedir la indexación de `/guias/` y de las 4 guías; aplicar en Google Business las categorías secundarias y empezar a pedir reseñas (`docs/SEO_LOCAL_GBP.md`); exportar CSV de Search Console y GA4 para la Fase 5. Opcional: purgar en Cloudflare `https://conplanos.com/assets/main.js?v=c20b25d30fed`. Ningún agente hace merge ni toca `main` sin aprobación expresa.
+Seguimiento automático: ChatGPT consulta Search Console directamente mediante GSC Wizard y monitoriza la indexación de las 15 URLs. Cuando exista volumen suficiente, comparar consultas, páginas, CTR y posiciones contra la línea base de la Fase 5. GA4 requiere una autorización OAuth manual única en GSC Wizard; después podrá analizarse directamente junto con Search Console. Mientras el volumen sea mínimo, no crear nuevas páginas SEO solo por estos datos. Los merges seguros se rigen por `docs/AUTOMATION_POLICY.md`.
