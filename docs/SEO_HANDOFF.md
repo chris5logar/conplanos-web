@@ -2,7 +2,7 @@
 
 Estado real del proyecto. Actualizar al terminar cada tarea importante. Historial en `SEO_WORKLOG.md`; decisiones en `SEO_DECISIONS.md`; reglas en `../AGENTS.md`.
 
-Última actualización: 2026-10-13, Claude Code, tras sincronizar el PR #2 con `main` y aplicar la revisión legal del propietario.
+Última actualización: 2026-10-13, ChatGPT, tras validar Search Console con GSC Wizard y preparar la línea base de la Fase 5.
 
 ## Proyecto
 
@@ -24,13 +24,13 @@ Asignación de páginas por defecto (decisión «asignación de páginas a la pr
 ## Arquitectura
 
 - HTML estático generado por `scripts/build.mjs`, sin dependencias.
-- En producción: portada + 9 páginas de servicio + 404 (el PR #2 añade `/guias/` y 4 guías). Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
-- `sitemap.xml` (10 URLs), `robots.txt`, `_headers`, `_redirects`.
+- En producción: portada + 9 páginas de servicio + `/guias/` + 4 guías + 404. Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
+- `sitemap.xml` (15 URLs), `robots.txt`, `_headers`, `_redirects`.
 - JSON-LD `ProfessionalService` en todas las páginas comerciales y `BreadcrumbList` en los servicios.
 - Imágenes WebP con srcset y lazy loading.
 - GA4 directo.
 
-## Search Console (último estado conocido, informado por el propietario el 2026-10-13, no verificado por un agente)
+## Search Console (verificado directamente por ChatGPT mediante GSC Wizard el 2026-10-13)
 
 - Propiedad conplanos.com verificada.
 - Sitemap https://conplanos.com/sitemap.xml enviado de nuevo el 2026-10-13 tras publicar las Fases 1 a 3: Google lo descargó; 15 URLs, 0 advertencias, 0 errores.
@@ -122,7 +122,7 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - Search Console, últimos 28 días disponibles a 2026-10-13: 1 clic, 8 impresiones, CTR 12,5 %, posición media 6,1.
 - Páginas con impresiones: portada (4 impresiones, 1 clic, posición media 3,25); `/puntos-geodesicos/` (3 impresiones, posición 10); `/proyectos-construccion/` (1, posición 4); `/titulaciones/` (1, posición 6). Consulta visible: «planos» (1 impresión, posición 5).
 - Volumen demasiado pequeño para decidir: no abrir nuevas páginas SEO ni cambiar títulos o contenido por estos datos. Revisar de nuevo con al menos 4 semanas de datos tras la indexación de las guías.
-- Pendiente del propietario: conectar GA4 en GSC Wizard; marcar `click_whatsapp` y `click_phone` como eventos clave.
+- Pendiente de una autorización OAuth manual: conectar GA4 en GSC Wizard. En GA4, usar `quote_request` y `click_phone` como eventos clave; mantener `click_whatsapp` como evento informativo para evitar doble conteo cuando el mismo clic también dispara `quote_request`.
 
 ## Observaciones menores
 
@@ -134,4 +134,4 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 
 ## Próximo paso
 
-Esperar datos: a partir del 2026-11-10 (4 semanas), el propietario exporta Search Console (consultas, páginas, indexación de las 5 URLs de guías) y, si ya está conectado, GA4; con eso un agente compara contra la línea base de la Fase 5 y propone ajustes. Mientras tanto, no crear páginas SEO nuevas. Ningún agente hace merge ni toca `main` sin aprobación expresa.
+Seguimiento automático: ChatGPT puede consultar Search Console directamente mediante GSC Wizard, por lo que no hace falta exportar CSV manualmente. Monitorizar la indexación de las 15 URLs y, cuando exista volumen suficiente, comparar consultas, páginas, CTR y posiciones contra esta línea base. GA4 requiere una autorización OAuth manual única en GSC Wizard; después podrá analizarse directamente junto con Search Console. Mientras el volumen sea mínimo, no crear nuevas páginas SEO solo por estos datos. Los merges seguros se rigen por `docs/AUTOMATION_POLICY.md`.
