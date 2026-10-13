@@ -102,7 +102,7 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - Sitemap: 15 URLs (portada, 9 servicios, índice de guías y 4 guías). `_redirects`: 29 reglas 301 directas.
 - `check.mjs` y `seo.test.mjs` (28 pruebas) derivan el catálogo de `services.json` + `guides.json`.
 - Revisión legal del propietario (comentario en el PR #2) aplicada: límite del 31/12/2016 para la vía Ley 27157/30830; modalidades A/B/C/D remitidas a la Ley 29090, reglamento vigente y TUPA; comunidades campesinas con Ley 24657 y modificatorias, autoridad agraria regional y papel técnico de CONPLANOS; WGS84/UTM, Ministerio de Cultura y requisitos municipales «según el caso».
-- Preview de Cloudflare: la compila Cloudflare en cada push (check «Cloudflare Pages»). El entorno cloud de Claude no puede abrir `*.pages.dev` ni `conplanos.com` (proxy 403): la validación HTTP de la preview debe hacerse desde el equipo del propietario o por un agente con acceso.
+- Preview de `df04c37` validada por HTTP el 2026-10-13 desde el equipo del propietario (detalle en el worklog): 15 URLs con 200, `noindex, nofollow`, sin GA4, canonical = og:url, redirecciones de `/guias/` en un salto, sitemap con 15 URLs, 404 correcto y JSON-LD `Service`/`Article`. El entorno cloud de Claude no puede abrir `*.pages.dev` ni `conplanos.com` (proxy 403).
 
 ## Observaciones menores
 
@@ -114,4 +114,4 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 
 ## Próximo paso
 
-Revisión legal final del propietario sobre el texto de las 4 guías y los bloques «En qué consiste» en la preview del PR #2, y validación HTTP de esa preview (15 URLs, canonical, robots `noindex, nofollow`, sin GA4, redirecciones de `/guias/`). Con ambas, el propietario decide el merge. Mientras tanto, ningún agente hace merge ni toca `main`.
+Revisión legal final del propietario sobre el texto de las 4 guías y los bloques «En qué consiste» en la preview del PR #2 (ya validada por HTTP). Con ella, el propietario decide el merge; tras el merge, verificar producción y enviar de nuevo el sitemap en Search Console. Mientras tanto, ningún agente hace merge ni toca `main`.

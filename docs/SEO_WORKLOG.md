@@ -140,3 +140,17 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
   - No verificado: la preview real de Cloudflare por HTTP. El proxy del entorno cloud rechaza `*.pages.dev` y `conplanos.com`; solo se puede leer el estado del check «Cloudflare Pages» en GitHub.
 - Resultado: PR #2 sincronizado y corregido, en borrador. Producción sin cambios.
 - Siguiente paso: revisión legal final del propietario y validación HTTP de la preview desde un equipo con acceso.
+
+## 2026-10-13 — Fase 2: validación HTTP de la preview del PR #2
+
+- Agente: Claude Code, mediante una sesión de solo lectura en el equipo del propietario (el entorno cloud no alcanza `*.pages.dev`).
+- Objetivo: validar por HTTP la preview de `df04c37`, https://63a1702c.conplanos-web.pages.dev. Solo GET con `curl.exe`, sin seguir redirecciones; sin cambios en archivos ni Git.
+- Resultados (todo correcto):
+  - 15 URLs (portada, `/guias/`, 4 guías, 9 servicios): 200, `noindex, nofollow`, sin GA4 ni googletagmanager, canonical = og:url = URL del despliegue + ruta con barra, un H1.
+  - `/guias`, `/guias/index.html`, `/guias/declaratoria-de-fabrica` y su `/index.html`: 301 directo a la URL final con barra.
+  - `sitemap.xml`: 200, exactamente 15 URLs con barra. `robots.txt`: `Disallow: /`. Cabecera `x-robots-tag: noindex, nofollow` en páginas, sitemap, robots y 404.
+  - `/no-existe-xyz/`: 404 con `noindex, nofollow`.
+  - JSON-LD: `Service` en `/proyectos-construccion/` con provider `#business`; `Article` y BreadcrumbList de 3 niveles en la guía de declaratoria; el texto incluye «31 de diciembre de 2016».
+  - Observación esperada: en el alias de rama, el canonical apunta a la URL del despliegue (`CF_PAGES_URL`), igual que en la Fase 1.
+- Resultado: preview del PR #2 validada. Producción sin cambios.
+- Siguiente paso: revisión legal final del propietario y su decisión sobre el merge.
