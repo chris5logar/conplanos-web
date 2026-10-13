@@ -44,7 +44,7 @@ Titles y descripciones propios por página; H1 único; canonical; Open Graph y t
 
 Política canonical actual: canonical, og:url, BreadcrumbList, sitemap y enlaces internos usan la misma URL final, `/` para la portada y `/<slug>/` para cada servicio. La página 404 usa `noindex, follow` y no declara canonical ni og:url.
 
-Producción (conplanos.com, rama main): `index, follow` y GA4 `G-7DCRJN061J` activo. Preview (`SITE_MODE=preview`): `noindex, nofollow`, `robots.txt` con `Disallow: /`, cabecera `X-Robots-Tag: noindex, nofollow` y sin GA4. No subir a producción un build de preview.
+Producción (conplanos.com, rama main): `index, follow` y GA4 `G-7DCRJN061J` activo. Preview (automática en Cloudflare Pages para toda rama distinta de main, mediante `CF_PAGES_BRANCH`; en local con `SITE_MODE=preview`): `noindex, nofollow`, `robots.txt` con `Disallow: /`, cabecera `X-Robots-Tag: noindex, nofollow` y sin GA4. No subir a producción un build de preview.
 
 Validación: `npm run build`, `npm run check` y `npm test`; para preview, `npm run build:preview` y `npm run check:preview`. El estado vigente y las decisiones están en `docs/SEO_HANDOFF.md` y `docs/SEO_DECISIONS.md`.
 

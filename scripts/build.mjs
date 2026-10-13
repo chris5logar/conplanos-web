@@ -1,11 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { siteMode } from './site-mode.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const dist = path.join(root, 'dist');
-const origin = (process.env.SITE_ORIGIN || 'https://conplanos.com').replace(/\/+$/, '');
-const preview = process.env.SITE_MODE === 'preview';
+const { preview, cloudflareOrigin } = siteMode();
+const origin = (process.env.SITE_ORIGIN || cloudflareOrigin || 'https://conplanos.com').replace(/\/+$/, '');
 // One path policy for canonical, sitemap, structured data and navigation.
 const publicPath = (route = '') => route ? `/${route.replace(/^\/+|\/+$/g, '')}/` : '/';
 const publicUrl = (route = '') => origin + publicPath(route);

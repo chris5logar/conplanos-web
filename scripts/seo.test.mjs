@@ -12,7 +12,7 @@ const routes = ['/', ...services.map(s => `/${s.slug}/`)];
 const page = 'dist/proyectos-construccion/index.html';
 const origin = 'https://conplanos.com';
 
-function fixture(t, preview = false, siteOrigin) {
+function fixture(t, preview = false, siteOrigin, cloudflare = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'conplanos-seo-test-'));
   const cleanupTasks = [];
   t.after(async () => {
@@ -26,7 +26,9 @@ function fixture(t, preview = false, siteOrigin) {
   const env = { ...process.env };
   delete env.SITE_MODE;
   delete env.SITE_ORIGIN;
+  for (const name of ['CF_PAGES', 'CF_PAGES_BRANCH', 'CF_PAGES_URL']) delete env[name];
   if (siteOrigin) env.SITE_ORIGIN = siteOrigin;
+  Object.assign(env, cloudflare);
   const run = (script, args = []) => spawnSync(process.execPath, [path.join(root, 'scripts', script), ...args], { cwd: root, env, encoding: 'utf8' });
   const build = run(preview ? 'build-preview.mjs' : 'build.mjs');
   assert.equal(build.status, 0, build.stderr);
@@ -70,6 +72,57 @@ test('custom preview origin, including trailing slash, is consistent', t => {
   assert.equal(f.check().status, 0);
   assert(f.read(page).includes('href="https://seo-review.example.test/proyectos-construccion/"'));
   assert(!f.read(page).includes('https://seo-review.example.test//'));
+});
+
+const cloudflareUrl = 'https://abc123.conplanos-web.pages.dev';
+const cloudflareEnv = branch => ({ CF_PAGES: '1', CF_PAGES_BRANCH: branch, CF_PAGES_URL: cloudflareUrl });
+
+test('Cloudflare main branch builds production: indexable with GA4', t => {
+  const f = fixture(t, false, undefined, cloudflareEnv('main'));
+  const result = f.check();
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /producción/);
+  for (const route of routes) {
+    const html = f.read('dist' + route + 'index.html');
+    assert(html.includes('content="index, follow"'));
+    assert(html.includes('G-7DCRJN061J'));
+    assert(html.includes(`rel="canonical" href="${origin}${route}"`));
+  }
+  assert.equal(f.read('dist/robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
+  assert(!f.read('dist/_headers').includes('X-Robots-Tag'));
+});
+
+test('Cloudflare non-main branch builds preview: noindex without GA4', t => {
+  const f = fixture(t, false, undefined, cloudflareEnv('fix/any-branch'));
+  const result = f.check();
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /preview/);
+  for (const route of routes) {
+    const html = f.read('dist' + route + 'index.html');
+    assert(html.includes('content="noindex, nofollow"'));
+    assert(!html.includes('G-7DCRJN061J'));
+    assert(!html.includes('googletagmanager'));
+    assert(html.includes(`rel="canonical" href="${cloudflareUrl}${route}"`));
+  }
+  assert(f.read('dist/404.html').includes('content="noindex, nofollow"'));
+  assert.equal(f.read('dist/robots.txt'), 'User-agent: *\nDisallow: /\n');
+  assert(f.read('dist/_headers').includes('X-Robots-Tag: noindex, nofollow'));
+});
+
+test('SITE_ORIGIN still overrides the Cloudflare deployment URL', t => {
+  const f = fixture(t, false, 'https://seo-review.example.test', cloudflareEnv('fix/any-branch'));
+  assert.equal(f.check().status, 0);
+  assert(f.read(page).includes('href="https://seo-review.example.test/proyectos-construccion/"'));
+  assert(f.read(page).includes('content="noindex, nofollow"'));
+});
+
+test('local build without Cloudflare variables stays production', t => {
+  const f = fixture(t);
+  assert.equal(f.env.CF_PAGES_BRANCH, undefined);
+  assert.equal(f.check().status, 0);
+  assert(f.read(page).includes('content="index, follow"'));
+  assert(f.read(page).includes('G-7DCRJN061J'));
+  assert(f.read(page).includes(`rel="canonical" href="${origin}/proyectos-construccion/"`));
 });
 
 const mutations = [

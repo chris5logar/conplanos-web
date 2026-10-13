@@ -11,6 +11,7 @@ Web pública comercial estática, independiente de conplanos-app y conplanos-gns
 - `content/services.json`: textos editables de las nueve páginas de servicio.
 - `content/contacts.json`: fuente única de contactos. Contacto principal (también número de WhatsApp), contactos adicionales y mensaje predeterminado de WhatsApp.
 - `scripts/build.mjs`: generador de HTML con Node, sin paquetes externos.
+- `scripts/site-mode.mjs`: regla única de modo producción o preview, compartida por el build y los checks.
 - `scripts/serve.mjs`: servidor local estático, puerto 4173.
 - `scripts/check.mjs`: verificación de rutas, recursos y metadatos.
 - `docs/`: guía de publicación, fotografías, textos y conversión.
@@ -26,6 +27,8 @@ No requiere instalar paquetes. Los cambios en `content/services.json` se regener
 Repositorio: chris5logar/conplanos-web. Rama: main. Framework: None. Build: `node scripts/build.mjs`. Directorio de salida: `dist`. Origen predeterminado: https://conplanos.com. Consultar docs/ENTREGA.md antes de asociar el dominio.
 
 ## Preview
+
+En Cloudflare Pages el modo se decide solo: `scripts/site-mode.mjs` lee la variable oficial `CF_PAGES_BRANCH`. La rama `main` compila producción y cualquier otra rama compila preview, con `CF_PAGES_URL` como origen. No hace falta configurar variables en el panel. Fuera de Cloudflare esa variable no existe y se aplica lo siguiente.
 
 Para una preview sin indexación, definir `SITE_MODE=preview` y `SITE_ORIGIN` igual a su URL real antes del build, o ejecutar `npm run build:preview`. Validar con `npm run check:preview` usando el mismo SITE_ORIGIN. Preview usa `noindex, nofollow` y no instala GA4. Para producción, quitar SITE_MODE, usar `https://conplanos.com` como origen y ejecutar `npm run build` y `npm run check`. Las páginas comerciales usan `index, follow` y GA4 activo. No subir a producción un build de preview.
 

@@ -2,14 +2,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import strictAssert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { siteMode } from './site-mode.mjs';
 let validations = 0;
 function assert(...args) { validations++; strictAssert(...args); }
 for (const method of ['equal', 'match', 'deepEqual']) {
  assert[method] = (...args) => { validations++; strictAssert[method](...args); };
 }
 const root=path.resolve(import.meta.dirname,'../dist');
-const preview = process.argv.includes('--preview') || process.env.SITE_MODE === 'preview';
-const origin = (process.env.SITE_ORIGIN || (preview ? 'https://conplanos-web-preview.pages.dev' : 'https://conplanos.com')).replace(/\/+$/, '');
+const mode = siteMode();
+const preview = process.argv.includes('--preview') || mode.preview;
+const origin = (process.env.SITE_ORIGIN || mode.cloudflareOrigin || (preview ? 'https://conplanos-web-preview.pages.dev' : 'https://conplanos.com')).replace(/\/+$/, '');
 const services = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, '../content/services.json'), 'utf8'));
 const commercialPaths = ['/', ...services.map(s => `/${s.slug}/`)];
 const expectedUrls = commercialPaths.map(route => origin + route);

@@ -79,4 +79,11 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Decisión: producción usa `index, follow` y GA4. Toda preview usa `noindex, nofollow`, `robots.txt` con `Disallow: /`, cabecera `X-Robots-Tag: noindex, nofollow` y no carga GA4.
 - Motivo: no indexar copias del sitio ni contaminar la analítica con tráfico de revisión.
 - Consecuencias: las previews deben compilarse con `SITE_MODE=preview`. Un build de preview nunca se publica en producción; `check.mjs` lo rechaza.
-- Estado: Activa, pero incumplida en las previews automáticas de Cloudflare Pages: se compilan en modo producción. Ver el bloqueo en `docs/SEO_HANDOFF.md`.
+- Estado: Activa. En Cloudflare Pages se aplica sola desde la decisión «las previews de Cloudflare Pages se detectan automáticamente».
+
+## 2026-10-13 — las previews de Cloudflare Pages se detectan automáticamente
+
+- Decisión: el build decide el modo con la variable oficial `CF_PAGES_BRANCH` de Cloudflare Pages. Si existe y es `main`, compila producción; si existe y es cualquier otra rama, compila preview. Si no existe (desarrollo local), se mantiene el comportamiento anterior: producción salvo `SITE_MODE=preview`.
+- Motivo: las previews automáticas se compilaban en modo producción, con `index, follow` y GA4 activo, porque Cloudflare no recibía `SITE_MODE`. Depender de una variable configurada a mano en el panel es frágil.
+- Consecuencias: la regla vive en `scripts/site-mode.mjs` y la usan `build.mjs` y `check.mjs`. En una preview de Cloudflare el origen de canonical, og:url y sitemap es `CF_PAGES_URL` (la URL del despliegue), salvo que se defina `SITE_ORIGIN`. No hay que configurar variables en el panel de Cloudflare. Si algún día cambia la rama de producción, hay que cambiar `productionBranch` en ese archivo.
+- Estado: Activa. Aprobada por el propietario el 2026-10-13.

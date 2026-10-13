@@ -62,7 +62,7 @@ No declarar pruebas que no se ejecutaron. Si una herramienta no está disponible
 ## Política SEO
 
 - Producción: `index, follow` + GA4.
-- Preview: `noindex, nofollow` + sin GA4 (`SITE_MODE=preview`). El build de preview también pone `Disallow: /` en `robots.txt` y la cabecera `X-Robots-Tag: noindex, nofollow`, y usa la URL de la preview como origen de canonical, og:url y sitemap.
+- Preview: `noindex, nofollow` + sin GA4. En Cloudflare Pages es automático para toda rama distinta de `main` (`CF_PAGES_BRANCH`, ver `scripts/site-mode.mjs`); en local se activa con `SITE_MODE=preview`. El build de preview también pone `Disallow: /` en `robots.txt` y la cabecera `X-Robots-Tag: noindex, nofollow`, y usa la URL de la preview como origen de canonical, og:url y sitemap.
 - Servicios: URL canónica con barra final (`/<slug>/`). Canonical, og:url, BreadcrumbList, sitemap y enlaces internos deben coincidir.
 - 404: `noindex, follow`, sin canonical ni og:url.
 - No crear páginas geográficas artificiales (ciudades sin contenido local real).
