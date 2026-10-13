@@ -107,3 +107,20 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Commit final: `efe9ee1` en `main`. La actualización de esta documentación va en un commit posterior de solo documentación.
 - Pendientes: ninguno de la Fase 1. Seguimiento recomendado en Search Console de la recogida de los canonical nuevos.
 - Siguiente paso: el orquestador decide sobre la Fase 2 (PR #2, en borrador).
+
+## 2026-10-13 — Fase 3: velocidad y Core Web Vitals (primer PR)
+
+- Agente: Claude Code.
+- Objetivo: medir el rendimiento y aplicar las mejoras de más impacto sin cambiar textos ni diseño. Autorizado por el prompt maestro del propietario (fases 3 a 6) y su «continúa» del 2026-10-13.
+- Rama: `perf/core-web-vitals`, desde `main` (`6946b7b`). Independiente del PR #2.
+- Línea base (Lighthouse 13.5.0, perfil móvil simulado, servidor local sin compresión ni cabeceras de Cloudflare): portada rendimiento 98, LCP 2,4 s; `/proyectos-construccion/` 100, LCP 1,7 s; `/levantamientos-topograficos/` 96, LCP 2,7 s. CLS 0 y TBT 0 ms en las tres. Accesibilidad 100, SEO 100, buenas prácticas 96 (solo por el error de red de GA4 en el entorno del agente).
+- Trabajo realizado:
+  - Imágenes: variantes intermedias `conplanos-visita-tecnica-predio-rural-640/960.webp` y `conplanos-medicion-gnss-campo-600.webp` (WebP calidad 80, a partir de las versiones existentes). En móvil la portada pasa a descargar 640 px (113 KB) en lugar de 800 px (185 KB) con DPR 1,75. No se borró ningún archivo.
+  - Logo de cabecera y pie: `conplanos-logo-360.webp` (6 KB) y `-600.webp` (12 KB) con srcset en lugar de 1100 px (31 KB) en todas las páginas. El logo de JSON-LD sigue siendo el original.
+  - Accesibilidad: el enlace de la marca incluía texto visible («Registra y construye») fuera de su nombre accesible; ahora lo incluye.
+  - Caché: `styles.css` con versión por hash como `main.js`; ambos con `max-age=31536000, immutable`; imágenes y marca con 7 días. Se eliminó la regla genérica `/assets/*` para que no se solape (Cloudflare une los valores de reglas que coinciden).
+  - `check.mjs`: valida la versión de la hoja de estilos y que solo los archivos versionados sean inmutables, sin reglas solapadas. `seo.test.mjs`: 2 regresiones nuevas (27 pruebas).
+- Pruebas (Node 22.22.0): `npm run build` y `npm run check` OK (1702 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 27/27. Lighthouse después: portada 99, LCP 2,3 s; topografía 97, LCP 2,6 s; proyectos 100; aviso de nombre accesible resuelto. Captura móvil a 3x de la cabecera correcta.
+- No verificado: PageSpeed Insights sobre producción (la API responde 429 sin clave desde el entorno del agente) ni datos de campo de CrUX. Las cifras son de laboratorio local, sin la compresión ni la caché de Cloudflare.
+- Resultado: margen de mejora técnico pequeño; la web ya era rápida. Lo que más pesa ahora son las fotos de campo (vegetación con mucho detalle); la mejora real requiere originales de mayor calidad exportados según `docs/IMAGENES.md`.
+- Siguiente paso: revisión del PR y validación de la preview (cabeceras de caché por HTTP).

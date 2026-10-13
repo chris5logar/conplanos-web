@@ -96,6 +96,13 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 
 - PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)», rama `seo/plan-crecimiento-organico`, base `main`, en borrador. No lo abrió ni lo revisó este agente. No tocarlo sin orden del propietario.
 
+## Fase 3 velocidad y Core Web Vitals: EN CURSO
+
+- Rama `perf/core-web-vitals`, PR en borrador, independiente del PR #2.
+- Cambios: variantes de imagen intermedias, logo ligero con srcset, `styles.css` versionado, caché inmutable solo para `main.js` y `styles.css`, 7 días para imágenes, nombre accesible del enlace de la marca.
+- Lighthouse móvil local: 96 a 100 antes y 97 a 100 después; CLS 0 y TBT 0. Sin datos de campo (CrUX/PSI) todavía.
+- Pendiente: validar por HTTP en la preview las cabeceras `Cache-Control`; medir producción con PageSpeed Insights tras el merge.
+
 ## Observaciones menores
 
 - `dist/robots.txt` versionado termina con una línea en blanco extra respecto a lo que genera el build. Sin efecto: Cloudflare regenera el archivo al compilar.
