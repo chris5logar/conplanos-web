@@ -124,3 +124,15 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - No verificado: PageSpeed Insights sobre producción (la API responde 429 sin clave desde el entorno del agente) ni datos de campo de CrUX. Las cifras son de laboratorio local, sin la compresión ni la caché de Cloudflare.
 - Resultado: margen de mejora técnico pequeño; la web ya era rápida. Lo que más pesa ahora son las fotos de campo (vegetación con mucho detalle); la mejora real requiere originales de mayor calidad exportados según `docs/IMAGENES.md`.
 - Siguiente paso: revisión del PR y validación de la preview (cabeceras de caché por HTTP).
+
+## 2026-10-13 — Fase 3: validación HTTP de la preview del PR #4
+
+- Agente: Claude Code (curl de solo lectura desde el equipo del propietario; el contenedor no alcanza `*.pages.dev`).
+- Preview: `https://58fc57e4.conplanos-web.pages.dev` (commit `19cc825`).
+- Resultado, todo correcto:
+  - `/` y `/levantamientos-topograficos/`: 200, `noindex, nofollow` en meta y `X-Robots-Tag`, sin GA4, canonical = og:url de la preview, `nosniff` y `SAMEORIGIN`.
+  - `/assets/styles.css?v=629294dcc573` y `/assets/main.js?v=c20b25d30fed`: `Cache-Control: public, max-age=31536000, immutable`, un solo valor (sin reglas solapadas).
+  - Variantes nuevas de `projects/` y `brand/` y `favicon.svg`: 200 y `public, max-age=604800`.
+  - HTML: `public, max-age=0, must-revalidate`.
+  - `/sitemap.xml` con 10 URLs; `/no-existe-xyz/` devuelve 404.
+- Siguiente paso: aprobación de merge del propietario; después, PageSpeed Insights sobre producción.
