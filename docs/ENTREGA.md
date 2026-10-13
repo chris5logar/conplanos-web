@@ -16,7 +16,9 @@ La vía Sites se detuvo: la revisión automática rechazó pasar su credencial a
 
 ## Páginas
 
-Inicio `/`, `/proyectos-construccion`, `/ejecucion-obra`, `/levantamientos-topograficos`, `/titulaciones`, `/comunidades-campesinas`, `/declaratoria-fabrica`, `/puntos-geodesicos`, `/habilitaciones-urbanas`, `/asesoramiento-legal`. Incluye 404.
+Inicio `/`, `/proyectos-construccion/`, `/ejecucion-obra/`, `/levantamientos-topograficos/`, `/titulaciones/`, `/comunidades-campesinas/`, `/declaratoria-fabrica/`, `/puntos-geodesicos/`, `/habilitaciones-urbanas/`, `/asesoramiento-legal/`. Incluye 404.
+
+La URL final de cada servicio lleva barra final. Las variantes sin barra y las terminadas en `index.html` redirigen con un 301 directo mediante `dist/_redirects`.
 
 Cada servicio contiene introducción propia, qué resuelve, alcance, información inicial, proceso, preguntas frecuentes, servicios relacionados elegidos en content/services.json, WhatsApp, dirección y fotografía de oficina. La portada agrupa los servicios en tres áreas: Topografía y geodesia, Saneamiento y propiedad, y Proyectos y obras.
 
@@ -40,7 +42,13 @@ Ing. Kimberly Peñalva, +51 927 003 900, y Per. Ernesto, +51 955 593 110, se mue
 
 Titles y descripciones propios por página; H1 único; canonical; Open Graph y tarjeta de marca; favicon; sitemap de diez URLs; robots; JSON-LD ProfessionalService con nombre, contacto, dirección, coordenadas comprobadas en Maps y área atendida (Cusco y Perú), más BreadcrumbList en las páginas de servicio. No se añaden reseñas, horarios, matrículas o garantías sin verificar.
 
-La preview debe permanecer noindex. El build final para conplanos.com habilita indexación. Publicar archivos SEO no garantiza posiciones en Google: luego deben verificarse dominio, rastreo y contenido en Search Console.
+Política canonical actual: canonical, og:url, BreadcrumbList, sitemap y enlaces internos usan la misma URL final, `/` para la portada y `/<slug>/` para cada servicio. La página 404 usa `noindex, follow` y no declara canonical ni og:url.
+
+Producción (conplanos.com, rama main): `index, follow` y GA4 `G-7DCRJN061J` activo. Preview (`SITE_MODE=preview`): `noindex, nofollow`, `robots.txt` con `Disallow: /`, cabecera `X-Robots-Tag: noindex, nofollow` y sin GA4. No subir a producción un build de preview.
+
+Validación: `npm run build`, `npm run check` y `npm test`; para preview, `npm run build:preview` y `npm run check:preview`. El estado vigente y las decisiones están en `docs/SEO_HANDOFF.md` y `docs/SEO_DECISIONS.md`.
+
+Publicar archivos SEO no garantiza posiciones en Google: luego deben verificarse dominio, rastreo y contenido en Search Console.
 
 HTML renderizado sin JavaScript, fuentes del sistema, sin frameworks de cliente ni dependencias, WebP responsive, dimensiones reservadas, lazy loading excepto imagen principal. Menú móvil (sin JavaScript la navegación se muestra como fila de enlaces), foco visible, enlace de salto, alt descriptivos, respeto a movimiento reducido. No se afirma una puntuación Lighthouse sin medirla.
 
@@ -79,7 +87,7 @@ No modificar el registro de `app.conplanos.com`, Render ni Neon. No introducir A
 - Fotos y perfiles reales del equipo con nombres completos, especialidades y credenciales verificadas.
 - Confirmar horario, cobertura geográfica y tiempo realista de respuesta. Preparar respuestas rápidas de WhatsApp para ubicación, servicio y etapa.
 - Verificar Google Business Profile y actualizar el enlace a conplanos.com después del lanzamiento. Solicitar reseñas auténticas a clientes, sin inventar testimonios.
-- Después, medir clics WhatsApp, llamadas y Maps con una herramienta acordada. Existe un evento local conplanos:contact para conexión futura; actualmente no se transmite analítica.
+- La medición ya está activa en producción con GA4 `G-7DCRJN061J`: eventos `click_whatsapp`, `click_phone` y `quote_request`, sin datos personales. `quote_request` y `click_whatsapp` pueden proceder del mismo clic y no son dos leads. Los clics a Maps no se miden.
 - Producir videos verticales de 20–40 s: «qué enviar para cotizar», medición GNSS real, avance de obra y revisión de planos. Subtítulos legibles y cierre con WhatsApp.
 - Producir un video de 60–90 s de presentación del equipo y oficina, y casos de 45–60 s con problema, proceso y entrega. Confirmar resultados y evitar mostrar DNI, firmas o expedientes legibles.
 - Grabaciones de obra con seguridad y permiso; tomas aéreas solo cuando exista autorización y operador habilitado según corresponda. No cargar videos pesados automáticamente en el hero; usar poster y reproducción voluntaria.
