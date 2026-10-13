@@ -80,25 +80,30 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Pendientes: revisión y merge del PR #1 por el propietario; verificación de producción después del merge.
 - Siguiente paso: el propietario decide el merge del PR #1.
 
-## 2026-10-13 — Fase 2: plan SEO, contenido de servicios, guías y datos estructurados
+## 2026-10-13 — Merge del PR #1 y validación de producción
 
-- Agente: Claude Code (hilo «SEO y posicionamiento» del proyecto).
-- Objetivo: plan SEO priorizado y primera ejecución de contenido y datos estructurados, a petición del propietario («haz todo el proyecto, no me consultes»).
-- Rama: `seo/plan-crecimiento-organico`, creada desde `fix/seo-url-canonical-404` (`f1b7906`) porque el PR #1 aún no estaba en `main`.
+- Agente: Claude Code (validación). El merge lo hizo el propietario.
+- Objetivo: confirmar en https://conplanos.com que la Fase 1 quedó publicada correctamente. Solo lectura sobre producción; sin cambios de código.
+- Rama: `main` (producción). Rama local de trabajo sin cambios de código.
+- Commit inicial: `f961a40` (`main` antes del merge).
 - Trabajo realizado:
-  - Investigación de mercado y competencia con búsqueda web (no localizada en el Perú: sirve para intención de búsqueda y competidores informativos, no para posiciones ni volúmenes).
-  - `docs/SEO_PLAN.md`: diagnóstico, mapa de palabras clave por prioridad, plan en tres horizontes, plantilla de reseñas, accesos necesarios e indicadores.
-  - `content/services.json`: `seoTitle`, `intro` (dos párrafos), preguntas frecuentes adicionales y `guide` por servicio. Sin cifras, plazos ni promesas.
-  - `content/guides.json` (nuevo): 4 guías (licencia de edificación, declaratoria de fábrica, saneamiento físico legal, levantamiento topográfico).
-  - `scripts/build.mjs`: bloque «En qué consiste» en servicios, JSON-LD `Service` por servicio, índice `/guias/` con `CollectionPage`, páginas de guía con `Article` y migas de tres niveles, sección de guías en la portada, enlace «Guías» en menú y pie, sitemap y `_redirects` ampliados.
-  - `scripts/check.mjs`: catálogo dinámico (servicios + guías), migas de N niveles, verificación de `Service` y `Article`. `scripts/seo.test.mjs`: recuentos dinámicos.
-  - `dist/assets/styles.css`: estilos `.prose`, `.intro`, `.guide-link`.
-- Pruebas (Node 22.22.0, entorno cloud):
-  - `node scripts/build.mjs`: 15 páginas.
-  - `node scripts/check.mjs`: OK (producción), 2474 validaciones, 16 documentos HTML, 15 canonical/sitemap.
-  - En copia temporal: `build-preview.mjs` + `check.mjs --preview`: OK.
-  - `node --test scripts/seo.test.mjs`: 25 de 25.
-  - Capturas con Chromium de portada, índice de guías, una guía (escritorio y móvil) y un servicio: maquetación correcta.
-- Resultado: rama lista para revisión en borrador de PR. No se tocó `main`, producción ni la ficha de Google.
-- Pendientes: revisión técnica y legal de los textos por el propietario; validar la preview de Cloudflare; acciones del propietario en `SEO_PLAN.md` (reseñas, Search Console, GA4, ficha).
-- Siguiente paso: el propietario revisa el texto de las 4 guías y de los bloques «En qué consiste» en la preview.
+  - Un primer aviso de merge a las 18:18 UTC no se correspondía con GitHub: el PR #1 seguía abierto y en borrador, y `main` en `f961a40`. No se validó ni se documentó nada entonces.
+  - Merge real del PR #1 a las 18:47:14 UTC. Merge commit `efe9ee1ff18c233dfedd669fa0be73da118c00fb`.
+  - Despliegue de Producción en Cloudflare Pages para `efe9ee1`: correcto, completado a las 18:47:31 UTC (despliegue `7a8951fb`), según el check «Cloudflare Pages» de GitHub.
+  - Validación HTTP de producción a las 18:50 UTC.
+- Archivos modificados: `docs/SEO_HANDOFF.md`, `docs/SEO_WORKLOG.md`.
+- Pruebas (curl, solo GET, contra https://conplanos.com):
+  - Portada y 9 servicios con barra: 200 las 10; `index, follow`; ningún `noindex`.
+  - canonical = `https://conplanos.com/<ruta>/` y og:url = canonical en las 10.
+  - BreadcrumbList en los 9 servicios con `https://conplanos.com/` y la URL final con barra.
+  - 18 de 18 variantes de servicio (sin barra e `/index.html`) con 301 directo; `/index.html` con 301 a `/`; cadena de un solo salto.
+  - `sitemap.xml`: 200, 10 URLs, las 10 con barra. `robots.txt`: 200, `Allow: /`, `Sitemap: https://conplanos.com/sitemap.xml`.
+  - `/no-existe-xyz/` y `/no-existe-xyz`: 404, `noindex, follow`, sin canonical, og:url ni JSON-LD. `/404`: 200 con `noindex, follow`. `/404/`: 308 a `/404`.
+  - GA4 `G-7DCRJN061J`: una etiqueta y una configuración en cada una de las 10 páginas; sin GTM.
+  - `assets/main.js`: `click_whatsapp`, `click_phone` y `quote_request` una vez cada uno; sin datos de contacto.
+  - `www.conplanos.com` y `http://` redirigen con 301 a `https://conplanos.com/`.
+  - No verificado: panel de Cloudflare (se usó el check de GitHub); llegada real de eventos a GA4; Search Console.
+- Resultado: Fase 1 cerrada, sin incidencias en producción.
+- Commit final: `efe9ee1` en `main`. La actualización de esta documentación va en un commit posterior de solo documentación.
+- Pendientes: ninguno de la Fase 1. Seguimiento recomendado en Search Console de la recogida de los canonical nuevos.
+- Siguiente paso: el orquestador decide sobre la Fase 2 (PR #2, en borrador).
