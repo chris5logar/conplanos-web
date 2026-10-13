@@ -6,7 +6,7 @@ Paquete de trabajo de la Fase 4. Preparado por Claude Code el 2026-10-13. **Ning
 
 | Dato | Web (conplanos.com) | Ficha de Google | Acción |
 | --- | --- | --- | --- |
-| Nombre | CONPLANOS | CON PLANOS | **Decisión del propietario**: usar un único nombre en todas partes. El nombre de la ficha debe ser el nombre real del negocio (el que figura en el letrero, documentos y facturas); cambiarlo puede provocar una nueva verificación. |
+| Nombre | CONPLANOS | CON PLANOS | Decidido por el propietario el 2026-10-13: se usan los dos. La ficha se queda como «CON PLANOS» (no se renombra) y la web declara «CON PLANOS» como `alternateName` en su JSON-LD (PR #6). |
 | Dirección | Av. Micaela Bastidas 321, Cusco | (confirmar) | Debe coincidir carácter por carácter en web, ficha y directorios. |
 | Teléfono | +51 928 400 600 | +51 928 400 600 | Correcto. |
 | Web | https://conplanos.com | https://conplanos.com | Proponer la versión con UTM del apartado 2. |
@@ -25,7 +25,7 @@ Usar `https://conplanos.com/?utm_source=google&utm_medium=organic&utm_campaign=g
   - Arquitecto
 - No añadir categorías legales (abogado) salvo que la empresa preste ese servicio como actividad propia y el propietario lo confirme.
 
-Cambiar o añadir categorías afecta al posicionamiento local: **requiere aprobación del propietario**.
+Cambiar o añadir categorías afecta al posicionamiento local. El propietario aprobó esta propuesta el 2026-10-13 («sí a todo») y la aplica él mismo en la ficha, porque ningún agente tiene acceso.
 
 ## 4. Servicios de la ficha y páginas de la web
 
@@ -81,7 +81,7 @@ Una cada dos semanas, con foto real y botón «Más información» a la página 
 
 ## 8. Directorios y citas
 
-Crear o revisar, con el mismo nombre, dirección, teléfono y web: Facebook (página de empresa), LinkedIn (página de empresa), Bing Places (permite importar desde Google), Apple Business Connect y Páginas Amarillas Perú. Registrar en este archivo cada alta con su fecha y URL.
+Crear o revisar, con la misma dirección, teléfono y web (nombre «CONPLANOS» o «CON PLANOS», ambos válidos): Facebook (página de empresa), LinkedIn (página de empresa), Bing Places (permite importar desde Google), Apple Business Connect y Páginas Amarillas Perú. Registrar en este archivo cada alta con su fecha y URL.
 
 ## 9. Registro de cambios en la ficha
 
