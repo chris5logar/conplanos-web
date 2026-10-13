@@ -45,7 +45,7 @@ El propietario no ha asignado cada página a una prioridad. Como referencia, la 
 
 ## Google Business Profile (último estado conocido, informado por el propietario el 2026-10-13, no verificado por un agente)
 
-- Nombre: CON PLANOS. Ficha verificada.
+- Nombre: CON PLANOS. Ficha verificada. Se mantiene: el propietario decidió usar los dos nombres (ver SEO_DECISIONS, 2026-10-13); la web declara «CON PLANOS» como `alternateName`.
 - Web: https://conplanos.com
 - Teléfono: +51 928 400 600. WhatsApp configurado.
 - Categoría principal: Ingeniero. Sin categorías secundarias en la última revisión.
@@ -102,7 +102,8 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - Cambios: variantes de imagen intermedias, logo ligero con srcset, `styles.css` versionado, caché inmutable solo para `main.js` y `styles.css`, 7 días para imágenes, nombre accesible del enlace de la marca.
 - Lighthouse móvil local: 96 a 100 antes y 97 a 100 después; CLS 0 y TBT 0. Sin datos de campo (CrUX/PSI) todavía.
 - Preview `https://58fc57e4.conplanos-web.pages.dev` validada por HTTP desde el equipo del propietario: `styles.css?v=` y `main.js?v=` con `public, max-age=31536000, immutable` (un solo valor), imágenes y marca con `public, max-age=604800`, HTML con `max-age=0, must-revalidate`, noindex y sin GA4, sitemap 10 URLs, 404 correcto.
-- Pendiente: aprobación de merge del propietario; tras el merge, medir producción con PageSpeed Insights.
+- PR #4 mergeado por el propietario en `main` (`217672f`) el 2026-10-13.
+- Pendiente: validar por HTTP las cabeceras en producción y medir con PageSpeed Insights.
 
 ## Observaciones menores
 

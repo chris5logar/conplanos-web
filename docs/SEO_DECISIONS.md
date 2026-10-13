@@ -94,3 +94,10 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Motivo: mejorar visitas repetidas sin riesgo de servir CSS o JS antiguos; Cloudflare Pages une los valores de varias reglas `_headers` que coinciden con la misma ruta.
 - Consecuencias: si se reemplaza una imagen con el mismo nombre, puede tardar hasta 7 días en renovarse en navegadores; para cambios urgentes, usar un nombre nuevo. `check.mjs` impide marcar como inmutable un archivo sin versión.
 - Estado: Activa. Implementada en la rama `perf/core-web-vitals`, pendiente de merge.
+
+## 2026-10-13 — se usan los dos nombres: CONPLANOS y CON PLANOS
+
+- Decisión: el propietario quiere usar los dos nombres. La web sigue usando «CONPLANOS» (logo, títulos, `og:site_name`) y la ficha de Google Business se mantiene como «CON PLANOS». El JSON-LD `ProfessionalService` declara `name: "CONPLANOS"` y `alternateName: "CON PLANOS"`.
+- Motivo: Google relaciona mejor la web con la ficha cuando el dato estructurado reconoce el nombre de la ficha, y los clientes buscan de las dos formas. No hay que renombrar nada.
+- Consecuencias: `check.mjs` exige los dos valores en cada página con `ProfessionalService`. En directorios y perfiles externos puede usarse cualquiera de los dos, pero siempre con la misma dirección y el mismo teléfono. El nombre de la ficha de Google no se cambia.
+- Estado: Activa. Decidida por el propietario el 2026-10-13.
