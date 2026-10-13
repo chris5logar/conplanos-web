@@ -54,3 +54,28 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Commit final: el commit «docs: add cross-agent SEO handoff» que sigue a `3539a01` en la rama (ver `git log`).
 - Pendientes: corregir el modo de compilación de las previews; revisión y merge del PR #1 por el propietario.
 - Siguiente paso: con aprobación, activar el modo preview en `scripts/build.mjs` cuando `CF_PAGES_BRANCH` no sea `main` y revalidar la preview.
+
+## 2026-10-13 — Modo preview automático en Cloudflare Pages
+
+- Agente: Claude Code.
+- Objetivo: que las previews de Cloudflare Pages se compilen en modo preview (`noindex, nofollow`, sin GA4) sin alterar producción. Cambio aprobado por el propietario.
+- Rama: `fix/seo-url-canonical-404`
+- Commit inicial: `b69c0fa`
+- Trabajo realizado:
+  - Confirmadas en la documentación oficial de Cloudflare Pages las variables de build `CF_PAGES`, `CF_PAGES_COMMIT_SHA`, `CF_PAGES_BRANCH` y `CF_PAGES_URL`.
+  - Nuevo `scripts/site-mode.mjs` con la regla única: preview si `SITE_MODE=preview` o si `CF_PAGES_BRANCH` existe y no es `main`. En una preview de Cloudflare expone `CF_PAGES_URL` como origen.
+  - `scripts/build.mjs` y `scripts/check.mjs` usan esa regla. Orden del origen: `SITE_ORIGIN`, luego `CF_PAGES_URL` en previews de Cloudflare, luego el valor por defecto de siempre.
+  - Sin cambios en textos, diseño, eventos GA4 ni en el `dist/` versionado.
+- Archivos modificados: `scripts/site-mode.mjs` (nuevo), `scripts/build.mjs`, `scripts/check.mjs`, `scripts/seo.test.mjs`, `README.md`, `AGENTS.md`, `docs/ENTREGA.md`, `docs/PRUEBAS.md`, `docs/SEO_DECISIONS.md`, `docs/SEO_HANDOFF.md`, `docs/SEO_WORKLOG.md`.
+- Pruebas (Node 24.19.0 del runtime de Codex, por ruta completa, scripts invocados con `node`):
+  - 4 pruebas nuevas en `seo.test.mjs`: Cloudflare `main` da `index, follow`, GA4 y canonical a conplanos.com; Cloudflare en otra rama da `noindex, nofollow`, sin GA4, `Disallow: /` y cabecera noindex; `SITE_ORIGIN` sigue teniendo prioridad; build local sin variables de Cloudflare sigue en producción. El fixture ahora limpia las variables `CF_PAGES*`.
+  - `node --test scripts/seo.test.mjs`: 25 de 25.
+  - `node scripts/check.mjs` sobre el `dist/` versionado: OK (producción), 1612 validaciones.
+  - En copia temporal: build de producción idéntico al `dist/` versionado (salvo la línea en blanco final de `robots.txt` ya conocida); build con `CF_PAGES_BRANCH=main` idéntico al de producción; build con `CF_PAGES_BRANCH=fix/seo-url-canonical-404` en modo preview y check OK; `build-preview.mjs` + `check.mjs --preview` OK.
+  - Preview real tras el push, https://fix-seo-url-canonical-404.conplanos-web.pages.dev (despliegue `4e7ab4ea`), por HTTP: 10 URLs con 200, `noindex, nofollow`, sin rastro de GA4, canonical = og:url = URL del despliegue con barra; 18 de 18 redirecciones de servicio y `/index.html` con 301 directo; rutas inexistentes con 404 y `noindex, nofollow`; `/404` 200 y `/404/` 308; `sitemap.xml` con 10 URLs; `robots.txt` con `Disallow: /`; cabecera `x-robots-tag: noindex, nofollow`.
+  - Producción comprobada sin cambios: portada con `index, follow`, canonical `https://conplanos.com/` y GA4.
+  - No verificado: el panel de Cloudflare (variables de entorno del proyecto); el build de producción real en Cloudflare con `CF_PAGES_BRANCH=main`, que solo ocurre al hacer merge y aquí está cubierto por prueba y simulación.
+- Resultado: bloqueo resuelto. PR #1 abierto, en borrador, sin merge.
+- Commit final: `a37144d` (código y documentación de comportamiento) más el commit de documentación que añade esta entrada.
+- Pendientes: revisión y merge del PR #1 por el propietario; verificación de producción después del merge.
+- Siguiente paso: el propietario decide el merge del PR #1.
