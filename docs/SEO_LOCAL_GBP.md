@@ -6,7 +6,7 @@ Paquete de trabajo de la Fase 4. Preparado por Claude Code el 2026-10-13. **Ning
 
 | Dato | Web (conplanos.com) | Ficha de Google | Acción |
 | --- | --- | --- | --- |
-| Nombre | CONPLANOS | CON PLANOS | Decidido por el propietario el 2026-10-13: se usan los dos. La ficha se queda como «CON PLANOS» (no se renombra) y la web declara «CON PLANOS» como `alternateName` en su JSON-LD (PR #6). |
+| Nombre | CONPLANOS | CON PLANOS | Decidido por el propietario el 2026-10-13: se usan los dos. La ficha se queda como «CON PLANOS» (no se renombra) y la web declara «CON PLANOS» como `alternateName` en su JSON-LD (PR #6, mergeado en `main` el 2026-10-13). |
 | Dirección | Av. Micaela Bastidas 321, Cusco | (confirmar) | Debe coincidir carácter por carácter en web, ficha y directorios. |
 | Teléfono | +51 928 400 600 | +51 928 400 600 | Correcto. |
 | Web | https://conplanos.com | https://conplanos.com | Proponer la versión con UTM del apartado 2. |

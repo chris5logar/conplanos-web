@@ -137,6 +137,15 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
   - `/sitemap.xml` con 10 URLs; `/no-existe-xyz/` devuelve 404.
 - Siguiente paso: aprobación de merge del propietario; después, PageSpeed Insights sobre producción.
 
+## 2026-10-13 — Nombre alternativo «CON PLANOS» en los datos estructurados
+
+- Agente: Claude Code.
+- Objetivo: aplicar la decisión del propietario de usar los dos nombres («quiero usar los 2. conplanos y con planos»).
+- Rama: `seo/nombre-alternativo`, desde `main` (`6946b7b`).
+- Cambios: `alternateName: "CON PLANOS"` en el JSON-LD `ProfessionalService`; `check.mjs` valida `name` y `alternateName`; `seo.test.mjs` añade una regresión (falta el nombre alternativo). Sin cambios de texto visible ni en Google Business.
+- Pruebas (Node 22.22.0): `npm run build` y `npm run check` OK (1632 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 26/26.
+- Siguiente paso: revisión y merge del PR. Validar en producción con la prueba de resultados enriquecidos de Google.
+
 ## 2026-10-13 — Fase 4: paquete de SEO local y Google Business Profile
 
 - Agente: Claude Code.

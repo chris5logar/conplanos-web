@@ -74,7 +74,7 @@ function head(title, description, route = '', extraSchema = [], { notFound = fal
   const robots = preview ? 'noindex, nofollow' : notFound ? 'noindex, follow' : 'index, follow';
   const business = {
     '@context': 'https://schema.org', '@type': 'ProfessionalService', '@id': origin + '/#business',
-    name: 'CONPLANOS', url: publicUrl(), telephone: primary.phone,
+    name: 'CONPLANOS', alternateName: 'CON PLANOS', url: publicUrl(), telephone: primary.phone,
     description: 'Ingeniería, topografía, saneamiento de predios, arquitectura y asesoramiento legal en Cusco.',
     logo: origin + '/assets/brand/conplanos-logo.webp', image: origin + '/assets/images/services/oficina-conplanos-cusco-800.webp',
     address: { '@type': 'PostalAddress', streetAddress: 'Av. Micaela Bastidas 321', addressLocality: 'Cusco', addressRegion: 'Cusco', addressCountry: 'PE' },

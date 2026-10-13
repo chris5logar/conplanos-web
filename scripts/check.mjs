@@ -73,7 +73,7 @@ for(const file of files){
   }
  }
  assert(html.includes('property="og:image"'),'Open Graph ausente');
- for(const match of html.matchAll(/type="application\/ld\+json">(.*?)<\/script>/g)){const data=JSON.parse(match[1]);if(data.telephone)assert.equal(data.telephone,contacts.primary.phone,`${file}: teléfono JSON-LD`);}
+ for(const match of html.matchAll(/type="application\/ld\+json">(.*?)<\/script>/g)){const data=JSON.parse(match[1]);if(data.telephone)assert.equal(data.telephone,contacts.primary.phone,`${file}: teléfono JSON-LD`);if(data['@type']==='ProfessionalService'){assert.equal(data.name,'CONPLANOS',`${file}: nombre del negocio en JSON-LD`);assert.equal(data.alternateName,'CON PLANOS',`${file}: nombre alternativo del negocio en JSON-LD (ficha de Google)`);}}
  for(const c of team)assert((html.match(new RegExp(`href="tel:\\${c.phone}"`,'g'))||[]).length>=(html.includes('id="contacto"')?2:1),`${file}: falta ${c.name} en contacto o footer`);
  assert(html.includes('class="wa-float"'),`${file}: WhatsApp principal ausente`);
  for(const match of html.matchAll(/(?:src|href)="(\/[^"#]*)/g)){
