@@ -255,3 +255,14 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Recomendación: los datos son demasiado pocos para decisiones SEO. No abrir páginas nuevas ni cambiar contenido hasta tener al menos 4 semanas de datos con las guías indexadas.
 - Pruebas (Node 22.22.0), para confirmar que no cambia nada generado: `npm run build` sin cambios en `dist/`, `npm run check` OK (2629 validaciones), `npm test` 31/31.
 - Siguiente paso: nueva exportación de Search Console a partir del 2026-11-10 y comparación con esta línea base.
+
+
+## 2026-10-13 — Corrección de línea base y automatización de seguimiento
+
+- Agente: ChatGPT.
+- Search Console fue verificado directamente mediante GSC Wizard con acceso a `sc-domain:conplanos.com`; por tanto, la línea base anterior ya no depende solo de información transmitida por el propietario.
+- Sitemap oficial `https://conplanos.com/sitemap.xml`: 15 URLs, 0 advertencias y 0 errores, descargado por Google tras el reenvío del 2026-10-13.
+- No se requiere exportación manual de CSV de Search Console: ChatGPT puede consultar consultas, páginas, CTR, posiciones, sitemap e inspección de URLs directamente con GSC Wizard.
+- GA4 sigue sin autorización OAuth dentro de GSC Wizard; requiere una única acción manual de conexión. No es un fallo de la web.
+- Decisión de medición: usar `quote_request` y `click_phone` como eventos clave. Mantener `click_whatsapp` como evento informativo para evitar doble conteo cuando el mismo clic también dispara `quote_request`.
+- El seguimiento de indexación se automatiza; no se crearán nuevas páginas SEO por la línea base actual mientras el volumen siga siendo insuficiente.
