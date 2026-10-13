@@ -79,3 +79,31 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Commit final: `a37144d` (código y documentación de comportamiento) más el commit de documentación que añade esta entrada.
 - Pendientes: revisión y merge del PR #1 por el propietario; verificación de producción después del merge.
 - Siguiente paso: el propietario decide el merge del PR #1.
+
+## 2026-10-13 — Merge del PR #1 y validación de producción
+
+- Agente: Claude Code (validación). El merge lo hizo el propietario.
+- Objetivo: confirmar en https://conplanos.com que la Fase 1 quedó publicada correctamente. Solo lectura sobre producción; sin cambios de código.
+- Rama: `main` (producción). Rama local de trabajo sin cambios de código.
+- Commit inicial: `f961a40` (`main` antes del merge).
+- Trabajo realizado:
+  - Un primer aviso de merge a las 18:18 UTC no se correspondía con GitHub: el PR #1 seguía abierto y en borrador, y `main` en `f961a40`. No se validó ni se documentó nada entonces.
+  - Merge real del PR #1 a las 18:47:14 UTC. Merge commit `efe9ee1ff18c233dfedd669fa0be73da118c00fb`.
+  - Despliegue de Producción en Cloudflare Pages para `efe9ee1`: correcto, completado a las 18:47:31 UTC (despliegue `7a8951fb`), según el check «Cloudflare Pages» de GitHub.
+  - Validación HTTP de producción a las 18:50 UTC.
+- Archivos modificados: `docs/SEO_HANDOFF.md`, `docs/SEO_WORKLOG.md`.
+- Pruebas (curl, solo GET, contra https://conplanos.com):
+  - Portada y 9 servicios con barra: 200 las 10; `index, follow`; ningún `noindex`.
+  - canonical = `https://conplanos.com/<ruta>/` y og:url = canonical en las 10.
+  - BreadcrumbList en los 9 servicios con `https://conplanos.com/` y la URL final con barra.
+  - 18 de 18 variantes de servicio (sin barra e `/index.html`) con 301 directo; `/index.html` con 301 a `/`; cadena de un solo salto.
+  - `sitemap.xml`: 200, 10 URLs, las 10 con barra. `robots.txt`: 200, `Allow: /`, `Sitemap: https://conplanos.com/sitemap.xml`.
+  - `/no-existe-xyz/` y `/no-existe-xyz`: 404, `noindex, follow`, sin canonical, og:url ni JSON-LD. `/404`: 200 con `noindex, follow`. `/404/`: 308 a `/404`.
+  - GA4 `G-7DCRJN061J`: una etiqueta y una configuración en cada una de las 10 páginas; sin GTM.
+  - `assets/main.js`: `click_whatsapp`, `click_phone` y `quote_request` una vez cada uno; sin datos de contacto.
+  - `www.conplanos.com` y `http://` redirigen con 301 a `https://conplanos.com/`.
+  - No verificado: panel de Cloudflare (se usó el check de GitHub); llegada real de eventos a GA4; Search Console.
+- Resultado: Fase 1 cerrada, sin incidencias en producción.
+- Commit final: `efe9ee1` en `main`. La actualización de esta documentación va en un commit posterior de solo documentación.
+- Pendientes: ninguno de la Fase 1. Seguimiento recomendado en Search Console de la recogida de los canonical nuevos.
+- Siguiente paso: el orquestador decide sobre la Fase 2 (PR #2, en borrador).

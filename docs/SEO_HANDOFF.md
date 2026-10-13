@@ -2,7 +2,7 @@
 
 Estado real del proyecto. Actualizar al terminar cada tarea importante. Historial en `SEO_WORKLOG.md`; decisiones en `SEO_DECISIONS.md`; reglas en `../AGENTS.md`.
 
-Última actualización: 2026-10-13, Claude Code, tras el commit `a37144d`.
+Última actualización: 2026-10-13, Claude Code, tras validar producción en `efe9ee1`.
 
 ## Proyecto
 
@@ -53,66 +53,57 @@ El propietario no ha asignado cada página a una prioridad. Como referencia, la 
 - 0 reseñas en la última auditoría.
 - No cambiar automáticamente la categoría principal ni otros datos sensibles.
 
-## Trabajo en curso: Fase 1 SEO técnica
+## Fase 1 SEO técnica: CERRADA
 
-- Rama: `fix/seo-url-canonical-404`
-- PR: #1 «fix: align canonical URLs and 404 SEO», base `main`, en borrador. No hacer merge sin aprobación expresa del propietario.
-- Commits de la rama sobre `main` (`f961a40`):
-  - `3539a01` fix: align canonical URLs and 404 SEO
-  - `b69c0fa` docs: add cross-agent SEO handoff
-  - `a37144d` fix: auto-detect Cloudflare preview mode
-  - el commit de documentación que registra esta validación (el último de la rama, ver `git log`)
+- PR #1 «fix: align canonical URLs and 404 SEO» mergeado a `main` por el propietario el 2026-10-13 a las 18:47 UTC.
+- Commit de `main` en producción: `efe9ee1` (merge commit de `3539a01`, `b69c0fa`, `a37144d` y `f1b7906`).
+- Cloudflare Pages: despliegue de Producción de `efe9ee1` correcto, completado el 2026-10-13 a las 18:47 UTC (despliegue `7a8951fb`). Leído del check «Cloudflare Pages» en GitHub; el panel de Cloudflare no se abrió.
+- La rama `fix/seo-url-canonical-404` ya está integrada: no reutilizarla para trabajo nuevo.
 
-### Terminado
+### Qué quedó en producción
 
 - Política única de URL con barra final en canonical, og:url, BreadcrumbList, sitemap y enlaces internos.
-- `_redirects`: 19 reglas 301 directas (`/index.html` y, por servicio, variante sin barra e `/index.html`).
-- 404 sin canonical, og:url ni JSON-LD comercial; `noindex, follow` en producción.
-- Modo automático en Cloudflare Pages (`scripts/site-mode.mjs`): `CF_PAGES_BRANCH` igual a `main` compila producción; cualquier otra rama compila preview con `CF_PAGES_URL` como origen. Sin esa variable (local) nada cambia: producción salvo `SITE_MODE=preview`.
-- `scripts/check.mjs` ampliado y `scripts/seo.test.mjs` con 25 pruebas (`npm test`).
-- Documentación de continuidad y `docs/ENTREGA.md`, `docs/PRUEBAS.md` y `README.md` al día.
+- `_redirects`: 19 reglas 301 directas.
+- 404 con `noindex, follow`, sin canonical, og:url ni JSON-LD.
+- Modo automático en Cloudflare Pages (`scripts/site-mode.mjs`): `main` compila producción; cualquier otra rama compila preview (`noindex, nofollow`, sin GA4).
+- `scripts/check.mjs` y `scripts/seo.test.mjs` con 25 pruebas.
 
-### Validado el 2026-10-13
+### Validación de producción, 2026-10-13 18:50 UTC
 
-Pruebas locales sobre `a37144d` (Node 24.19.0 del runtime de Codex): `check.mjs` OK en producción con 1612 validaciones; `seo.test.mjs` 25 de 25. En una copia temporal: build de producción idéntico al `dist/` versionado, build simulando Cloudflare `main` idéntico al de producción, build simulando una rama de Cloudflare en modo preview con check OK, y `build-preview` + `check --preview` OK.
-
-El HTML de producción (canonical a `https://conplanos.com/<ruta>/`, `index, follow`, GA4) se validó por HTTP en la preview de `3539a01`, antes de la detección automática; el detalle está en el worklog. Ese HTML no cambió: el build de producción sigue reproduciendo el mismo `dist/`.
-
-Preview de `a37144d`, por HTTP, en https://fix-seo-url-canonical-404.conplanos-web.pages.dev (despliegue https://4e7ab4ea.conplanos-web.pages.dev):
+Por HTTP contra https://conplanos.com, sin incidencias:
 
 | Comprobación | Resultado |
 | --- | --- |
-| 10 URLs finales con barra | 200; `noindex, nofollow`; sin GA4; canonical = og:url = URL del despliegue + ruta con barra |
+| Portada y 9 servicios con barra | 200 las 10 |
 | 9 variantes sin barra | 301 directo a la URL con barra |
-| 9 variantes `/<slug>/index.html` y `/index.html` | 301 directo a la URL final |
-| `/no-existe-xyz/` y `/no-existe-xyz` | 404; `noindex, nofollow`; sin canonical ni og:url; sin GA4 |
-| `/404` | 200 (comportamiento de Cloudflare Pages); `noindex, nofollow`; sin canonical |
-| `/404/` | 308 a `/404` |
-| `sitemap.xml` | 200, `application/xml`, 10 URLs con barra, origen del despliegue |
-| `robots.txt` | 200, `User-agent: *` y `Disallow: /` |
-| Cabecera | `x-robots-tag: noindex, nofollow` en todas las respuestas |
+| 9 variantes `/<slug>/index.html` y `/index.html` | 301 directo a la URL final, un solo salto |
+| canonical | `https://conplanos.com/<ruta>/` en las 10 |
+| og:url | igual al canonical en las 10 |
+| BreadcrumbList | en los 9 servicios: portada y URL final con barra |
+| robots meta | `index, follow` en las 10; ningún `noindex` |
+| `sitemap.xml` | 200, `application/xml`, exactamente 10 URLs, todas con barra |
+| `robots.txt` | 200, `Allow: /`, `Sitemap: https://conplanos.com/sitemap.xml` |
+| URL inexistente | 404, con y sin barra |
+| Página 404 | `noindex, follow`, sin canonical, sin og:url, sin JSON-LD |
+| `/404` | 200 (comportamiento de Cloudflare Pages), `noindex, follow`; `/404/` da 308 a `/404` |
+| GA4 | `G-7DCRJN061J`: una etiqueta y una configuración por página; sin GTM |
+| Eventos en `main.js` | `click_whatsapp`, `click_phone` y `quote_request`, una vez cada uno; sin datos de contacto |
+| `www` y `http` | 301 a `https://conplanos.com/` |
 
-En una preview el canonical apunta a la URL del despliegue (`https://<hash>.conplanos-web.pages.dev`), no al alias de la rama. Es coherente con og:url y sitemap y la página no es indexable.
+No verificado: la recepción real de eventos en GA4 (no se hicieron clics de prueba) y el estado en Search Console.
 
-### Bloqueos
+## Otros trabajos abiertos
 
-Ninguno técnico. El bloqueo anterior (previews compiladas como producción, con `index, follow` y GA4) quedó resuelto en `a37144d` y verificado en la preview real.
-
-### Estado de producción (sin cambios)
-
-conplanos.com sigue sirviendo `main` (`f961a40`), con el problema original: canonical sin barra, `/servicio/index.html` en dos saltos y 404 con `index, follow` y canonical a la portada. Se corrige al hacer merge del PR #1. Comprobado el 2026-10-13 que la portada de producción sigue con `index, follow`, canonical `https://conplanos.com/` y GA4.
+- PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)», rama `seo/plan-crecimiento-organico`, base `main`, en borrador. No lo abrió ni lo revisó este agente. No tocarlo sin orden del propietario.
 
 ## Observaciones menores
 
 - `dist/robots.txt` versionado termina con una línea en blanco extra respecto a lo que genera el build. Sin efecto: Cloudflare regenera el archivo al compilar.
 - `node` no está en el PATH del equipo Windows del propietario; ver «Entorno» en `AGENTS.md`.
-- No se comprobó en el panel de Cloudflare si hay variables `SITE_MODE` o `SITE_ORIGIN` definidas. Por el resultado de la preview no las hay en el entorno Preview. Si `SITE_MODE=preview` estuviera definida para Producción, `main` saldría sin indexar: no definirla ahí.
+- No se comprobó en el panel de Cloudflare si hay variables `SITE_MODE` o `SITE_ORIGIN` definidas. Por los resultados no las hay. Si `SITE_MODE=preview` se definiera para Producción, `main` saldría sin indexar: no definirla ahí.
+- Google puede tardar en recoger los canonical nuevos; en Search Console pueden verse durante un tiempo las URLs sin barra como «Página con redirección». Es lo esperado.
 - Preguntas abiertas para el propietario: qué páginas cuentan como «Ingeniería», y por qué GBP tiene 10 servicios frente a 9 páginas.
 
 ## Próximo paso
 
-El propietario revisa el PR #1, lo pasa de borrador a listo y hace el merge a `main`. Ningún agente hace ese merge sin su orden expresa.
-
-Inmediatamente después del merge, el agente de turno verifica en https://conplanos.com: las 10 URLs con 200, canonical con barra, `index, follow`, GA4 presente, redirecciones en un salto, 404 con `noindex, follow`, y `sitemap.xml` y `robots.txt` de producción. Luego registra el resultado en el worklog.
-
-No hay fases posteriores definidas. Tras esa verificación, el orquestador decide la siguiente.
+El orquestador decide cómo continuar con la Fase 2 (PR #2, en borrador). Hasta esa orden, ningún agente modifica ese PR ni `main`.
