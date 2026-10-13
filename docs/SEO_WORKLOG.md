@@ -227,3 +227,18 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Resultado (todo correcto): `/guias/` y las 4 guías con 200, `index, follow`, una carga de GA4, canonical = og:url con barra y un H1; guías con `Article` y BreadcrumbList de 3 niveles; la guía de declaratoria incluye «31 de diciembre de 2016»; `/proyectos-construccion/` con `Service` y `alternateName: "CON PLANOS"`; sitemap con 15 URLs; `/guias` y `/guias/declaratoria-de-fabrica` sin barra con un solo 301; 404 correcto.
 - Pendiente menor: `main.js?v=c20b25d30fed` sigue servido por la caché de borde con `max-age=86400` (ver la entrada de la Fase 3).
 - Siguiente paso: el propietario envía de nuevo el sitemap en Search Console y pide la indexación de las guías.
+
+## 2026-10-13 — Validación completa después de publicar la Fase 2
+
+- Agente: Claude Code. Orden del propietario: validación post-merge completa, sin funcionalidades nuevas ni cambios de textos legales.
+- `main` en `2414e7827f915f1ebb9dd5f3f3862129c01bfc18` (merge del PR #2). Copia local sincronizada y sin cambios tras el build (`dist/` coincide con lo versionado).
+- Pruebas (Node 22.22.0): `npm run build` 15 páginas; `npm run check` OK (2629 validaciones, 16 documentos); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 31/31.
+- Producción por HTTP (curl de solo lectura desde el equipo del propietario), 23 comprobaciones sin fallos:
+  - Las 15 URLs del sitemap (portada, 9 servicios, `/guias/` y 4 guías): 200, `index, follow`, una carga de GA4 y un `config`, canonical = og:url = URL del sitemap, un H1, enlace «Guías» en la navegación, sin `X-Robots-Tag`.
+  - JSON-LD válido en todas: `ProfessionalService` con `alternateName: "CON PLANOS"`; 9 servicios con `Service` enlazado a `#business` y migas Inicio > servicio; `/guias/` con `CollectionPage` y 2 niveles; 4 guías con `Article` y 3 niveles.
+  - `robots.txt` permite rastreo y declara el sitemap; sitemap con 15 URLs; 404 con `noindex, follow` y sin canonical; 301 de un salto para `/guias`, `/guias/index.html`, `/titulaciones`, `/titulaciones/index.html`, `www` y `http://`.
+  - Preview `https://348bb273.conplanos-web.pages.dev`: `noindex, nofollow` en meta y cabecera, sin GA4 ni googletagmanager, `robots.txt` con `Disallow: /`.
+- Revisión visual (Chromium sobre `dist/` local, idéntico a producción): 16 páginas en móvil 390 px y escritorio 1366 px; sin desbordamiento horizontal ni elementos fuera de pantalla, sin imágenes rotas ni errores de JavaScript, menú móvil abre y muestra «Guías», pie y CTAs presentes en todas. Capturas revisadas de portada, `/guias/`, guía de declaratoria, titulaciones, menú y 404.
+- Lighthouse 13.5.0 (móvil simulado, local, sin GA4): portada 97 (LCP 2,4 s, TBT 80 ms), `/titulaciones/` 98 (LCP 2,4 s), `/guias/` 100 (LCP 1,4 s), guía de declaratoria 100 (LCP 1,5 s); CLS 0 en todas; accesibilidad, buenas prácticas y SEO 100. Sin datos de campo todavía.
+- Errores: ninguno. Pendiente menor ya conocido: `main.js?v=c20b25d30fed` servido desde caché de borde con `max-age=86400` hasta que caduque.
+- Siguiente paso: acciones del propietario en Search Console y Google Business; Fase 5 con datos de GSC/GA4.

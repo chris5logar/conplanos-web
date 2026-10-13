@@ -94,7 +94,7 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 
 ## Fase 2 contenido y estructura SEO: CERRADA
 
-- PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)» mergeado por el propietario en `main` (`2414e78`) el 2026-10-13, tras su revisión legal final (comentario en el PR #2). Producción validada por HTTP el mismo día (ver SEO_WORKLOG).
+- PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)» mergeado por el propietario en `main` (`2414e78`) el 2026-10-13, tras su revisión legal final (comentario en el PR #2). Producción validada por HTTP el mismo día y validación completa posterior (15 URLs, JSON-LD, redirecciones, preview, revisión visual y Lighthouse) sin errores (ver SEO_WORKLOG).
 - Cualquier guía nueva o cambio en el texto legal de una guía requiere de nuevo la revisión del propietario antes del merge.
 - Plan completo y roadmap de fases: `docs/SEO_PLAN.md`.
 - Sincronizada con `main` (`6946b7b`) mediante merge, sin force push; los documentos de cierre de la Fase 1 se tomaron de `main`.
