@@ -2,6 +2,7 @@
   {
     "slug": "proyectos-construccion",
     "name": "Proyectos de construcción",
+    "seoTitle": "Proyectos de construcción y planos en Cusco | CONPLANOS",
     "area": "proyectos",
     "summary": "Diseño arquitectónico y coordinación de especialidades.",
     "headline": "Del primer plano a un proyecto listo para construir.",
@@ -23,6 +24,10 @@
       "Ubicación y medidas disponibles del terreno",
       "Planos, antecedentes y documentos de propiedad"
     ],
+    "intro": [
+      "Un buen proyecto define qué se va a construir, cuánto costará y qué permisos necesita antes de mover la primera piedra. Partimos de tu terreno, de los parámetros urbanísticos que le aplican y de lo que quieres lograr, y desarrollamos la arquitectura junto con las especialidades de estructuras e instalaciones.",
+      "Cuando el proyecto requiere licencia de edificación, preparamos la documentación técnica que pide la municipalidad. En zonas monumentales de Cusco revisamos además las condiciones que fija la normativa de patrimonio antes de diseñar."
+    ],
     "faq": [
       [
         "¿Puedo consultar si todavía no tengo planos?",
@@ -31,13 +36,27 @@
       [
         "¿El proyecto incluye todas las especialidades?",
         "El alcance se acuerda en la cotización. Identificamos contigo las especialidades y entregables que requiere tu proyecto."
+      ],
+      [
+        "¿Qué es el certificado de parámetros urbanísticos?",
+        "Es el documento municipal que indica qué se puede construir en un lote: uso, altura, retiros y área libre, entre otros. Es el punto de partida del diseño."
+      ],
+      [
+        "¿Diseñan ampliaciones de viviendas existentes?",
+        "Sí. Evaluamos lo construido, la documentación disponible y las condiciones del lote para definir el alcance de la ampliación o remodelación."
       ]
     ],
-    "related": ["ejecucion-obra", "levantamientos-topograficos", "declaratoria-fabrica"]
+    "related": [
+      "ejecucion-obra",
+      "levantamientos-topograficos",
+      "declaratoria-fabrica"
+    ],
+    "guide": "licencia-de-edificacion"
   },
   {
     "slug": "ejecucion-obra",
     "name": "Ejecución de obra",
+    "seoTitle": "Ejecución de obra y construcción en Cusco | CONPLANOS",
     "area": "proyectos",
     "summary": "Planificación, presupuesto por partidas y seguimiento de la obra.",
     "headline": "Construye con planificación, presupuesto y seguimiento.",
@@ -59,6 +78,10 @@
       "Ubicación y estado actual del inmueble",
       "Plazo deseado y presupuesto referencial"
     ],
+    "intro": [
+      "Ejecutar una obra con orden significa saber desde el principio qué se va a hacer, con qué presupuesto y en qué secuencia. Revisamos el proyecto y el lugar, definimos las partidas y planificamos los trabajos para que avances con información y no con sorpresas.",
+      "Durante la obra coordinamos los equipos, controlamos los avances frente a lo planificado y te informamos del estado de los trabajos. Al final, la documentación de lo ejecutado facilita la conformidad de obra y la declaratoria de edificación."
+    ],
     "faq": [
       [
         "¿Pueden evaluar una obra ya iniciada?",
@@ -67,13 +90,23 @@
       [
         "¿Cómo se define el presupuesto?",
         "A partir del proyecto, las condiciones del lugar y las partidas acordadas. Solicita una evaluación para recibir una propuesta para tu caso."
+      ],
+      [
+        "¿Necesito licencia para empezar la obra?",
+        "En la mayoría de los casos, sí. Revisamos la situación de tu proyecto y te indicamos si cuenta con lo necesario para iniciar o qué falta preparar."
       ]
     ],
-    "related": ["proyectos-construccion", "declaratoria-fabrica", "levantamientos-topograficos"]
+    "related": [
+      "proyectos-construccion",
+      "declaratoria-fabrica",
+      "levantamientos-topograficos"
+    ],
+    "guide": "licencia-de-edificacion"
   },
   {
     "slug": "levantamientos-topograficos",
     "name": "Levantamientos topográficos",
+    "seoTitle": "Levantamiento topográfico en Cusco | CONPLANOS",
     "area": "topografia",
     "summary": "Medidas, áreas, linderos y relieve del terreno.",
     "headline": "Conoce las medidas, linderos y relieve reales de tu terreno.",
@@ -95,6 +128,10 @@
       "Área aproximada y condiciones de acceso",
       "Finalidad del plano y documentos disponibles"
     ],
+    "intro": [
+      "El levantamiento topográfico es la medición en campo que permite conocer la forma, el área, los linderos y el relieve reales de un terreno. Es la base de los proyectos de construcción, de las habilitaciones urbanas y de los trámites de saneamiento e inscripción.",
+      "Trabajamos con equipo topográfico y GNSS y entregamos planos perimétricos, de ubicación o topográficos con curvas de nivel, en el sistema de referencia que pida tu trámite o proyecto."
+    ],
     "faq": [
       [
         "¿Qué debo enviar para cotizar?",
@@ -103,13 +140,23 @@
       [
         "¿El levantamiento puede ser georreferenciado?",
         "Sí. Evaluamos el sistema de referencia y la metodología que requiere tu encargo. Los alcances y requisitos se precisan en la propuesta."
+      ],
+      [
+        "¿Qué diferencia hay entre un plano perimétrico y uno topográfico?",
+        "El perimétrico muestra los linderos, las medidas y el área del predio. El topográfico añade el relieve, con curvas de nivel y cotas, y los elementos existentes en el terreno."
       ]
     ],
-    "related": ["puntos-geodesicos", "titulaciones", "habilitaciones-urbanas"]
+    "related": [
+      "puntos-geodesicos",
+      "titulaciones",
+      "habilitaciones-urbanas"
+    ],
+    "guide": "levantamiento-topografico"
   },
   {
     "slug": "titulaciones",
     "name": "Titulaciones",
+    "seoTitle": "Titulación y saneamiento de predios en Cusco | CONPLANOS",
     "area": "saneamiento",
     "summary": "Saneamiento físico legal para formalizar la propiedad de tu predio.",
     "headline": "Ordena la situación de tu predio para formalizar su propiedad.",
@@ -131,6 +178,10 @@
       "Documentos de propiedad o posesión disponibles",
       "Planos y antecedentes registrales, si existen"
     ],
+    "intro": [
+      "Titular o sanear un predio es lograr que lo que existe en el terreno coincida con lo que dicen los documentos y el registro. Es lo que permite vender, heredar, construir o acceder a un crédito con seguridad.",
+      "Cada predio tiene su historia: compraventas sin inscribir, sucesiones pendientes, áreas que no coinciden o superposiciones. Por eso empezamos con un diagnóstico técnico y legal y te proponemos la ruta que corresponde a tu caso."
+    ],
     "faq": [
       [
         "¿Todos los predios siguen el mismo trámite?",
@@ -139,13 +190,23 @@
       [
         "¿Se puede asegurar un plazo o un resultado?",
         "La propuesta define nuestro alcance. Los tiempos y decisiones de las entidades competentes dependen de cada expediente; no prometemos aprobaciones automáticas."
+      ],
+      [
+        "¿Atienden predios urbanos y rurales?",
+        "Sí. La ruta y las entidades que intervienen cambian según el tipo de predio; las identificamos en la evaluación inicial."
       ]
     ],
-    "related": ["levantamientos-topograficos", "asesoramiento-legal", "declaratoria-fabrica"]
+    "related": [
+      "levantamientos-topograficos",
+      "asesoramiento-legal",
+      "declaratoria-fabrica"
+    ],
+    "guide": "saneamiento-fisico-legal"
   },
   {
     "slug": "comunidades-campesinas",
     "name": "Comunidades campesinas",
+    "seoTitle": "Deslinde y titulación de comunidades campesinas | CONPLANOS",
     "area": "saneamiento",
     "summary": "Áreas, linderos y documentación del territorio comunal.",
     "headline": "Apoyo técnico y legal para el territorio de tu comunidad.",
@@ -167,6 +228,10 @@
       "Documentación y planos disponibles",
       "Descripción del encargo y representante de contacto"
     ],
+    "intro": [
+      "El territorio de una comunidad campesina necesita información técnica clara para defender sus linderos, resolver diferencias con colindantes y ordenar su documentación. El deslinde y la titulación del territorio comunal tienen un marco propio, la Ley 24657, y requieren coordinación con los representantes de la comunidad.",
+      "Combinamos trabajo de campo con GNSS, elaboración de planos y revisión de antecedentes, dentro del alcance que acuerde la comunidad."
+    ],
     "faq": [
       [
         "¿Trabajan con áreas y linderos?",
@@ -177,11 +242,17 @@
         "El representante puede contactarnos con la ubicación y una descripción del encargo para concertar una evaluación inicial."
       ]
     ],
-    "related": ["levantamientos-topograficos", "puntos-geodesicos", "titulaciones"]
+    "related": [
+      "levantamientos-topograficos",
+      "puntos-geodesicos",
+      "titulaciones"
+    ],
+    "guide": "saneamiento-fisico-legal"
   },
   {
     "slug": "declaratoria-fabrica",
     "name": "Declaratoria de fábrica",
+    "seoTitle": "Declaratoria de fábrica en Cusco | CONPLANOS",
     "area": "saneamiento",
     "summary": "Documentación para regularizar e inscribir lo construido.",
     "headline": "Regulariza y documenta lo que has construido.",
@@ -203,6 +274,10 @@
       "Planos o licencias disponibles",
       "Información de la construcción existente"
     ],
+    "intro": [
+      "La declaratoria de fábrica es el acto que reconoce lo construido sobre un terreno para inscribirlo en SUNARP. Mientras no se inscribe, para el registro el inmueble sigue siendo solo un terreno.",
+      "La ruta depende de cómo se construyó: con licencia, se tramita la conformidad de obra y declaratoria de edificación; sin licencia, hay que regularizar por la vía que admita tu caso. Medimos lo construido, revisamos los antecedentes y preparamos la documentación técnica que se necesita."
+    ],
     "faq": [
       [
         "¿Necesito tener planos anteriores?",
@@ -211,13 +286,23 @@
       [
         "¿La declaratoria incluye independización?",
         "Son alcances distintos que se evalúan según el inmueble y el objetivo. La cotización precisa si se incluye una independización y qué documentación requiere."
+      ],
+      [
+        "¿Puedo declarar una construcción hecha sin licencia?",
+        "En muchos casos se puede regularizar, pero la vía depende de la fecha de construcción y de la situación del inmueble. Lo determinamos en la evaluación."
       ]
     ],
-    "related": ["titulaciones", "proyectos-construccion", "asesoramiento-legal"]
+    "related": [
+      "titulaciones",
+      "proyectos-construccion",
+      "asesoramiento-legal"
+    ],
+    "guide": "declaratoria-de-fabrica"
   },
   {
     "slug": "puntos-geodesicos",
     "name": "Puntos geodésicos",
+    "seoTitle": "Puntos geodésicos GNSS en Cusco | CONPLANOS",
     "area": "topografia",
     "summary": "Medición GNSS de puntos de referencia para proyectos y georreferenciación.",
     "headline": "Una referencia precisa y georreferenciada para tu proyecto.",
@@ -239,6 +324,10 @@
       "Finalidad y requisitos técnicos del proyecto",
       "Condiciones del terreno y acceso"
     ],
+    "intro": [
+      "Un punto geodésico es una referencia con coordenadas precisas que sirve de base para georreferenciar levantamientos, proyectos y expedientes. Se mide con receptores GNSS y un procesamiento acorde a la precisión que exige el encargo.",
+      "Planificamos la ubicación de los puntos, realizamos la medición y preparamos la información técnica. Si el encargo incluye la certificación, la tramitamos ante el Instituto Geográfico Nacional según sus requisitos."
+    ],
     "faq": [
       [
         "¿La certificación del IGN está incluida?",
@@ -249,11 +338,17 @@
         "Sí. Evaluamos la metodología GNSS y los entregables adecuados para el proyecto y sus requisitos de referencia."
       ]
     ],
-    "related": ["levantamientos-topograficos", "habilitaciones-urbanas", "comunidades-campesinas"]
+    "related": [
+      "levantamientos-topograficos",
+      "habilitaciones-urbanas",
+      "comunidades-campesinas"
+    ],
+    "guide": "levantamiento-topografico"
   },
   {
     "slug": "habilitaciones-urbanas",
     "name": "Habilitaciones urbanas",
+    "seoTitle": "Habilitación urbana y lotización en Cusco | CONPLANOS",
     "area": "proyectos",
     "summary": "Evaluación, planos y documentación para lotizar, parcelar o habilitar.",
     "headline": "Planifica la lotización o habilitación de tu terreno.",
@@ -275,6 +370,10 @@
       "Planos y antecedentes disponibles",
       "Objetivo: habilitación, lotización o parcelación"
     ],
+    "intro": [
+      "Habilitar un terreno es convertirlo en lotes urbanos con vías, aportes y servicios, según la zonificación y las normas aplicables. Antes de diseñar una lotización hay que confirmar que el terreno está saneado, qué zonificación tiene y qué condicionantes le imponen la topografía y el entorno.",
+      "Coordinamos el levantamiento topográfico, el diseño y la documentación técnica y legal para presentarte ante la entidad competente con un expediente consistente."
+    ],
     "faq": [
       [
         "¿Pueden evaluar una lotización?",
@@ -285,11 +384,17 @@
         "No. La evaluación ayuda a definir la ruta de trabajo. Las autorizaciones corresponden a las entidades competentes."
       ]
     ],
-    "related": ["levantamientos-topograficos", "titulaciones", "proyectos-construccion"]
+    "related": [
+      "levantamientos-topograficos",
+      "titulaciones",
+      "proyectos-construccion"
+    ],
+    "guide": "saneamiento-fisico-legal"
   },
   {
     "slug": "asesoramiento-legal",
     "name": "Asesoramiento legal",
+    "seoTitle": "Asesoría legal de predios en Cusco | CONPLANOS",
     "area": "saneamiento",
     "summary": "Revisión documental y orientación legal sobre predios.",
     "headline": "Revisa los antecedentes antes de decidir sobre tu predio.",
@@ -311,6 +416,10 @@
       "Ubicación y documentos del predio",
       "Antecedentes o notificaciones relevantes"
     ],
+    "intro": [
+      "Antes de comprar, vender, heredar o construir conviene saber si los documentos del predio respaldan lo que se va a hacer. Revisamos los antecedentes registrales y documentales y te explicamos las alternativas.",
+      "Como trabajamos junto con ingenieros y arquitectos, la parte legal de tu caso avanza coordinada con los planos y la información técnica del predio."
+    ],
     "faq": [
       [
         "¿Atienden consultas sobre saneamiento de predios?",
@@ -321,6 +430,11 @@
         "Empieza con una descripción general. Te indicaremos qué documentos son necesarios y cómo compartirlos para la revisión."
       ]
     ],
-    "related": ["titulaciones", "declaratoria-fabrica", "comunidades-campesinas"]
+    "related": [
+      "titulaciones",
+      "declaratoria-fabrica",
+      "comunidades-campesinas"
+    ],
+    "guide": "saneamiento-fisico-legal"
   }
 ]

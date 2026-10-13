@@ -102,6 +102,13 @@ Ninguno técnico. El bloqueo anterior (previews compiladas como producción, con
 
 conplanos.com sigue sirviendo `main` (`f961a40`), con el problema original: canonical sin barra, `/servicio/index.html` en dos saltos y 404 con `index, follow` y canonical a la portada. Se corrige al hacer merge del PR #1. Comprobado el 2026-10-13 que la portada de producción sigue con `index, follow`, canonical `https://conplanos.com/` y GA4.
 
+## Trabajo en curso: Fase 2 contenido y datos estructurados
+
+- Rama: `seo/plan-crecimiento-organico`, apilada sobre `fix/seo-url-canonical-404`. PR en borrador; no hacer merge sin aprobación expresa y sin que el propietario revise los textos de las guías.
+- Plan completo: `docs/SEO_PLAN.md`.
+- Cambios: títulos orientados a la búsqueda y bloque «En qué consiste» en los 9 servicios, JSON-LD `Service`, sección `/guias/` con 4 guías (`content/guides.json`), sitemap con 15 URLs.
+- Tras el merge del PR #1, rebasar esta rama sobre `main` y cambiar la base del PR a `main`.
+
 ## Observaciones menores
 
 - `dist/robots.txt` versionado termina con una línea en blanco extra respecto a lo que genera el build. Sin efecto: Cloudflare regenera el archivo al compilar.

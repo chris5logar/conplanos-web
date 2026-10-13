@@ -37,6 +37,12 @@ Sí. Cuéntanos qué deseas construir y qué información tienes del terreno par
 **¿El proyecto incluye todas las especialidades?**
 El alcance se acuerda en la cotización. Identificamos contigo las especialidades y entregables que requiere tu proyecto.
 
+**¿Qué es el certificado de parámetros urbanísticos?**
+Es el documento municipal que indica qué se puede construir en un lote: uso, altura, retiros y área libre, entre otros. Es el punto de partida del diseño.
+
+**¿Diseñan ampliaciones de viviendas existentes?**
+Sí. Evaluamos lo construido, la documentación disponible y las condiciones del lote para definir el alcance de la ampliación o remodelación.
+
 ## Ejecución de obra
 
 Construye con planificación, presupuesto y seguimiento.
@@ -65,6 +71,9 @@ Podemos revisar tu consulta y la información disponible para determinar si es n
 
 **¿Cómo se define el presupuesto?**
 A partir del proyecto, las condiciones del lugar y las partidas acordadas. Solicita una evaluación para recibir una propuesta para tu caso.
+
+**¿Necesito licencia para empezar la obra?**
+En la mayoría de los casos, sí. Revisamos la situación de tu proyecto y te indicamos si cuenta con lo necesario para iniciar o qué falta preparar.
 
 ## Levantamientos topográficos
 
@@ -95,6 +104,9 @@ La ubicación, el área aproximada y el uso que tendrá el levantamiento. Si tie
 **¿El levantamiento puede ser georreferenciado?**
 Sí. Evaluamos el sistema de referencia y la metodología que requiere tu encargo. Los alcances y requisitos se precisan en la propuesta.
 
+**¿Qué diferencia hay entre un plano perimétrico y uno topográfico?**
+El perimétrico muestra los linderos, las medidas y el área del predio. El topográfico añade el relieve, con curvas de nivel y cotas, y los elementos existentes en el terreno.
+
 ## Titulaciones
 
 Ordena la situación de tu predio para formalizar su propiedad.
@@ -123,6 +135,9 @@ No. La ruta depende de los antecedentes, la situación del predio y los requisit
 
 **¿Se puede asegurar un plazo o un resultado?**
 La propuesta define nuestro alcance. Los tiempos y decisiones de las entidades competentes dependen de cada expediente; no prometemos aprobaciones automáticas.
+
+**¿Atienden predios urbanos y rurales?**
+Sí. La ruta y las entidades que intervienen cambian según el tipo de predio; las identificamos en la evaluación inicial.
 
 ## Comunidades campesinas
 
@@ -181,6 +196,9 @@ Si los tienes, facilitan la revisión. Si no, evaluamos qué información y trab
 
 **¿La declaratoria incluye independización?**
 Son alcances distintos que se evalúan según el inmueble y el objetivo. La cotización precisa si se incluye una independización y qué documentación requiere.
+
+**¿Puedo declarar una construcción hecha sin licencia?**
+En muchos casos se puede regularizar, pero la vía depende de la fecha de construcción y de la situación del inmueble. Lo determinamos en la evaluación.
 
 ## Puntos geodésicos
 
@@ -400,6 +418,20 @@ Contacto Ing. Kimberly Peñalva
 Contacto Per. Ernesto
 
 +51 955 593 110 Llamar 
+
+Guías
+
+Antes de empezar tu trámite
+
+Explicamos en lenguaje claro los procedimientos con los que más nos consultan.
+
+Guía Licencia de edificación: modalidades y documentos para construir Qué es, cómo se define la modalidad y qué documentos se preparan antes de construir.
+
+Guía Declaratoria de fábrica: qué es y cómo se inscribe una construcción Para qué sirve, qué ruta sigue una obra con o sin licencia y qué documentos se preparan.
+
+Guía Saneamiento físico legal de un predio: qué es y por dónde empezar Los problemas que resuelve, cómo se diagnostica un predio y las rutas más comunes.
+
+Guía Levantamiento topográfico: qué entrega y cuándo lo necesitas Qué planos entrega, cuándo hace falta y qué información enviar para cotizarlo.
 
 Contacto
 

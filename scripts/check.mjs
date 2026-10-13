@@ -13,7 +13,11 @@ const mode = siteMode();
 const preview = process.argv.includes('--preview') || mode.preview;
 const origin = (process.env.SITE_ORIGIN || mode.cloudflareOrigin || (preview ? 'https://conplanos-web-preview.pages.dev' : 'https://conplanos.com')).replace(/\/+$/, '');
 const services = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, '../content/services.json'), 'utf8'));
-const commercialPaths = ['/', ...services.map(s => `/${s.slug}/`)];
+const guides = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, '../content/guides.json'), 'utf8'));
+const guidePaths = ['/guias/', ...guides.map(g => `/guias/${g.slug}/`)];
+const commercialPaths = ['/', ...services.map(s => `/${s.slug}/`), ...guidePaths];
+// Expected breadcrumb trail for each indexable route.
+const trailOf = route => route === '/' ? [] : route.startsWith('/guias/') && route !== '/guias/' ? ['/', '/guias/', route] : ['/', route];
 const expectedUrls = commercialPaths.map(route => origin + route);
 const canonicals = [];
 function attributes(tag) {
@@ -65,8 +69,24 @@ for(const file of files){
   assert.equal(breadcrumbs.length, route === '/' ? 0 : 1, `${file}: BreadcrumbList`);
   if (breadcrumbs.length) {
    const items = breadcrumbs[0].itemListElement;
-   assert.deepEqual(items.map(item => item.item), [origin + '/', canonical], `${file}: URLs finales de BreadcrumbList`);
-   assert.deepEqual(items.map(item => item.position), [1, 2], `${file}: posiciones de BreadcrumbList`);
+   const trail = trailOf(route).map(r => origin + r);
+   assert.equal(trail.at(-1), canonical, `${file}: la ruta de navegación termina en canonical`);
+   assert.deepEqual(items.map(item => item.item), trail, `${file}: URLs finales de BreadcrumbList`);
+   assert.deepEqual(items.map(item => item.position), trail.map((_, i) => i + 1), `${file}: posiciones de BreadcrumbList`);
+  }
+  const schemas = [...html.matchAll(/type="application\/ld\+json">(.*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+  const serviceSlug = services.find(s => route === `/${s.slug}/`);
+  if (serviceSlug) {
+   const service = schemas.filter(d => d['@type'] === 'Service');
+   assert.equal(service.length, 1, `${file}: Service JSON-LD único`);
+   assert.equal(service[0].url, canonical, `${file}: Service con URL canónica`);
+   assert.equal(service[0].provider['@id'], origin + '/#business', `${file}: Service enlazado al negocio`);
+  }
+  if (trailOf(route).length === 3) {
+   const article = schemas.filter(d => d['@type'] === 'Article');
+   assert.equal(article.length, 1, `${file}: Article JSON-LD único`);
+   assert.equal(article[0].mainEntityOfPage, canonical, `${file}: Article con URL canónica`);
+   assert.match(article[0].dateModified, /^\d{4}-\d{2}-\d{2}$/, `${file}: fecha de actualización`);
   }
  }
  assert(html.includes('property="og:image"'),'Open Graph ausente');
@@ -105,13 +125,13 @@ const analytics = fs.readFileSync(path.join(root, 'assets', 'main.js'), 'utf8');
 for (const name of ['click_whatsapp', 'click_phone', 'quote_request']) assert.equal((analytics.match(new RegExp(`'${name}'`, 'g')) || []).length, 1, `Evento ${name}`);
 assert.equal((analytics.match(/document\.addEventListener\('click'/g) || []).length, 1, 'Listener de conversiones duplicado');
 assert(!/\+51|text=|@/.test(analytics), 'La medición no debe incluir datos de contacto');
-assert.equal(files.length,11,'Diez páginas y 404');
-assert.equal((fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').match(/<loc>/g)||[]).length,10);
+assert.equal(files.length,commercialPaths.length+1,'Páginas del catálogo y 404');
+assert.equal((fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').match(/<loc>/g)||[]).length,commercialPaths.length);
 const sitemap = [...fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-assert.deepEqual([...sitemap].sort(), [...expectedUrls].sort(), 'Sitemap: diez URLs finales del catálogo');
+assert.deepEqual([...sitemap].sort(), [...expectedUrls].sort(), 'Sitemap: URLs finales del catálogo');
 assert.deepEqual([...sitemap].sort(), [...canonicals].sort(), 'Sitemap debe coincidir con canonical');
 const redirects = fs.readFileSync(path.join(root, '_redirects'), 'utf8').trim().split(/\r?\n/).map(line => line.trim().split(/\s+/));
-const expectedRedirects = [['/index.html', '/', '301'], ...services.flatMap(s => [[`/${s.slug}`, `/${s.slug}/`, '301'], [`/${s.slug}/index.html`, `/${s.slug}/`, '301']])];
+const expectedRedirects = [['/index.html', '/', '301'], ...commercialPaths.slice(1).flatMap(route => [[route.slice(0, -1), route, '301'], [route + 'index.html', route, '301']])];
 assert.deepEqual(redirects, expectedRedirects, 'Redirecciones directas: sin ciclos ni saltos intermedios');
 for (const [source, destination] of redirects) {
  assert(commercialPaths.includes(destination), `Destino final: ${source}`);
@@ -121,5 +141,5 @@ assert.equal(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8').trim(), prev
 const headers = fs.readFileSync(path.join(root, '_headers'), 'utf8');
 assert.equal(headers.includes('/*\n  X-Content-Type-Options: nosniff'), true, 'Cabeceras de seguridad conservadas');
 assert.equal(headers.includes('  X-Robots-Tag: noindex, nofollow'), preview, 'Cabecera noindex global solo en preview');
-console.log(`OK (${preview ? 'preview' : 'producción'}): ${validations} validaciones, ${files.length} documentos HTML, ${refs} enlaces/recursos locales, 10 canonical/sitemap, breadcrumbs, redirecciones, 404, GA4, H1, titles, metadatos, JSON-LD, alt, srcset, WhatsApp y ${team.length} contactos.`);
+console.log(`OK (${preview ? 'preview' : 'producción'}): ${validations} validaciones, ${files.length} documentos HTML, ${refs} enlaces/recursos locales, ${commercialPaths.length} canonical/sitemap, breadcrumbs, redirecciones, 404, GA4, H1, titles, metadatos, JSON-LD, alt, srcset, WhatsApp y ${team.length} contactos.`);
 

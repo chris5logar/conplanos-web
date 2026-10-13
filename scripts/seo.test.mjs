@@ -8,7 +8,8 @@ import test from 'node:test';
 
 const source = path.resolve(import.meta.dirname, '..');
 const services = JSON.parse(fs.readFileSync(path.join(source, 'content/services.json'), 'utf8'));
-const routes = ['/', ...services.map(s => `/${s.slug}/`)];
+const guides = JSON.parse(fs.readFileSync(path.join(source, 'content/guides.json'), 'utf8'));
+const routes = ['/', ...services.map(s => `/${s.slug}/`), '/guias/', ...guides.map(g => `/guias/${g.slug}/`)];
 const page = 'dist/proyectos-construccion/index.html';
 const origin = 'https://conplanos.com';
 
@@ -47,15 +48,15 @@ function fixture(t, preview = false, siteOrigin, cloudflare = {}) {
   };
 }
 
-test('production build passes checks for all ten pages and 404', t => {
+test('production build passes checks for every catalog page and 404', t => {
   const f = fixture(t);
   const result = f.check();
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, /producción.*\d+ validaciones/);
-  assert.equal((f.read('dist/sitemap.xml').match(/<loc>/g) || []).length, 10);
+  assert.equal((f.read('dist/sitemap.xml').match(/<loc>/g) || []).length, routes.length);
 });
 
-test('preview disables GA4 and noindexes all eleven documents', t => {
+test('preview disables GA4 and noindexes every document', t => {
   const f = fixture(t, true);
   const result = f.check();
   assert.equal(result.status, 0, result.stderr);

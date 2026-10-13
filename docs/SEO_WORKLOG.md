@@ -79,3 +79,26 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Commit final: `a37144d` (código y documentación de comportamiento) más el commit de documentación que añade esta entrada.
 - Pendientes: revisión y merge del PR #1 por el propietario; verificación de producción después del merge.
 - Siguiente paso: el propietario decide el merge del PR #1.
+
+## 2026-10-13 — Fase 2: plan SEO, contenido de servicios, guías y datos estructurados
+
+- Agente: Claude Code (hilo «SEO y posicionamiento» del proyecto).
+- Objetivo: plan SEO priorizado y primera ejecución de contenido y datos estructurados, a petición del propietario («haz todo el proyecto, no me consultes»).
+- Rama: `seo/plan-crecimiento-organico`, creada desde `fix/seo-url-canonical-404` (`f1b7906`) porque el PR #1 aún no estaba en `main`.
+- Trabajo realizado:
+  - Investigación de mercado y competencia con búsqueda web (no localizada en el Perú: sirve para intención de búsqueda y competidores informativos, no para posiciones ni volúmenes).
+  - `docs/SEO_PLAN.md`: diagnóstico, mapa de palabras clave por prioridad, plan en tres horizontes, plantilla de reseñas, accesos necesarios e indicadores.
+  - `content/services.json`: `seoTitle`, `intro` (dos párrafos), preguntas frecuentes adicionales y `guide` por servicio. Sin cifras, plazos ni promesas.
+  - `content/guides.json` (nuevo): 4 guías (licencia de edificación, declaratoria de fábrica, saneamiento físico legal, levantamiento topográfico).
+  - `scripts/build.mjs`: bloque «En qué consiste» en servicios, JSON-LD `Service` por servicio, índice `/guias/` con `CollectionPage`, páginas de guía con `Article` y migas de tres niveles, sección de guías en la portada, enlace «Guías» en menú y pie, sitemap y `_redirects` ampliados.
+  - `scripts/check.mjs`: catálogo dinámico (servicios + guías), migas de N niveles, verificación de `Service` y `Article`. `scripts/seo.test.mjs`: recuentos dinámicos.
+  - `dist/assets/styles.css`: estilos `.prose`, `.intro`, `.guide-link`.
+- Pruebas (Node 22.22.0, entorno cloud):
+  - `node scripts/build.mjs`: 15 páginas.
+  - `node scripts/check.mjs`: OK (producción), 2474 validaciones, 16 documentos HTML, 15 canonical/sitemap.
+  - En copia temporal: `build-preview.mjs` + `check.mjs --preview`: OK.
+  - `node --test scripts/seo.test.mjs`: 25 de 25.
+  - Capturas con Chromium de portada, índice de guías, una guía (escritorio y móvil) y un servicio: maquetación correcta.
+- Resultado: rama lista para revisión en borrador de PR. No se tocó `main`, producción ni la ficha de Google.
+- Pendientes: revisión técnica y legal de los textos por el propietario; validar la preview de Cloudflare; acciones del propietario en `SEO_PLAN.md` (reseñas, Search Console, GA4, ficha).
+- Siguiente paso: el propietario revisa el texto de las 4 guías y de los bloques «En qué consiste» en la preview.

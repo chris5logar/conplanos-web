@@ -222,6 +222,14 @@ figcaption{margin-top:.75rem;color:var(--text-subtle);font-size:var(--fs-xs);let
 .bullets li{position:relative;padding:.45rem 0 .45rem 1.5rem;color:var(--text-muted)}
 .bullets li::before{content:"";position:absolute;left:0;top:1.15em;width:10px;height:2px;background:var(--brand)}
 .faq{max-width:860px}
+.prose{max-width:760px}
+.prose h2{margin-top:var(--space-5);font-size:clamp(1.4rem,2vw,1.85rem)}
+.prose h2:first-child,.prose .label+h2{margin-top:0}
+.prose p{margin-top:var(--space-3);color:var(--text-muted)}
+.prose .bullets{margin-top:var(--space-2)}
+.prose .small-note{margin-top:var(--space-5)}
+.intro{padding-bottom:0}
+.guide-link a{border-bottom:1px solid var(--brand);font-weight:600;color:var(--text)}
 .faq h2{margin-bottom:var(--space-4)}
 details{border-bottom:1px solid var(--line)}
 details:first-of-type{border-top:1px solid var(--line)}

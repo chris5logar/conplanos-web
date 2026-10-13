@@ -87,3 +87,17 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Motivo: las previews automáticas se compilaban en modo producción, con `index, follow` y GA4 activo, porque Cloudflare no recibía `SITE_MODE`. Depender de una variable configurada a mano en el panel es frágil.
 - Consecuencias: la regla vive en `scripts/site-mode.mjs` y la usan `build.mjs` y `check.mjs`. En una preview de Cloudflare el origen de canonical, og:url y sitemap es `CF_PAGES_URL` (la URL del despliegue), salvo que se defina `SITE_ORIGIN`. No hay que configurar variables en el panel de Cloudflare. Si algún día cambia la rama de producción, hay que cambiar `productionBranch` en ese archivo.
 - Estado: Activa. Aprobada por el propietario el 2026-10-13.
+
+## 2026-10-13 — asignación de páginas a la prioridad comercial
+
+- Decisión: «Ingeniería» agrupa `levantamientos-topograficos`, `puntos-geodesicos` y `habilitaciones-urbanas`; «Construcción», `proyectos-construccion` y `ejecucion-obra`; «Saneamiento de predios», `titulaciones`, `comunidades-campesinas` y `asesoramiento-legal`; «Declaratoria de fábrica», `declaratoria-fabrica`.
+- Motivo: la pregunta estaba abierta en el handoff y el propietario pidió no consultar decisiones rutinarias. Es la agrupación que mejor coincide con la categoría «Ingeniero» de la ficha de Google.
+- Consecuencias: el orden de contenido, enlazado y medición de `SEO_PLAN.md` sigue esta tabla. El propietario puede cambiarla; si lo hace, marcar esta decisión como sustituida.
+- Estado: Activa. Decisión por defecto de Claude Code, pendiente de confirmación del propietario.
+
+## 2026-10-13 — sección de guías informativas
+
+- Decisión: se crea `/guias/` con guías propias que responden búsquedas informativas («qué es», «requisitos», «cómo se tramita») y enlazan al servicio correspondiente. Contenido en `content/guides.json`, generado por `scripts/build.mjs`, con `Article` y `BreadcrumbList` de tres niveles.
+- Motivo: las búsquedas informativas sobre licencia, declaratoria de fábrica y saneamiento las ganan hoy blogs y estudios de abogados; la web no tenía contenido para competir ni para demostrar experiencia.
+- Consecuencias: cada guía cita normas solo de forma general y verificable, sin plazos, precios ni cifras no confirmadas, e incluye aviso de que no sustituye la evaluación del caso. Toda guía nueva o modificada requiere revisión técnica y legal del propietario antes del merge. `check.mjs` incorpora las guías al catálogo de URLs, sitemap y redirecciones.
+- Estado: Activa. Implementada en la rama `seo/plan-crecimiento-organico`, pendiente de revisión.
