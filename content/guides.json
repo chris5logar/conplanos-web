@@ -3,7 +3,7 @@
     "slug": "licencia-de-edificacion",
     "title": "Licencia de edificación: modalidades y documentos para construir",
     "seoTitle": "Licencia de edificación en Cusco: modalidades y documentos | CONPLANOS",
-    "description": "Qué es la licencia de edificación, cómo se elige la modalidad A, B, C o D, qué documentos se suelen preparar y qué cambia en el Centro Histórico de Cusco.",
+    "description": "Qué es la licencia de edificación, cómo se define la modalidad A, B, C o D, qué documentos se suelen preparar y por qué en zonas monumentales de Cusco conviene revisar antes la normativa de patrimonio.",
     "summary": "Qué es, cómo se define la modalidad y qué documentos se preparan antes de construir.",
     "service": "proyectos-construccion",
     "updated": "2026-10-13",
@@ -11,45 +11,45 @@
       {
         "heading": "Qué es la licencia de edificación",
         "paragraphs": [
-          "La licencia de edificación es la autorización municipal para construir, ampliar, remodelar o demoler una edificación. En el Perú se rige por la Ley 29090, Ley de regulación de habilitaciones urbanas y de edificaciones, y por su reglamento. La tramita el propietario o quien tenga derecho a edificar ante la municipalidad del distrito donde está el predio.",
-          "Construir con licencia no es solo un requisito formal: es lo que después permite obtener la conformidad de obra, declarar la edificación e inscribirla en Registros Públicos. Una obra sin licencia puede regularizarse en algunos casos, pero suele ser un camino más largo y costoso."
+          "La licencia de edificación es la autorización municipal para construir, ampliar, remodelar o demoler una edificación, según el caso. En el Perú se rige por la Ley 29090, Ley de regulación de habilitaciones urbanas y de edificaciones, por su reglamento vigente y por el TUPA de cada municipalidad. La solicita el propietario o quien acredite derecho a edificar ante la municipalidad del distrito donde está el predio.",
+          "Construir con licencia es lo que después permite obtener la conformidad de obra, declarar la edificación e inscribirla en Registros Públicos. Una obra sin licencia solo puede regularizarse en los supuestos y plazos que admita la normativa, por lo que no conviene darlo por hecho."
         ]
       },
       {
         "heading": "Las modalidades A, B, C y D",
         "paragraphs": [
-          "La norma clasifica los proyectos en cuatro modalidades según su tipo, área, altura, uso y ubicación. La modalidad define quién revisa el proyecto y cuánto control previo hay antes de la licencia."
+          "La Ley 29090 clasifica los proyectos en cuatro modalidades de aprobación. Cuál corresponde a cada proyecto lo determinan su reglamento vigente y la municipalidad, considerando factores como el tipo de edificación, el área, la altura, el uso y la ubicación. A grandes rasgos:"
         ],
         "list": [
-          "Modalidad A: obras de menor escala, como ciertas viviendas unifamiliares, ampliaciones o demoliciones menores. La licencia se obtiene con la presentación del expediente completo, bajo la responsabilidad de los profesionales que lo firman.",
-          "Modalidad B: proyectos de mayor envergadura, como algunas viviendas multifamiliares. El proyecto se evalúa antes de emitir la licencia, por la municipalidad o por revisores urbanos.",
-          "Modalidades C y D: edificaciones de mayor escala, complejidad o uso especial. El proyecto pasa por la evaluación previa de una Comisión Técnica o de revisores urbanos."
+          "Modalidad A: aprobación automática con firma de profesionales responsables, prevista para obras que la norma considera de menor escala.",
+          "Modalidad B: aprobación de proyecto con evaluación por la municipalidad o por revisores urbanos.",
+          "Modalidades C y D: aprobación de proyecto con evaluación previa por la Comisión Técnica o por revisores urbanos, para los supuestos de mayor escala o complejidad que establece la norma."
         ],
-        "after": "Los límites exactos de cada modalidad dependen de la normativa vigente y de las excepciones de cada caso. Antes de diseñar conviene confirmar la modalidad con el certificado de parámetros y la municipalidad."
+        "after": "Los supuestos concretos de cada modalidad y sus excepciones están en el reglamento vigente y pueden cambiar. Antes de diseñar conviene confirmar la modalidad aplicable con el certificado de parámetros y la municipalidad."
       },
       {
         "heading": "Documentos que se suelen preparar",
         "paragraphs": [
-          "Los requisitos se precisan en el TUPA de cada municipalidad y en el reglamento vigente. En la práctica, un expediente de licencia suele reunir:"
+          "Los requisitos exactos dependen de la modalidad, del tipo de obra y del TUPA de la municipalidad. A modo de referencia, un expediente de licencia suele incluir, según el caso:"
         ],
         "list": [
-          "El Formulario Único de Edificación (FUE) y el documento que acredita el derecho a edificar, normalmente la partida registral del predio.",
-          "El certificado de parámetros urbanísticos y edificatorios, que indica la zonificación, la altura permitida, los retiros y el área libre exigida.",
-          "Los planos de ubicación, arquitectura, estructuras, instalaciones sanitarias y eléctricas, con sus memorias, firmados por profesionales colegiados y habilitados.",
-          "El estudio de mecánica de suelos y otros estudios, cuando el tipo de proyecto lo exige.",
-          "El pago de los derechos de trámite."
+          "El Formulario Único de Edificación (FUE) y el documento que acredita el derecho a edificar.",
+          "El certificado de parámetros urbanísticos y edificatorios, que indica, entre otros, la zonificación, la altura permitida y los retiros.",
+          "Planos y memorias de las especialidades que correspondan (arquitectura, estructuras, instalaciones sanitarias y eléctricas, entre otras), firmados por profesionales habilitados.",
+          "Estudios complementarios, como el de mecánica de suelos, cuando la norma los exige.",
+          "El pago de los derechos de trámite fijados en el TUPA."
         ]
       },
       {
-        "heading": "Qué cambia en el Centro Histórico de Cusco",
+        "heading": "Zonas monumentales de Cusco",
         "paragraphs": [
-          "El Centro Histórico de Cusco y otras zonas monumentales tienen reglas propias de altura, materiales, fachadas y uso. Las intervenciones en inmuebles o entornos protegidos requieren además la participación del Ministerio de Cultura, a través de su Dirección Desconcentrada en Cusco. Por eso, en estos casos, la revisión de la normativa aplicable va antes del diseño, no después."
+          "El Centro Histórico de Cusco y otras zonas declaradas patrimonio cultural tienen reglas propias sobre altura, materiales, fachadas y usos. Cuando el predio es un bien integrante del patrimonio o está en su entorno, la intervención puede requerir además la autorización o el pronunciamiento del Ministerio de Cultura, según el caso. Por eso, en estos predios, la revisión de la normativa aplicable va antes del diseño."
         ]
       },
       {
         "heading": "Después de construir",
         "paragraphs": [
-          "Terminada la obra, se solicita la conformidad de obra y la declaratoria de edificación ante la municipalidad. Con ese documento la construcción se inscribe en el Registro de Predios de SUNARP. Si la obra se apartó del proyecto aprobado, puede ser necesario presentar planos de replanteo."
+          "Terminada la obra, se solicita ante la municipalidad la conformidad de obra y declaratoria de edificación, según el procedimiento aplicable. Con ella, la construcción puede inscribirse en el Registro de Predios de SUNARP. Si la obra varió respecto del proyecto aprobado, la norma prevé cómo presentarlo, según el tipo de variación."
         ]
       },
       {
@@ -81,15 +81,17 @@
           "Vender el inmueble por su valor real, con la construcción incluida.",
           "Acceder a un crédito hipotecario o dar el inmueble en garantía.",
           "Heredar o dividir la propiedad con información clara.",
-          "Independizar departamentos, pisos o secciones, que requiere que la edificación esté declarada.",
+          "Independizar departamentos, pisos o secciones, que por lo general exige que la edificación esté declarada.",
           "Evitar observaciones cuando se realizan otros actos sobre el predio."
         ]
       },
       {
         "heading": "La ruta depende de cómo se construyó",
         "paragraphs": [
-          "Si la obra tuvo licencia de edificación, al terminarla se solicita a la municipalidad la conformidad de obra y declaratoria de edificación, y luego se inscribe en SUNARP.",
-          "Si se construyó sin licencia, hay que regularizar. Según la fecha de construcción y la situación del inmueble, la regularización puede seguir la vía municipal, con una licencia de regularización, o el procedimiento con verificador responsable previsto en la Ley 27157 y sus normas complementarias, en los supuestos que esa ley admite. Elegir la vía correcta es el primer paso, porque cada una tiene requisitos distintos."
+          "Construcción con licencia: al terminar la obra se solicita a la municipalidad la conformidad de obra y declaratoria de edificación, y luego se inscribe en SUNARP.",
+          "Construcción sin licencia, vía municipal: la Ley 29090 y su reglamento regulan la licencia de regularización de edificaciones, con requisitos y supuestos propios que fija la normativa vigente y el TUPA de cada municipalidad.",
+          "Construcción sin licencia, vía registral: la Ley 27157, modificada por la Ley 30830, permite regularizar con un verificador responsable y el formulario registral, pero solo en los supuestos que esa ley admite. Según SUNARP, este procedimiento comprende edificaciones culminadas hasta el 31 de diciembre de 2016. No es una vía abierta para cualquier construcción.",
+          "Elegir la vía correcta, según la fecha de construcción, la situación del predio y la documentación disponible, es el primer paso, porque cada una tiene requisitos distintos."
         ]
       },
       {
@@ -154,7 +156,7 @@
       {
         "heading": "Rutas más comunes",
         "paragraphs": [
-          "No existe un trámite único. Según el diagnóstico, la solución puede pasar por una rectificación de área y linderos, una prescripción adquisitiva, una sucesión intestada, una independización o subdivisión, o una declaratoria de fábrica. Algunas rutas son notariales, otras municipales, registrales o judiciales. En predios rústicos intervienen además las entidades de formalización rural, que en Cusco están a cargo del gobierno regional."
+          "No existe un trámite único. Según el diagnóstico, la solución puede pasar, entre otras, por una rectificación de área y linderos, una prescripción adquisitiva, una sucesión intestada, una independización o subdivisión, o una declaratoria de fábrica. Según el caso, se tramitan por vía administrativa, notarial, registral o judicial. En predios rústicos intervienen además las entidades de formalización rural que señale la normativa vigente, que en la región Cusco corresponden al gobierno regional a través de su autoridad agraria competente."
         ]
       },
       {
@@ -166,7 +168,7 @@
       {
         "heading": "Cómo te ayudamos",
         "paragraphs": [
-          "Empezamos con una evaluación de los documentos y, si hace falta, una visita y medición del predio. Con eso te proponemos la ruta, el alcance y los entregables por escrito. Los plazos y decisiones de las entidades dependen de cada expediente."
+          "Empezamos con una evaluación de los documentos y, si hace falta, una visita y medición del predio. Con eso te proponemos la ruta, el alcance y los entregables por escrito, y te acompañamos en la preparación del expediente. Las decisiones y los plazos corresponden a las entidades competentes y dependen de cada expediente."
         ]
       }
     ]
@@ -212,7 +214,7 @@
       {
         "heading": "Georreferenciación y GNSS",
         "paragraphs": [
-          "Los trámites registrales y catastrales en el Perú requieren que los planos estén georreferenciados en el sistema oficial (datum WGS84, proyección UTM). Para eso se usan receptores GNSS y, cuando el proyecto lo pide, puntos geodésicos de control. En terrenos grandes o de difícil acceso se combinan estación total, GNSS y, según el caso, otras técnicas de captura."
+          "Muchos trámites registrales y catastrales requieren planos georreferenciados en el sistema de referencia oficial que indique la entidad; en la práctica suele ser el datum WGS84 con proyección UTM, pero conviene confirmarlo según el trámite. Para georreferenciar se usan receptores GNSS y, cuando el proyecto lo pide, puntos geodésicos de control. Según el terreno y la finalidad, se combinan estación total, GNSS u otras técnicas de captura."
         ]
       },
       {
@@ -227,7 +229,7 @@
       {
         "heading": "Cómo te ayudamos",
         "paragraphs": [
-          "Medimos en campo con equipo topográfico y GNSS, procesamos los datos y entregamos los planos que pide tu encargo, en el sistema de referencia que corresponda. El alcance y los entregables se precisan en la propuesta."
+          "Medimos en campo con equipo topográfico y GNSS, procesamos los datos y entregamos los planos que pide tu encargo, en el sistema de referencia que corresponda según el trámite o proyecto. El alcance y los entregables se precisan en la propuesta."
         ]
       }
     ]

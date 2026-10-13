@@ -26,7 +26,7 @@
     ],
     "intro": [
       "Un buen proyecto define qué se va a construir, cuánto costará y qué permisos necesita antes de mover la primera piedra. Partimos de tu terreno, de los parámetros urbanísticos que le aplican y de lo que quieres lograr, y desarrollamos la arquitectura junto con las especialidades de estructuras e instalaciones.",
-      "Cuando el proyecto requiere licencia de edificación, preparamos la documentación técnica que pide la municipalidad. En zonas monumentales de Cusco revisamos además las condiciones que fija la normativa de patrimonio antes de diseñar."
+      "Cuando el proyecto requiere licencia de edificación, preparamos la documentación técnica que pida la municipalidad según la modalidad aplicable. En zonas monumentales de Cusco revisamos además, antes de diseñar, las condiciones que fija la normativa de patrimonio para el predio."
     ],
     "faq": [
       [
@@ -39,7 +39,7 @@
       ],
       [
         "¿Qué es el certificado de parámetros urbanísticos?",
-        "Es el documento municipal que indica qué se puede construir en un lote: uso, altura, retiros y área libre, entre otros. Es el punto de partida del diseño."
+        "Es el documento municipal que indica, entre otros, qué usos se permiten en un lote, la altura y los retiros. Es el punto de partida del diseño."
       ],
       [
         "¿Diseñan ampliaciones de viviendas existentes?",
@@ -93,7 +93,7 @@
       ],
       [
         "¿Necesito licencia para empezar la obra?",
-        "En la mayoría de los casos, sí. Revisamos la situación de tu proyecto y te indicamos si cuenta con lo necesario para iniciar o qué falta preparar."
+        "Por lo general, sí, salvo los supuestos que la norma exceptúa. Revisamos la situación de tu proyecto y te indicamos si cuenta con lo necesario para iniciar o qué falta preparar."
       ]
     ],
     "related": [
@@ -229,8 +229,8 @@
       "Descripción del encargo y representante de contacto"
     ],
     "intro": [
-      "El territorio de una comunidad campesina necesita información técnica clara para defender sus linderos, resolver diferencias con colindantes y ordenar su documentación. El deslinde y la titulación del territorio comunal tienen un marco propio, la Ley 24657, y requieren coordinación con los representantes de la comunidad.",
-      "Combinamos trabajo de campo con GNSS, elaboración de planos y revisión de antecedentes, dentro del alcance que acuerde la comunidad."
+      "El territorio de una comunidad campesina necesita información técnica clara para conocer sus linderos, resolver diferencias con colindantes y ordenar su documentación. El deslinde y la titulación del territorio comunal se rigen por la Ley 24657 y sus normas modificatorias y complementarias, y los conducen las autoridades competentes, en la región Cusco el gobierno regional a través de su autoridad agraria.",
+      "Nuestro papel es técnico y de asesoría: trabajo de campo con GNSS, elaboración de planos, revisión de antecedentes y preparación de la documentación que la comunidad presente, dentro del alcance que acuerde con sus representantes."
     ],
     "faq": [
       [
@@ -276,7 +276,7 @@
     ],
     "intro": [
       "La declaratoria de fábrica es el acto que reconoce lo construido sobre un terreno para inscribirlo en SUNARP. Mientras no se inscribe, para el registro el inmueble sigue siendo solo un terreno.",
-      "La ruta depende de cómo se construyó: con licencia, se tramita la conformidad de obra y declaratoria de edificación; sin licencia, hay que regularizar por la vía que admita tu caso. Medimos lo construido, revisamos los antecedentes y preparamos la documentación técnica que se necesita."
+      "La ruta depende de cómo se construyó: con licencia, se tramita la conformidad de obra y declaratoria de edificación; sin licencia, hay que regularizar por la vía que admita la normativa para tu caso, según la fecha de construcción y la situación del inmueble. Medimos lo construido, revisamos los antecedentes y preparamos la documentación técnica que se necesita."
     ],
     "faq": [
       [
@@ -289,7 +289,7 @@
       ],
       [
         "¿Puedo declarar una construcción hecha sin licencia?",
-        "En muchos casos se puede regularizar, pero la vía depende de la fecha de construcción y de la situación del inmueble. Lo determinamos en la evaluación."
+        "Depende del caso. La vía registral de la Ley 27157, modificada por la Ley 30830, comprende según SUNARP edificaciones culminadas hasta el 31 de diciembre de 2016; para otras situaciones existe la regularización municipal con sus propios requisitos. Lo determinamos en la evaluación."
       ]
     ],
     "related": [
@@ -326,7 +326,7 @@
     ],
     "intro": [
       "Un punto geodésico es una referencia con coordenadas precisas que sirve de base para georreferenciar levantamientos, proyectos y expedientes. Se mide con receptores GNSS y un procesamiento acorde a la precisión que exige el encargo.",
-      "Planificamos la ubicación de los puntos, realizamos la medición y preparamos la información técnica. Si el encargo incluye la certificación, la tramitamos ante el Instituto Geográfico Nacional según sus requisitos."
+      "Planificamos la ubicación de los puntos, realizamos la medición y preparamos la información técnica. Si el encargo lo incluye, preparamos el expediente para solicitar la certificación al Instituto Geográfico Nacional, que la otorga según sus requisitos y evaluación."
     ],
     "faq": [
       [
@@ -371,8 +371,8 @@
       "Objetivo: habilitación, lotización o parcelación"
     ],
     "intro": [
-      "Habilitar un terreno es convertirlo en lotes urbanos con vías, aportes y servicios, según la zonificación y las normas aplicables. Antes de diseñar una lotización hay que confirmar que el terreno está saneado, qué zonificación tiene y qué condicionantes le imponen la topografía y el entorno.",
-      "Coordinamos el levantamiento topográfico, el diseño y la documentación técnica y legal para presentarte ante la entidad competente con un expediente consistente."
+      "Habilitar un terreno es convertirlo en lotes urbanos con vías, aportes y servicios, según la zonificación y las normas aplicables. Antes de diseñar una lotización conviene confirmar la situación legal del terreno, su zonificación y los condicionantes que le imponen la topografía y el entorno.",
+      "Coordinamos el levantamiento topográfico, el diseño y la documentación técnica y legal para que el expediente que se presenta ante la entidad competente sea consistente. La aprobación corresponde a esa entidad."
     ],
     "faq": [
       [

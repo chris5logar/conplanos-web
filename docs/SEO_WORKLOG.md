@@ -107,3 +107,36 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Commit final: `efe9ee1` en `main`. La actualización de esta documentación va en un commit posterior de solo documentación.
 - Pendientes: ninguno de la Fase 1. Seguimiento recomendado en Search Console de la recogida de los canonical nuevos.
 - Siguiente paso: el orquestador decide sobre la Fase 2 (PR #2, en borrador).
+
+## 2026-10-13 — Fase 2: plan SEO, contenido de servicios, guías y datos estructurados
+
+- Agente: Claude Code (hilo del proyecto dedicado al SEO).
+- Objetivo: plan SEO priorizado y primera ejecución de contenido y datos estructurados.
+- Rama: `seo/plan-crecimiento-organico`, creada desde `fix/seo-url-canonical-404` (`f1b7906`) antes del merge del PR #1. PR #2 en borrador.
+- Trabajo realizado: `docs/SEO_PLAN.md`; `seoTitle`, `intro`, FAQs extra y `guide` en `content/services.json`; `content/guides.json` con 4 guías; en `scripts/build.mjs`, bloque «En qué consiste», JSON-LD `Service`, índice `/guias/` (`CollectionPage`), guías (`Article`, migas de tres niveles), sección de guías en portada, enlace «Guías» en menú y pie, sitemap y `_redirects` ampliados; `scripts/check.mjs` con catálogo dinámico y validación de `Service`/`Article`; estilos `.prose`, `.intro`, `.guide-link`.
+- Pruebas (Node 22.22.0, entorno cloud): build 15 páginas; check producción y preview OK (2474 validaciones); `seo.test.mjs` 25/25; capturas con Chromium.
+- Resultado: commit `e713050`. El propietario congeló el PR #2 a las 18:39 UTC para cerrar antes la Fase 1.
+- Siguiente paso: esperar orden del propietario.
+
+## 2026-10-13 — Fase 2: sincronización con main y revisión legal
+
+- Agente: Claude Code.
+- Objetivo: reactivar el PR #2 según el prompt maestro del propietario: sincronizar con `main`, aplicar la revisión legal/factual de su comentario en el PR, probar y documentar. Sin merge.
+- Rama: `seo/plan-crecimiento-organico`. Commit inicial: `e713050`.
+- Trabajo realizado:
+  - Merge de `main` (`6946b7b`, cierre de Fase 1 con PR #1 y PR #3) sin force push. Único conflicto en `docs/SEO_WORKLOG.md`; `SEO_HANDOFF.md` y `SEO_WORKLOG.md` se tomaron íntegros de `main` y la Fase 2 se volvió a añadir encima.
+  - Guía de declaratoria de fábrica: tres vías separadas (con licencia; regularización municipal según Ley 29090, reglamento y TUPA; vía registral de la Ley 27157 modificada por la Ley 30830 solo para edificaciones culminadas hasta el 31/12/2016 según SUNARP). Confirmado en fuentes públicas (El Peruano, Ley 30830; LP Derecho).
+  - Guía de licencia de edificación: modalidades A/B/C/D descritas por tipo de aprobación, sin ejemplos presentados como universales; remisión a Ley 29090, reglamento vigente y TUPA; Ministerio de Cultura «según el caso».
+  - Guía de saneamiento: vías administrativa, notarial, registral o judicial según el caso; autoridad agraria regional para predios rústicos.
+  - Guía de topografía: WGS84/UTM como práctica habitual a confirmar según el trámite.
+  - Servicios: comunidades campesinas (Ley 24657 y modificatorias, autoridad agraria regional, papel técnico/asesor de CONPLANOS); declaratoria (FAQ con el límite del 31/12/2016); puntos geodésicos (la certificación la otorga el IGN); habilitaciones, proyectos y ejecución de obra con formulaciones condicionadas.
+  - `scripts/seo.test.mjs`: 3 pruebas de regresión nuevas (migas de guía sin el índice, guía sin `Article`, `Service` no enlazado al negocio).
+  - Documentación: `SEO_HANDOFF.md`, nueva decisión de redacción legal, este registro.
+- Pruebas (Node 22.22.0, entorno cloud, vía `npm`):
+  - `npm run build`: 15 páginas. `npm run check`: OK producción, 2474 validaciones, 16 documentos.
+  - En copia temporal: `npm run build:preview` y `npm run check:preview`: OK, 2474 validaciones.
+  - `npm test`: 28 de 28.
+  - Capturas con Chromium (servidor local) de la guía de declaratoria en móvil y del servicio de comunidades campesinas en escritorio: maquetación correcta.
+  - No verificado: la preview real de Cloudflare por HTTP. El proxy del entorno cloud rechaza `*.pages.dev` y `conplanos.com`; solo se puede leer el estado del check «Cloudflare Pages» en GitHub.
+- Resultado: PR #2 sincronizado y corregido, en borrador. Producción sin cambios.
+- Siguiente paso: revisión legal final del propietario y validación HTTP de la preview desde un equipo con acceso.

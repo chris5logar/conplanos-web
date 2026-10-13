@@ -101,3 +101,10 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Motivo: las búsquedas informativas sobre licencia, declaratoria de fábrica y saneamiento las ganan hoy blogs y estudios de abogados; la web no tenía contenido para competir ni para demostrar experiencia.
 - Consecuencias: cada guía cita normas solo de forma general y verificable, sin plazos, precios ni cifras no confirmadas, e incluye aviso de que no sustituye la evaluación del caso. Toda guía nueva o modificada requiere revisión técnica y legal del propietario antes del merge. `check.mjs` incorpora las guías al catálogo de URLs, sitemap y redirecciones.
 - Estado: Activa. Implementada en la rama `seo/plan-crecimiento-organico`, pendiente de revisión.
+
+## 2026-10-13 — redacción prudente de contenido legal y normativo
+
+- Decisión: las guías y textos de servicio que citan normas usan formulaciones condicionadas («según el caso», «cuando corresponda», «según el procedimiento aplicable», «según la entidad competente») y remiten a la norma vigente, su reglamento y el TUPA en lugar de resumir supuestos concretos como reglas universales. La vía registral de regularización de la Ley 27157, modificada por la Ley 30830, se presenta siempre con su límite: según SUNARP, edificaciones culminadas hasta el 31/12/2016. CONPLANOS aparece con su papel técnico y de asesoría, nunca ejerciendo funciones de la autoridad.
+- Motivo: revisión del propietario en el PR #2 (2026-10-13) y prompt maestro del proyecto (reglas de contenido).
+- Consecuencias: ninguna guía legal se publica sin revisión final del propietario. Al añadir o cambiar una guía, revisar estas reglas antes del PR.
+- Estado: Activa.

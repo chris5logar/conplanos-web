@@ -38,7 +38,7 @@ Sí. Cuéntanos qué deseas construir y qué información tienes del terreno par
 El alcance se acuerda en la cotización. Identificamos contigo las especialidades y entregables que requiere tu proyecto.
 
 **¿Qué es el certificado de parámetros urbanísticos?**
-Es el documento municipal que indica qué se puede construir en un lote: uso, altura, retiros y área libre, entre otros. Es el punto de partida del diseño.
+Es el documento municipal que indica, entre otros, qué usos se permiten en un lote, la altura y los retiros. Es el punto de partida del diseño.
 
 **¿Diseñan ampliaciones de viviendas existentes?**
 Sí. Evaluamos lo construido, la documentación disponible y las condiciones del lote para definir el alcance de la ampliación o remodelación.
@@ -73,7 +73,7 @@ Podemos revisar tu consulta y la información disponible para determinar si es n
 A partir del proyecto, las condiciones del lugar y las partidas acordadas. Solicita una evaluación para recibir una propuesta para tu caso.
 
 **¿Necesito licencia para empezar la obra?**
-En la mayoría de los casos, sí. Revisamos la situación de tu proyecto y te indicamos si cuenta con lo necesario para iniciar o qué falta preparar.
+Por lo general, sí, salvo los supuestos que la norma exceptúa. Revisamos la situación de tu proyecto y te indicamos si cuenta con lo necesario para iniciar o qué falta preparar.
 
 ## Levantamientos topográficos
 
@@ -198,7 +198,7 @@ Si los tienes, facilitan la revisión. Si no, evaluamos qué información y trab
 Son alcances distintos que se evalúan según el inmueble y el objetivo. La cotización precisa si se incluye una independización y qué documentación requiere.
 
 **¿Puedo declarar una construcción hecha sin licencia?**
-En muchos casos se puede regularizar, pero la vía depende de la fecha de construcción y de la situación del inmueble. Lo determinamos en la evaluación.
+Depende del caso. La vía registral de la Ley 27157, modificada por la Ley 30830, comprende según SUNARP edificaciones culminadas hasta el 31 de diciembre de 2016; para otras situaciones existe la regularización municipal con sus propios requisitos. Lo determinamos en la evaluación.
 
 ## Puntos geodésicos
 

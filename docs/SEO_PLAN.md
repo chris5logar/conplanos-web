@@ -2,6 +2,19 @@
 
 Plan de trabajo priorizado. Redactado por Claude Code el 2026-10-13. Las reglas del proyecto están en `../AGENTS.md`; el estado vivo, en `SEO_HANDOFF.md`; las decisiones, en `SEO_DECISIONS.md`. Este archivo se actualiza cuando cambia una prioridad o se cierra una línea de trabajo.
 
+## 0. Fases
+
+Roadmap acordado con el propietario (prompt maestro, 2026-10-13). Las acciones de los apartados siguientes se agrupan en estas fases; un PR por objetivo, pequeño cuando sea posible.
+
+| Fase | Contenido | Estado |
+| --- | --- | --- |
+| 1 | SEO técnico (canonical, 404, redirecciones, preview) | Cerrada |
+| 2 | Contenido y estructura SEO (acciones 2 a 4): servicios, guías, datos estructurados | En revisión, PR #2 |
+| 3 | PageSpeed / Core Web Vitals | Pendiente |
+| 4 | SEO local / Google Business (acciones 5, 8 a 13 y 16) | Pendiente; cambios sensibles con aprobación |
+| 5 | Datos reales de Search Console y GA4 (acciones 6, 7 y 19) | Pendiente de acceso o exportaciones |
+| 6 | Crecimiento continuo (acciones 14, 15, 17, 18 y 20) | Pendiente |
+
 ## 1. Diagnóstico
 
 | Área | Estado | Comentario |
@@ -40,7 +53,7 @@ Responsable: **C** = Claude u otro agente en el repositorio; **P** = propietario
 
 | # | Acción | Resp. | Impacto | Estado |
 | --- | --- | --- | --- | --- |
-| 1 | Merge del PR #1 y verificación de producción | P, C | Alto | En curso |
+| 1 | Merge del PR #1 y verificación de producción | P, C | Alto | Hecho (Fase 1 cerrada, PR #1 y PR #3) |
 | 2 | Profundizar las 9 páginas de servicio: títulos orientados a la búsqueda, bloque «En qué consiste», preguntas frecuentes adicionales, enlace a la guía | C | Alto | Hecho en la rama `seo/plan-crecimiento-organico` |
 | 3 | Sección `/guias/` con 4 guías iniciales (licencia de edificación, declaratoria de fábrica, saneamiento físico legal, levantamiento topográfico) | C | Alto | Hecho en la misma rama; requiere revisión técnica y legal del propietario antes del merge |
 | 4 | Datos estructurados `Service` en cada servicio, `Article` en guías, `CollectionPage` en el índice | C | Medio | Hecho en la misma rama |
