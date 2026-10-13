@@ -227,3 +227,16 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Resultado (todo correcto): `/guias/` y las 4 guías con 200, `index, follow`, una carga de GA4, canonical = og:url con barra y un H1; guías con `Article` y BreadcrumbList de 3 niveles; la guía de declaratoria incluye «31 de diciembre de 2016»; `/proyectos-construccion/` con `Service` y `alternateName: "CON PLANOS"`; sitemap con 15 URLs; `/guias` y `/guias/declaratoria-de-fabrica` sin barra con un solo 301; 404 correcto.
 - Pendiente menor: `main.js?v=c20b25d30fed` sigue servido por la caché de borde con `max-age=86400` (ver la entrada de la Fase 3).
 - Siguiente paso: el propietario envía de nuevo el sitemap en Search Console y pide la indexación de las guías.
+
+## 2026-10-13 — Fase 5: línea base de Search Console
+
+- Agente: Claude Code. Solo documentación; sin cambios de código, contenido, guías ni producción.
+- Rama: `docs/gsc-baseline-phase5`, desde `main` (`b1fd131`).
+- Fuente: datos de Search Console informados por el propietario el 2026-10-13 (no verificados por un agente, que no tiene acceso a la cuenta de Google).
+- Sitemap: https://conplanos.com/sitemap.xml enviado de nuevo el 2026-10-13; Google lo descargó; 15 URLs, 0 advertencias, 0 errores.
+- Indexación inicial de las guías (inspección de URL): `/guias/`, `/guias/licencia-de-edificacion/`, `/guias/declaratoria-de-fabrica/` y `/guias/saneamiento-fisico-legal/` «URL desconocida para Google»; `/guias/levantamiento-topografico/` «Descubierta: actualmente sin indexar».
+- Rendimiento, últimos 28 días disponibles: 1 clic, 8 impresiones, CTR 12,5 %, posición media 6,125. Por página: portada 4 impresiones, 1 clic, posición 3,25; `/puntos-geodesicos/` 3 impresiones, posición 10; `/proyectos-construccion/` 1 impresión, posición 4; `/titulaciones/` 1 impresión, posición 6. Consulta visible: «planos», 1 impresión, posición 5.
+- GA4: todavía no conectado a GSC Wizard. Acción pendiente del propietario; no es un error técnico de la web.
+- Recomendación: los datos son demasiado pocos para decisiones SEO. No abrir páginas nuevas ni cambiar contenido hasta tener al menos 4 semanas de datos con las guías indexadas.
+- Pruebas (Node 22.22.0), para confirmar que no cambia nada generado: `npm run build` sin cambios en `dist/`, `npm run check` OK (2629 validaciones), `npm test` 31/31.
+- Siguiente paso: nueva exportación de Search Console a partir del 2026-11-10 y comparación con esta línea base.

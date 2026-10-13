@@ -33,8 +33,9 @@ Asignación de páginas por defecto (decisión «asignación de páginas a la pr
 ## Search Console (último estado conocido, informado por el propietario el 2026-10-13, no verificado por un agente)
 
 - Propiedad conplanos.com verificada.
-- Sitemap aceptado: https://conplanos.com/sitemap.xml
-- Última referencia conocida: 10 URLs.
+- Sitemap https://conplanos.com/sitemap.xml enviado de nuevo el 2026-10-13 tras publicar las Fases 1 a 3: Google lo descargó; 15 URLs, 0 advertencias, 0 errores.
+- Estado inicial de las guías (inspección de URL, 2026-10-13): `/guias/`, `/guias/licencia-de-edificacion/`, `/guias/declaratoria-de-fabrica/` y `/guias/saneamiento-fisico-legal/` «URL desconocida para Google»; `/guias/levantamiento-topografico/` «Descubierta: actualmente sin indexar». Es lo esperado en páginas recién publicadas.
+- Línea base de rendimiento: ver «Fase 5».
 
 ## GA4
 
@@ -42,6 +43,7 @@ Asignación de páginas por defecto (decisión «asignación de páginas a la pr
 - Eventos funcionando: `click_whatsapp`, `click_phone`, `quote_request`.
 - `quote_request` y `click_whatsapp` pueden proceder del mismo clic (los botones de cotización abren WhatsApp). No son automáticamente dos leads: no sumarlos.
 - Sin PII en los eventos.
+- GA4 todavía no está conectado a GSC Wizard. Es una acción pendiente del propietario, no un error técnico de la web.
 
 ## Google Business Profile (último estado conocido, informado por el propietario el 2026-10-13, no verificado por un agente)
 
@@ -115,6 +117,13 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - Producción validada por HTTP el 2026-10-13 (ver SEO_WORKLOG): todo correcto salvo `main.js?v=c20b25d30fed`, que Cloudflare sigue sirviendo desde una copia de borde anterior al merge con `max-age=86400`. Se corrige solo al caducar (antes del 2026-10-14 ~17:00 UTC) o purgando esa URL en Cloudflare (acción del propietario). Sin efecto en SEO.
 - Pendiente: medir con PageSpeed Insights / Search Console (Core Web Vitals) cuando haya datos.
 
+## Fase 5 datos y medición: LÍNEA BASE REGISTRADA
+
+- Search Console, últimos 28 días disponibles a 2026-10-13: 1 clic, 8 impresiones, CTR 12,5 %, posición media 6,1.
+- Páginas con impresiones: portada (4 impresiones, 1 clic, posición media 3,25); `/puntos-geodesicos/` (3 impresiones, posición 10); `/proyectos-construccion/` (1, posición 4); `/titulaciones/` (1, posición 6). Consulta visible: «planos» (1 impresión, posición 5).
+- Volumen demasiado pequeño para decidir: no abrir nuevas páginas SEO ni cambiar títulos o contenido por estos datos. Revisar de nuevo con al menos 4 semanas de datos tras la indexación de las guías.
+- Pendiente del propietario: conectar GA4 en GSC Wizard; marcar `click_whatsapp` y `click_phone` como eventos clave.
+
 ## Observaciones menores
 
 - `dist/robots.txt` versionado termina con una línea en blanco extra respecto a lo que genera el build. Sin efecto: Cloudflare regenera el archivo al compilar.
@@ -125,4 +134,4 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 
 ## Próximo paso
 
-Fases 1 a 3 en producción y paquete de la Fase 4 entregado. Acciones del propietario: enviar de nuevo el sitemap en Search Console (15 URLs) y pedir la indexación de `/guias/` y de las 4 guías; aplicar en Google Business las categorías secundarias y empezar a pedir reseñas (`docs/SEO_LOCAL_GBP.md`); exportar CSV de Search Console y GA4 para la Fase 5. Opcional: purgar en Cloudflare `https://conplanos.com/assets/main.js?v=c20b25d30fed`. Ningún agente hace merge ni toca `main` sin aprobación expresa.
+Esperar datos: a partir del 2026-11-10 (4 semanas), el propietario exporta Search Console (consultas, páginas, indexación de las 5 URLs de guías) y, si ya está conectado, GA4; con eso un agente compara contra la línea base de la Fase 5 y propone ajustes. Mientras tanto, no crear páginas SEO nuevas. Ningún agente hace merge ni toca `main` sin aprobación expresa.
