@@ -219,3 +219,11 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Pruebas (Node 22.22.0): `npm run build` 15 páginas; `npm run check` OK (2599 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 30/30.
 - Actualización: segunda sincronización con `main` (`e650035`, PR #6 con `alternateName`); pruebas otra vez en verde (31/31).
 - Siguiente paso: revisión legal final del propietario y su merge.
+
+## 2026-10-13 — Fase 2: merge del PR #2 y validación de producción
+
+- Agente: Claude Code (curl de solo lectura desde el equipo del propietario).
+- Contexto: el propietario publicó su revisión legal final en el PR #2 (límite del 31/12/2016 de la vía Ley 27157/30830 según SUNARP; licencia remitida a Ley 29090, reglamento y TUPA; comunidades con Ley 24657 y autoridad agraria regional; condicionantes en WGS84/UTM, patrimonio, IGN y requisitos municipales) y lo mergeó en `main` (`2414e78`).
+- Resultado (todo correcto): `/guias/` y las 4 guías con 200, `index, follow`, una carga de GA4, canonical = og:url con barra y un H1; guías con `Article` y BreadcrumbList de 3 niveles; la guía de declaratoria incluye «31 de diciembre de 2016»; `/proyectos-construccion/` con `Service` y `alternateName: "CON PLANOS"`; sitemap con 15 URLs; `/guias` y `/guias/declaratoria-de-fabrica` sin barra con un solo 301; 404 correcto.
+- Pendiente menor: `main.js?v=c20b25d30fed` sigue servido por la caché de borde con `max-age=86400` (ver la entrada de la Fase 3).
+- Siguiente paso: el propietario envía de nuevo el sitemap en Search Console y pide la indexación de las guías.
