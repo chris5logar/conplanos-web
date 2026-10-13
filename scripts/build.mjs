@@ -18,6 +18,11 @@ const readJson = file => JSON.parse(fs.readFileSync(path.join(root, 'content', f
 
 const contacts = readJson('contacts.json');
 const services = readJson('services.json');
+const guides = readJson('guides.json');
+const guidePath = g => publicPath(`guias/${g.slug}`);
+const guideUrl = g => publicUrl(`guias/${g.slug}`);
+const guideBySlug = slug => guides.find(g => g.slug === slug) || (() => { throw new Error(`Guía inexistente: ${slug}`); })();
+for (const g of guides) if (!services.some(s => s.slug === g.service)) throw new Error(`Servicio de guía inexistente: ${g.slug}: ${g.service}`);
 
 const formatPhone = phone => {
   const m = /^\+51(\d{3})(\d{3})(\d{3})$/.exec(phone);
@@ -69,7 +74,7 @@ const serviceImage = s => images[s.image].generated
     ? { alt: 'Técnico de CONPLANOS midiendo con equipo GNSS en un terreno', caption: 'Medición GNSS en campo · fotografía de CONPLANOS' }
     : { alt: 'Personal de CONPLANOS durante una visita técnica a un predio rural', caption: 'Visita técnica a un predio rural · fotografía de CONPLANOS' };
 
-function head(title, description, route = '', extraSchema = [], { notFound = false } = {}) {
+function head(title, description, route = '', extraSchema = [], { notFound = false, ogType = 'website' } = {}) {
   const url = publicUrl(route);
   const robots = preview ? 'noindex, nofollow' : notFound ? 'noindex, follow' : 'index, follow';
   const business = {
@@ -85,15 +90,15 @@ function head(title, description, route = '', extraSchema = [], { notFound = fal
   const schemas = (notFound ? [] : [business, ...extraSchema]).map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('');
   const measurementId = 'G-7DCRJN061J';
   const ga = preview ? '' : `<script async src="https://www.googletagmanager.com/gtag/js?id=${measurementId}"></script><script>window.dataLayer=window.dataLayer||[];window.gtag=function gtag(){window.dataLayer.push(arguments);};gtag('js',new Date());gtag('config','${measurementId}');</script>`;
-  return `<!doctype html><html lang="es-PE"><head>${ga}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="${robots}"><meta name="theme-color" content="#0B0B0C">${notFound ? '' : `<link rel="canonical" href="${url}">`}<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg"><meta property="og:type" content="website"><meta property="og:locale" content="es_PE"><meta property="og:site_name" content="CONPLANOS"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}">${notFound ? '' : `<meta property="og:url" content="${url}">`}<meta property="og:image" content="${origin}/assets/brand/conplanos-social.webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="CONPLANOS. Registra y construye. Abogados, arquitectos e ingenieros."><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/assets/styles.css?v=${stylesVersion}"><script>document.documentElement.classList.add('js')</script><script src="/assets/main.js?v=${mainVersion}" defer></script>${schemas}</head><body>`;
+  return `<!doctype html><html lang="es-PE"><head>${ga}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="${robots}"><meta name="theme-color" content="#0B0B0C">${notFound ? '' : `<link rel="canonical" href="${url}">`}<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg"><meta property="og:type" content="${ogType}"><meta property="og:locale" content="es_PE"><meta property="og:site_name" content="CONPLANOS"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}">${notFound ? '' : `<meta property="og:url" content="${url}">`}<meta property="og:image" content="${origin}/assets/brand/conplanos-social.webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="CONPLANOS. Registra y construye. Abogados, arquitectos e ingenieros."><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/assets/styles.css?v=${stylesVersion}"><script>document.documentElement.classList.add('js')</script><script src="/assets/main.js?v=${mainVersion}" defer></script>${schemas}</head><body>`;
 }
 
 // The header and footer show the logo at about 180 px wide; 360 and 600 px files cover 2x and 3x screens.
 const logo = (extra = '') => `<img src="/assets/brand/conplanos-logo-360.webp" srcset="/assets/brand/conplanos-logo-360.webp 360w, /assets/brand/conplanos-logo-600.webp 600w, /assets/brand/conplanos-logo.webp 1100w" sizes="200px" width="1100" height="128" alt="CONPLANOS"${extra}>`;
 
-const header = `<a class="skip" href="#contenido">Saltar al contenido</a><header class="header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="CONPLANOS Registra y construye, inicio">${logo()}<span>REGISTRA Y CONSTRUYE</span></a><button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false">Menú</button><nav id="navigation" aria-label="Navegación principal"><a href="/#servicios">Servicios</a><a href="/#trabajos">Trabajo en campo</a><a href="/#equipo">Equipo</a><a href="/#contacto">Contacto</a></nav><a class="button primary header-cta" ${waAttrs} data-lead="quote">Cotizar por WhatsApp</a></div></header>`;
+const header = `<a class="skip" href="#contenido">Saltar al contenido</a><header class="header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="CONPLANOS Registra y construye, inicio">${logo()}<span>REGISTRA Y CONSTRUYE</span></a><button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false">Menú</button><nav id="navigation" aria-label="Navegación principal"><a href="/#servicios">Servicios</a><a href="/#trabajos">Trabajo en campo</a><a href="/#equipo">Equipo</a><a href="/guias/">Guías</a><a href="/#contacto">Contacto</a></nav><a class="button primary header-cta" ${waAttrs} data-lead="quote">Cotizar por WhatsApp</a></div></header>`;
 
-const footer = `<footer class="site-footer"><div class="wrap footer-grid"><div class="footer-brand"><a href="/" aria-label="CONPLANOS, inicio">${logo(' loading="lazy" decoding="async"')}</a><p class="footer-tagline">REGISTRA Y CONSTRUYE</p><p>Abogados · Arquitectos · Ingenieros</p><p>${address}</p></div><div><p class="footer-title">Servicios</p><ul class="footer-list">${services.map(s => `<li><a href="${publicPath(s.slug)}">${esc(s.name)}</a></li>`).join('')}</ul></div><div><p class="footer-title">Contacto</p><ul class="footer-list">${team.map(c => `<li><a href="tel:${c.phone}">${c.display} · ${esc(c.name)}</a></li>`).join('')}<li><a ${waAttrs}>WhatsApp · ${esc(primary.name)}</a></li><li><a href="${maps}" target="_blank" rel="noopener noreferrer">Ver ubicación en Google Maps</a></li></ul></div><div><p class="footer-title">Navegación</p><ul class="footer-list"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/#trabajos">Trabajo en campo</a></li><li><a href="/#equipo">Equipo</a></li><li><a href="/#contacto">Contacto</a></li></ul></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} CONPLANOS</span><span>Construimos confianza, aseguramos tu patrimonio.</span></div></footer><a class="wa-float" ${waAttrs} aria-label="Consultar por WhatsApp al ${esc(primary.name)}"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M27 15.5A11.5 11.5 0 0 1 10 25.7L4 28l2-6A11.5 11.5 0 1 1 27 15.5Z"/><path fill="currentColor" d="M11 9c-3 2-1 7 3 10 4 3 7 3 9 0l-4-3-2 2c-2-1-4-3-5-5l2-1-3-3Z"/></svg><span>WhatsApp</span></a></body></html>`;
+const footer = `<footer class="site-footer"><div class="wrap footer-grid"><div class="footer-brand"><a href="/" aria-label="CONPLANOS, inicio">${logo(' loading="lazy" decoding="async"')}</a><p class="footer-tagline">REGISTRA Y CONSTRUYE</p><p>Abogados · Arquitectos · Ingenieros</p><p>${address}</p></div><div><p class="footer-title">Servicios</p><ul class="footer-list">${services.map(s => `<li><a href="${publicPath(s.slug)}">${esc(s.name)}</a></li>`).join('')}</ul></div><div><p class="footer-title">Contacto</p><ul class="footer-list">${team.map(c => `<li><a href="tel:${c.phone}">${c.display} · ${esc(c.name)}</a></li>`).join('')}<li><a ${waAttrs}>WhatsApp · ${esc(primary.name)}</a></li><li><a href="${maps}" target="_blank" rel="noopener noreferrer">Ver ubicación en Google Maps</a></li></ul></div><div><p class="footer-title">Navegación</p><ul class="footer-list"><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li><a href="/#trabajos">Trabajo en campo</a></li><li><a href="/#equipo">Equipo</a></li><li><a href="/guias/">Guías</a></li><li><a href="/#contacto">Contacto</a></li></ul></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} CONPLANOS</span><span>Construimos confianza, aseguramos tu patrimonio.</span></div></footer><a class="wa-float" ${waAttrs} aria-label="Consultar por WhatsApp al ${esc(primary.name)}"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M27 15.5A11.5 11.5 0 0 1 10 25.7L4 28l2-6A11.5 11.5 0 1 1 27 15.5Z"/><path fill="currentColor" d="M11 9c-3 2-1 7 3 10 4 3 7 3 9 0l-4-3-2 2c-2-1-4-3-5-5l2-1-3-3Z"/></svg><span>WhatsApp</span></a></body></html>`;
 
 const roleOf = c => c === primary ? 'Contacto principal' : 'Contacto';
 
@@ -133,23 +138,69 @@ function homepage() {
     + steps()
     + `<section class="section band" aria-labelledby="obras-titulo"><div class="wrap split"><div><p class="label">Proyectos y obras</p><h2 id="obras-titulo">Del proyecto a la obra, con una misma coordinación</h2><p class="lead">Diseñamos el proyecto, coordinamos sus especialidades y planificamos la ejecución con presupuesto por partidas y seguimiento de avances.</p><ul class="link-list"><li><a href="${publicPath('proyectos-construccion')}">Proyectos de construcción</a></li><li><a href="${publicPath('ejecucion-obra')}">Ejecución de obra</a></li><li><a href="${publicPath('habilitaciones-urbanas')}">Habilitaciones urbanas</a></li></ul></div><figure class="band-figure">${photo('construccion-conplanos', 'Imagen referencial de una estructura de concreto en construcción con casco y planos', { sizes: '(max-width: 860px) 100vw, 50vw' })}<figcaption>Imagen referencial</figcaption></figure></div></section>`
     + `<section class="section team" id="equipo" aria-labelledby="equipo-titulo"><div class="wrap"><div class="section-head"><div><p class="label">Equipo</p><h2 id="equipo-titulo">Abogados, arquitectos e ingenieros</h2></div><p>Coordinamos las especialidades que requiere cada encargo, desde la medición del terreno hasta la documentación final. Comunícate directamente con nuestro equipo.</p></div><ul class="team-grid">${team.map(c => `<li class="person${c === primary ? ' is-primary' : ''}"><span class="role">${roleOf(c)}</span><h3>${esc(c.name)}</h3>${telLink(c, 'phone')}${c === primary ? `<p>Primer contacto para consultas, cotizaciones y coordinación de visitas.</p><a class="text-link" ${waAttrs}>Escribir por WhatsApp</a>` : `<a class="text-link" href="tel:${c.phone}" aria-label="Llamar a ${esc(c.name)}">Llamar</a>`}</li>`).join('')}</ul></div></section>`
+    + guidesTeaser('Guías', 'Antes de empezar tu trámite', 'Explicamos en lenguaje claro los procedimientos con los que más nos consultan.')
     + contact() + `</main>` + footer;
 }
+
+function guideCards(list) {
+  return `<ul class="related-list">${list.map(g => `<li><a href="${guidePath(g)}"><span>Guía</span><strong>${esc(g.title)}</strong><p>${esc(g.summary)}</p></a></li>`).join('')}</ul>`;
+}
+
+function guidesTeaser(label, title, text, list = guides) {
+  return `<section class="section related" aria-labelledby="guias-titulo"><div class="wrap"><div class="section-head"><div><p class="label">${label}</p><h2 id="guias-titulo">${title}</h2></div><p>${text}</p></div>${guideCards(list)}</div></section>`;
+}
+
+const breadcrumbList = items => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })) });
 
 function servicePage(s) {
   const area = areaOf(s);
   const img = serviceImage(s);
-  const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Inicio', item: publicUrl() },
-    { '@type': 'ListItem', position: 2, name: s.name, item: publicUrl(s.slug) }
-  ] };
-  return head(`${s.name} en Cusco | CONPLANOS`, s.description, s.slug, [breadcrumb]) + header + `<main id="contenido">`
+  const breadcrumb = breadcrumbList([['Inicio', publicUrl()], [s.name, publicUrl(s.slug)]]);
+  const service = {
+    '@context': 'https://schema.org', '@type': 'Service', '@id': publicUrl(s.slug) + '#service',
+    name: s.name, serviceType: s.name, description: s.description, url: publicUrl(s.slug),
+    provider: { '@id': origin + '/#business' },
+    areaServed: [{ '@type': 'AdministrativeArea', name: 'Cusco' }, { '@type': 'Country', name: 'Perú' }],
+    availableChannel: { '@type': 'ServiceChannel', serviceUrl: publicUrl(s.slug), servicePhone: { '@type': 'ContactPoint', telephone: primary.phone, contactType: 'customer service', availableLanguage: 'es' } }
+  };
+  const guide = s.guide ? guideBySlug(s.guide) : null;
+  return head(s.seoTitle || `${s.name} en Cusco | CONPLANOS`, s.description, s.slug, [breadcrumb, service]) + header + `<main id="contenido">`
     + `<section class="hero page-hero"><div class="wrap hero-inner"><div class="hero-copy"><nav class="breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><a href="/#servicios">Servicios</a></li><li aria-current="page">${esc(s.name)}</li></ol></nav><p class="label">${area.name}</p><h1>${esc(s.name)}</h1><p class="service-headline">${esc(s.headline)}</p><p class="lead">${esc(s.description)}</p><div class="actions">${button('Consultar por WhatsApp')}<a class="button secondary" href="tel:${primary.phone}">Llamar al ${primary.display}</a></div><p class="small-note">${esc(primary.name)} · ${primary.display}</p></div><figure class="hero-figure">${photo(s.image, img.alt, { sizes: '(max-width: 860px) 100vw, 46vw', eager: true })}<figcaption>${img.caption}</figcaption></figure></div></section>`
+    + (s.intro?.length ? `<section class="section intro" aria-labelledby="intro-titulo"><div class="wrap prose"><p class="label">En qué consiste</p><h2 id="intro-titulo">${esc(s.name)} con CONPLANOS</h2>${s.intro.map(t => `<p>${esc(t)}</p>`).join('')}${guide ? `<p class="guide-link">Para entender el procedimiento paso a paso, lee nuestra guía: <a href="${guidePath(guide)}">${esc(guide.title)}</a>.</p>` : ''}</div></section>` : '')
     + `<section class="section"><div class="wrap detail"><div><p class="label">Qué resuelve</p><h2>¿Cuándo necesitas este servicio?</h2><ul class="checklist">${s.solves.map(t => `<li><p>${esc(t)}</p></li>`).join('')}</ul></div><div><p class="label">Qué puede incluir</p><h2>Alcance del servicio</h2><ul class="checklist numbered">${s.scope.map((t, i) => `<li><span>0${i + 1}</span><p>${esc(t)}</p></li>`).join('')}</ul><p class="small-note">El alcance, los entregables y las condiciones se precisan en la cotización. Los trámites y aprobaciones dependen de las entidades competentes.</p></div></div></section>`
     + `<section class="start" aria-labelledby="empezar-titulo"><div class="wrap start-box"><div><p class="label">Para empezar</p><h2 id="empezar-titulo">Ten a mano</h2><p>Si aún no tienes toda la información, cuéntanos qué tienes disponible.</p></div><ul class="bullets">${s.requirements.map(r => `<li>${esc(r)}</li>`).join('')}</ul><div>${button('Consultar mi caso')}</div></div></section>`
     + steps()
     + `<section class="section" aria-labelledby="faq-titulo"><div class="wrap faq"><p class="label">Preguntas frecuentes</p><h2 id="faq-titulo">Antes de empezar</h2>${s.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></section>`
     + `<section class="section related" aria-labelledby="relacionados-titulo"><div class="wrap"><p class="label">Servicios relacionados</p><h2 id="relacionados-titulo">También puede interesarte</h2><ul class="related-list">${s.related.map(bySlug).map(x => `<li><a href="${publicPath(x.slug)}"><span>${areaOf(x).name}</span><strong>${esc(x.name)}</strong><p>${esc(x.summary)}</p></a></li>`).join('')}</ul></div></section>`
+    + contact() + `</main>` + footer;
+}
+
+function guidesHub() {
+  const breadcrumb = breadcrumbList([['Inicio', publicUrl()], ['Guías', publicUrl('guias')]]);
+  const collection = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Guías de CONPLANOS', url: publicUrl('guias'), publisher: { '@id': origin + '/#business' }, hasPart: guides.map(g => ({ '@type': 'Article', headline: g.title, url: guideUrl(g) })) };
+  return head('Guías sobre licencias, saneamiento y topografía | CONPLANOS', 'Guías prácticas de CONPLANOS sobre licencia de edificación, declaratoria de fábrica, saneamiento físico legal de predios y levantamientos topográficos.', 'guias', [breadcrumb, collection]) + header + `<main id="contenido">`
+    + `<section class="hero page-hero"><div class="wrap"><div class="hero-copy"><nav class="breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li aria-current="page">Guías</li></ol></nav><p class="label">Guías</p><h1>Guías para construir y formalizar tu predio</h1><p class="lead">Respuestas claras a las preguntas que más nos hacen sobre licencias, declaratoria de fábrica, saneamiento y topografía. Cada caso es distinto: si tienes dudas sobre el tuyo, consúltanos.</p></div></div></section>`
+    + `<section class="section"><div class="wrap">${guideCards(guides)}</div></section>`
+    + contact() + `</main>` + footer;
+}
+
+function guidePage(g) {
+  const s = bySlug(g.service);
+  const url = guideUrl(g);
+  const breadcrumb = breadcrumbList([['Inicio', publicUrl()], ['Guías', publicUrl('guias')], [g.title, url]]);
+  const article = {
+    '@context': 'https://schema.org', '@type': 'Article', '@id': url + '#article', headline: g.title, description: g.description, url,
+    mainEntityOfPage: url, inLanguage: 'es-PE', datePublished: g.updated, dateModified: g.updated,
+    author: { '@id': origin + '/#business' }, publisher: { '@id': origin + '/#business' },
+    image: origin + '/assets/brand/conplanos-social.webp', about: { '@id': publicUrl(s.slug) + '#service' }
+  };
+  const others = guides.filter(x => x !== g);
+  const section = sec => `<h2>${esc(sec.heading)}</h2>${(sec.paragraphs || []).map(t => `<p>${esc(t)}</p>`).join('')}${sec.list ? `<ul class="bullets">${sec.list.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}${sec.after ? `<p>${esc(sec.after)}</p>` : ''}`;
+  return head(g.seoTitle, g.description, `guias/${g.slug}`, [breadcrumb, article], { ogType: 'article' }) + header + `<main id="contenido">`
+    + `<section class="hero page-hero"><div class="wrap"><div class="hero-copy"><nav class="breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><a href="/guias/">Guías</a></li><li aria-current="page">${esc(g.title)}</li></ol></nav><p class="label">Guía</p><h1>${esc(g.title)}</h1><p class="lead">${esc(g.description)}</p><p class="small-note">Actualizado el <time datetime="${g.updated}">${new Date(g.updated + 'T12:00:00Z').toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time> · Equipo técnico y legal de CONPLANOS</p></div></div></section>`
+    + `<article class="section"><div class="wrap prose">${g.sections.map(section).join('')}<p class="small-note">Esta guía es informativa y no reemplaza la evaluación de tu caso. Los requisitos y plazos los fijan las entidades competentes y pueden cambiar.</p></div></article>`
+    + `<section class="start" aria-labelledby="empezar-titulo"><div class="wrap start-box"><div><p class="label">Servicio relacionado</p><h2 id="empezar-titulo">${esc(s.name)}</h2><p>${esc(s.summary)}</p></div><p><a class="text-link" href="${publicPath(s.slug)}">Ver el servicio de ${esc(s.name.toLowerCase())}</a></p><div>${button('Consultar mi caso')}</div></div></section>`
+    + guidesTeaser('Más guías', 'Sigue leyendo', 'Otros procedimientos que suelen ir de la mano.', others)
     + contact() + `</main>` + footer;
 }
 
@@ -163,17 +214,26 @@ if (!process.argv.includes('--home-only')) {
     fs.mkdirSync(path.join(dist, s.slug), { recursive: true });
     fs.writeFileSync(path.join(dist, s.slug, 'index.html'), servicePage(s));
   }
+  fs.mkdirSync(path.join(dist, 'guias'), { recursive: true });
+  fs.writeFileSync(path.join(dist, 'guias', 'index.html'), guidesHub());
+  for (const g of guides) {
+    fs.mkdirSync(path.join(dist, 'guias', g.slug), { recursive: true });
+    fs.writeFileSync(path.join(dist, 'guias', g.slug, 'index.html'), guidePage(g));
+  }
   fs.writeFileSync(path.join(dist, '404.html'), notFound());
 }
-const sitemapUrls = [publicUrl(), ...services.map(s => publicUrl(s.slug))];
+const sitemapUrls = [publicUrl(), ...services.map(s => publicUrl(s.slug)), publicUrl('guias'), ...guides.map(guideUrl)];
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(loc => `<url><loc>${loc}</loc></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(dist, 'robots.txt'), preview ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
 fs.writeFileSync(path.join(dist, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  X-Frame-Options: SAMEORIGIN\n${preview ? '  X-Robots-Tag: noindex, nofollow\n' : ''}/sitemap.xml\n  Content-Type: application/xml; charset=utf-8\n/assets/main.js\n  Cache-Control: public, max-age=31536000, immutable\n/assets/styles.css\n  Cache-Control: public, max-age=31536000, immutable\n/assets/images/*\n  Cache-Control: public, max-age=604800\n/assets/brand/*\n  Cache-Control: public, max-age=604800\n`);
 fs.writeFileSync(path.join(dist, '_redirects'), `/index.html ${publicPath()} 301\n` + services.flatMap(s => [
   `/${s.slug} ${publicPath(s.slug)} 301`,
   `/${s.slug}/index.html ${publicPath(s.slug)} 301`
-]).join('\n') + '\n');
+]).concat(['guias', ...guides.map(g => `guias/${g.slug}`)].flatMap(r => [
+  `/${r} ${publicPath(r)} 301`,
+  `/${r}/index.html ${publicPath(r)} 301`
+])).join('\n') + '\n');
 
 const homeText = homepage().split('<main id="contenido">')[1].split('</main>')[0].replace(/<\/(h[1-6]|p|li|section|article|figcaption)>/g, '\n\n').replace(/<[^>]+>/g, ' ').replace(/ +/g, ' ').replace(/\n /g, '\n').replace(/\n{3,}/g, '\n\n').trim();
 fs.writeFileSync(path.join(root, 'docs', 'TEXTOS.md'), '# Textos de la web\n\nArchivo generado por scripts/build.mjs. Los textos de cada servicio se editan en content/services.json y los contactos en content/contacts.json; la portada está en el generador.\n\n## Inicio\n\n' + hero.title + '\n\n' + hero.lead + '\n\n' + services.map(s => `## ${s.name}\n\n${s.headline}\n\n${s.description}\n\n### Qué resuelve\n${s.solves.map(x => '- ' + x).join('\n')}\n\n### Alcance\n${s.scope.map(x => '- ' + x).join('\n')}\n\n### Información inicial\n${s.requirements.map(x => '- ' + x).join('\n')}\n\n### Preguntas\n${s.faq.map(([q, a]) => `**${q}**\n${a}`).join('\n\n')}`).join('\n\n') + '\n\n## Texto completo de portada\n\n' + homeText + '\n');
-console.log(`Generadas ${process.argv.includes('--home-only') ? 1 : 10} páginas. Origen: ${origin}. Modo: ${preview ? 'preview (noindex)' : 'producción'}.`);
+console.log(`Generadas ${process.argv.includes('--home-only') ? 1 : sitemapUrls.length} páginas. Origen: ${origin}. Modo: ${preview ? 'preview (noindex)' : 'producción'}.`);

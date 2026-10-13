@@ -163,3 +163,59 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Correcto: `/` y `/levantamientos-topograficos/` con 200, `index, follow`, una sola carga de GA4 y canonical con barra; HTML referencia `styles.css?v=629294dcc573` y `main.js?v=c20b25d30fed`; `styles.css?v=` con `public, max-age=31536000, immutable`; logo 360 e imagen 640 con `public, max-age=604800`; HTML `max-age=0, must-revalidate`; sitemap 10 URLs; robots permite rastreo; 404 correcto; `www` y `http://` con 301 a `https://conplanos.com/`.
 - Incidencia menor: `main.js?v=c20b25d30fed` llega con `public, max-age=86400` desde la caché de borde de Cloudflare (HIT, Age ~20000 s). El hash no cambió con el PR #4 (el JS es el mismo), así que la URL ya estaba en caché con la cabecera anterior. Pedida al origen con otro parámetro devuelve `immutable`: la regla funciona. Se corrige sola al caducar o purgando esa URL. Las URLs sin versión `/assets/styles.css` y `/assets/main.js` también devuelven `max-age=86400` desde caché; el HTML no las usa.
 - Siguiente paso: opcionalmente purgar en Cloudflare la URL de `main.js`; volver a comprobarla después de la caducidad.
+
+## 2026-10-13 — Fase 2: plan SEO, contenido de servicios, guías y datos estructurados
+
+- Agente: Claude Code (hilo del proyecto dedicado al SEO).
+- Objetivo: plan SEO priorizado y primera ejecución de contenido y datos estructurados.
+- Rama: `seo/plan-crecimiento-organico`, creada desde `fix/seo-url-canonical-404` (`f1b7906`) antes del merge del PR #1. PR #2 en borrador.
+- Trabajo realizado: `docs/SEO_PLAN.md`; `seoTitle`, `intro`, FAQs extra y `guide` en `content/services.json`; `content/guides.json` con 4 guías; en `scripts/build.mjs`, bloque «En qué consiste», JSON-LD `Service`, índice `/guias/` (`CollectionPage`), guías (`Article`, migas de tres niveles), sección de guías en portada, enlace «Guías» en menú y pie, sitemap y `_redirects` ampliados; `scripts/check.mjs` con catálogo dinámico y validación de `Service`/`Article`; estilos `.prose`, `.intro`, `.guide-link`.
+- Pruebas (Node 22.22.0, entorno cloud): build 15 páginas; check producción y preview OK (2474 validaciones); `seo.test.mjs` 25/25; capturas con Chromium.
+- Resultado: commit `e713050`. El propietario congeló el PR #2 a las 18:39 UTC para cerrar antes la Fase 1.
+- Siguiente paso: esperar orden del propietario.
+
+## 2026-10-13 — Fase 2: sincronización con main y revisión legal
+
+- Agente: Claude Code.
+- Objetivo: reactivar el PR #2 según el prompt maestro del propietario: sincronizar con `main`, aplicar la revisión legal/factual de su comentario en el PR, probar y documentar. Sin merge.
+- Rama: `seo/plan-crecimiento-organico`. Commit inicial: `e713050`.
+- Trabajo realizado:
+  - Merge de `main` (`6946b7b`, cierre de Fase 1 con PR #1 y PR #3) sin force push. Único conflicto en `docs/SEO_WORKLOG.md`; `SEO_HANDOFF.md` y `SEO_WORKLOG.md` se tomaron íntegros de `main` y la Fase 2 se volvió a añadir encima.
+  - Guía de declaratoria de fábrica: tres vías separadas (con licencia; regularización municipal según Ley 29090, reglamento y TUPA; vía registral de la Ley 27157 modificada por la Ley 30830 solo para edificaciones culminadas hasta el 31/12/2016 según SUNARP). Confirmado en fuentes públicas (El Peruano, Ley 30830; LP Derecho).
+  - Guía de licencia de edificación: modalidades A/B/C/D descritas por tipo de aprobación, sin ejemplos presentados como universales; remisión a Ley 29090, reglamento vigente y TUPA; Ministerio de Cultura «según el caso».
+  - Guía de saneamiento: vías administrativa, notarial, registral o judicial según el caso; autoridad agraria regional para predios rústicos.
+  - Guía de topografía: WGS84/UTM como práctica habitual a confirmar según el trámite.
+  - Servicios: comunidades campesinas (Ley 24657 y modificatorias, autoridad agraria regional, papel técnico/asesor de CONPLANOS); declaratoria (FAQ con el límite del 31/12/2016); puntos geodésicos (la certificación la otorga el IGN); habilitaciones, proyectos y ejecución de obra con formulaciones condicionadas.
+  - `scripts/seo.test.mjs`: 3 pruebas de regresión nuevas (migas de guía sin el índice, guía sin `Article`, `Service` no enlazado al negocio).
+  - Documentación: `SEO_HANDOFF.md`, nueva decisión de redacción legal, este registro.
+- Pruebas (Node 22.22.0, entorno cloud, vía `npm`):
+  - `npm run build`: 15 páginas. `npm run check`: OK producción, 2474 validaciones, 16 documentos.
+  - En copia temporal: `npm run build:preview` y `npm run check:preview`: OK, 2474 validaciones.
+  - `npm test`: 28 de 28.
+  - Capturas con Chromium (servidor local) de la guía de declaratoria en móvil y del servicio de comunidades campesinas en escritorio: maquetación correcta.
+  - No verificado: la preview real de Cloudflare por HTTP. El proxy del entorno cloud rechaza `*.pages.dev` y `conplanos.com`; solo se puede leer el estado del check «Cloudflare Pages» en GitHub.
+- Resultado: PR #2 sincronizado y corregido, en borrador. Producción sin cambios.
+- Siguiente paso: revisión legal final del propietario y validación HTTP de la preview desde un equipo con acceso.
+
+## 2026-10-13 — Fase 2: validación HTTP de la preview del PR #2
+
+- Agente: Claude Code, mediante una sesión de solo lectura en el equipo del propietario (el entorno cloud no alcanza `*.pages.dev`).
+- Objetivo: validar por HTTP la preview de `df04c37`, https://63a1702c.conplanos-web.pages.dev. Solo GET con `curl.exe`, sin seguir redirecciones; sin cambios en archivos ni Git.
+- Resultados (todo correcto):
+  - 15 URLs (portada, `/guias/`, 4 guías, 9 servicios): 200, `noindex, nofollow`, sin GA4 ni googletagmanager, canonical = og:url = URL del despliegue + ruta con barra, un H1.
+  - `/guias`, `/guias/index.html`, `/guias/declaratoria-de-fabrica` y su `/index.html`: 301 directo a la URL final con barra.
+  - `sitemap.xml`: 200, exactamente 15 URLs con barra. `robots.txt`: `Disallow: /`. Cabecera `x-robots-tag: noindex, nofollow` en páginas, sitemap, robots y 404.
+  - `/no-existe-xyz/`: 404 con `noindex, nofollow`.
+  - JSON-LD: `Service` en `/proyectos-construccion/` con provider `#business`; `Article` y BreadcrumbList de 3 niveles en la guía de declaratoria; el texto incluye «31 de diciembre de 2016».
+  - Observación esperada: en el alias de rama, el canonical apunta a la URL del despliegue (`CF_PAGES_URL`), igual que en la Fase 1.
+- Resultado: preview del PR #2 validada. Producción sin cambios.
+- Siguiente paso: revisión legal final del propietario y su decisión sobre el merge.
+
+## 2026-10-13 — Fase 2: sincronización del PR #2 con main tras el PR #4
+
+- Agente: Claude Code.
+- Objetivo: mantener el PR #2 al día con `main` (`217672f`, Fase 3 mergeada). Sin cambios de contenido ni de guías.
+- Conflictos resueltos: `head()` conserva `og:type` variable (guías como `article`) y la hoja de estilos versionada; la cabecera conserva el enlace «Guías» y el nuevo nombre accesible de la marca; pruebas y documentación de ambas ramas se suman.
+- Pruebas (Node 22.22.0): `npm run build` 15 páginas; `npm run check` OK (2599 validaciones); `npm run build:preview` y `npm run check:preview` OK en copia temporal; `npm test` 30/30.
+- Actualización: segunda sincronización con `main` (`e650035`, PR #6 con `alternateName`); pruebas otra vez en verde (31/31).
+- Siguiente paso: revisión legal final del propietario y su merge.

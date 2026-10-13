@@ -101,3 +101,24 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Motivo: Google relaciona mejor la web con la ficha cuando el dato estructurado reconoce el nombre de la ficha, y los clientes buscan de las dos formas. No hay que renombrar nada.
 - Consecuencias: `check.mjs` exige los dos valores en cada página con `ProfessionalService`. En directorios y perfiles externos puede usarse cualquiera de los dos, pero siempre con la misma dirección y el mismo teléfono. El nombre de la ficha de Google no se cambia.
 - Estado: Activa. Decidida por el propietario el 2026-10-13.
+
+## 2026-10-13 — asignación de páginas a la prioridad comercial
+
+- Decisión: «Ingeniería» agrupa `levantamientos-topograficos`, `puntos-geodesicos` y `habilitaciones-urbanas`; «Construcción», `proyectos-construccion` y `ejecucion-obra`; «Saneamiento de predios», `titulaciones`, `comunidades-campesinas` y `asesoramiento-legal`; «Declaratoria de fábrica», `declaratoria-fabrica`.
+- Motivo: la pregunta estaba abierta en el handoff y el propietario pidió no consultar decisiones rutinarias. Es la agrupación que mejor coincide con la categoría «Ingeniero» de la ficha de Google.
+- Consecuencias: el orden de contenido, enlazado y medición de `SEO_PLAN.md` sigue esta tabla. El propietario puede cambiarla; si lo hace, marcar esta decisión como sustituida.
+- Estado: Activa. Decisión por defecto de Claude Code, pendiente de confirmación del propietario.
+
+## 2026-10-13 — sección de guías informativas
+
+- Decisión: se crea `/guias/` con guías propias que responden búsquedas informativas («qué es», «requisitos», «cómo se tramita») y enlazan al servicio correspondiente. Contenido en `content/guides.json`, generado por `scripts/build.mjs`, con `Article` y `BreadcrumbList` de tres niveles.
+- Motivo: las búsquedas informativas sobre licencia, declaratoria de fábrica y saneamiento las ganan hoy blogs y estudios de abogados; la web no tenía contenido para competir ni para demostrar experiencia.
+- Consecuencias: cada guía cita normas solo de forma general y verificable, sin plazos, precios ni cifras no confirmadas, e incluye aviso de que no sustituye la evaluación del caso. Toda guía nueva o modificada requiere revisión técnica y legal del propietario antes del merge. `check.mjs` incorpora las guías al catálogo de URLs, sitemap y redirecciones.
+- Estado: Activa. Implementada en la rama `seo/plan-crecimiento-organico`, pendiente de revisión.
+
+## 2026-10-13 — redacción prudente de contenido legal y normativo
+
+- Decisión: las guías y textos de servicio que citan normas usan formulaciones condicionadas («según el caso», «cuando corresponda», «según el procedimiento aplicable», «según la entidad competente») y remiten a la norma vigente, su reglamento y el TUPA en lugar de resumir supuestos concretos como reglas universales. La vía registral de regularización de la Ley 27157, modificada por la Ley 30830, se presenta siempre con su límite: según SUNARP, edificaciones culminadas hasta el 31/12/2016. CONPLANOS aparece con su papel técnico y de asesoría, nunca ejerciendo funciones de la autoridad.
+- Motivo: revisión del propietario en el PR #2 (2026-10-13) y prompt maestro del proyecto (reglas de contenido).
+- Consecuencias: ninguna guía legal se publica sin revisión final del propietario. Al añadir o cambiar una guía, revisar estas reglas antes del PR.
+- Estado: Activa.

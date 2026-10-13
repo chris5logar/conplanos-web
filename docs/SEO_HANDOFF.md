@@ -2,7 +2,7 @@
 
 Estado real del proyecto. Actualizar al terminar cada tarea importante. Historial en `SEO_WORKLOG.md`; decisiones en `SEO_DECISIONS.md`; reglas en `../AGENTS.md`.
 
-Última actualización: 2026-10-13, Claude Code, tras validar producción en `efe9ee1`.
+Última actualización: 2026-10-13, Claude Code, tras sincronizar el PR #2 con `main` y aplicar la revisión legal del propietario.
 
 ## Proyecto
 
@@ -19,12 +19,12 @@ Estado real del proyecto. Actualizar al terminar cada tarea importante. Historia
 3. Saneamiento de predios
 4. Declaratoria de fábrica
 
-El propietario no ha asignado cada página a una prioridad. Como referencia, la web agrupa los servicios en tres áreas: Topografía y geodesia (`levantamientos-topograficos`, `puntos-geodesicos`), Proyectos y obras (`proyectos-construccion`, `ejecucion-obra`, `habilitaciones-urbanas`) y Saneamiento y propiedad (`titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `asesoramiento-legal`). Qué páginas cuentan como «Ingeniería» debe confirmarlo el propietario antes de priorizar contenido.
+Asignación de páginas por defecto (decisión «asignación de páginas a la prioridad comercial» en `SEO_DECISIONS.md`, pendiente de confirmación del propietario): Ingeniería = `levantamientos-topograficos`, `puntos-geodesicos`, `habilitaciones-urbanas`; Construcción = `proyectos-construccion`, `ejecucion-obra`; Saneamiento = `titulaciones`, `comunidades-campesinas`, `asesoramiento-legal`; Declaratoria = `declaratoria-fabrica`. No crear una landing «Ingeniería» sin analizar antes intención de búsqueda y canibalización.
 
 ## Arquitectura
 
 - HTML estático generado por `scripts/build.mjs`, sin dependencias.
-- Portada + 9 páginas de servicio + 404. Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
+- En producción: portada + 9 páginas de servicio + 404 (el PR #2 añade `/guias/` y 4 guías). Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
 - `sitemap.xml` (10 URLs), `robots.txt`, `_headers`, `_redirects`.
 - JSON-LD `ProfessionalService` en todas las páginas comerciales y `BreadcrumbList` en los servicios.
 - Imágenes WebP con srcset y lazy loading.
@@ -92,9 +92,17 @@ Por HTTP contra https://conplanos.com, sin incidencias:
 
 No verificado: la recepción real de eventos en GA4 (no se hicieron clics de prueba) y el estado en Search Console.
 
-## Otros trabajos abiertos
+## Fase 2 contenido y estructura SEO: EN REVISIÓN
 
-- PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)», rama `seo/plan-crecimiento-organico`, base `main`, en borrador. No lo abrió ni lo revisó este agente. No tocarlo sin orden del propietario.
+- PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)», rama `seo/plan-crecimiento-organico`, base `main`, en borrador. No hacer merge sin aprobación expresa y sin revisión legal final del propietario.
+- Plan completo y roadmap de fases: `docs/SEO_PLAN.md`.
+- Sincronizada con `main` (`6946b7b`) mediante merge, sin force push; los documentos de cierre de la Fase 1 se tomaron de `main`.
+- Contenido: títulos orientados a la búsqueda (`seoTitle`), bloque «En qué consiste» y FAQs extra en los 9 servicios; sección `/guias/` con 4 guías en `content/guides.json` (licencia de edificación, declaratoria de fábrica, saneamiento físico legal, levantamiento topográfico).
+- Datos estructurados: `Service` por servicio enlazado a `#business`; `Article` en guías; `CollectionPage` en `/guias/`; migas de tres niveles en guías.
+- Sitemap: 15 URLs (portada, 9 servicios, índice de guías y 4 guías). `_redirects`: 29 reglas 301 directas.
+- `check.mjs` y `seo.test.mjs` (28 pruebas) derivan el catálogo de `services.json` + `guides.json`.
+- Revisión legal del propietario (comentario en el PR #2) aplicada: límite del 31/12/2016 para la vía Ley 27157/30830; modalidades A/B/C/D remitidas a la Ley 29090, reglamento vigente y TUPA; comunidades campesinas con Ley 24657 y modificatorias, autoridad agraria regional y papel técnico de CONPLANOS; WGS84/UTM, Ministerio de Cultura y requisitos municipales «según el caso».
+- Preview de `df04c37` validada por HTTP el 2026-10-13 desde el equipo del propietario (detalle en el worklog): 15 URLs con 200, `noindex, nofollow`, sin GA4, canonical = og:url, redirecciones de `/guias/` en un salto, sitemap con 15 URLs, 404 correcto y JSON-LD `Service`/`Article`. El entorno cloud de Claude no puede abrir `*.pages.dev` ni `conplanos.com` (proxy 403).
 
 ## Fase 3 velocidad y Core Web Vitals: EN PRODUCCIÓN
 
@@ -112,8 +120,8 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - `node` no está en el PATH del equipo Windows del propietario; ver «Entorno» en `AGENTS.md`.
 - No se comprobó en el panel de Cloudflare si hay variables `SITE_MODE` o `SITE_ORIGIN` definidas. Por los resultados no las hay. Si `SITE_MODE=preview` se definiera para Producción, `main` saldría sin indexar: no definirla ahí.
 - Google puede tardar en recoger los canonical nuevos; en Search Console pueden verse durante un tiempo las URLs sin barra como «Página con redirección». Es lo esperado.
-- Preguntas abiertas para el propietario: qué páginas cuentan como «Ingeniería», y por qué GBP tiene 10 servicios frente a 9 páginas.
+- Preguntas abiertas para el propietario: confirmar la asignación de páginas a «Ingeniería»; GBP tiene 10 servicios (incluye «Lotizaciones y parcelaciones», que en la web cae dentro de `habilitaciones-urbanas`) frente a 9 páginas.
 
 ## Próximo paso
 
-El orquestador decide cómo continuar con la Fase 2 (PR #2, en borrador). Hasta esa orden, ningún agente modifica ese PR ni `main`.
+Revisión legal final del propietario sobre el texto de las 4 guías y los bloques «En qué consiste» en la preview del PR #2 (ya validada por HTTP). Con ella, el propietario decide el merge; tras el merge, verificar producción y enviar de nuevo el sitemap en Search Console. Mientras tanto, ningún agente hace merge ni toca `main`.
