@@ -92,9 +92,10 @@ Por HTTP contra https://conplanos.com, sin incidencias:
 
 No verificado: la recepción real de eventos en GA4 (no se hicieron clics de prueba) y el estado en Search Console.
 
-## Fase 2 contenido y estructura SEO: EN REVISIÓN
+## Fase 2 contenido y estructura SEO: CERRADA
 
-- PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)», rama `seo/plan-crecimiento-organico`, base `main`, en borrador. No hacer merge sin aprobación expresa y sin revisión legal final del propietario.
+- PR #2 «feat: contenido de servicios, guías y datos estructurados (Fase 2 SEO)» mergeado por el propietario en `main` (`2414e78`) el 2026-10-13, tras su revisión legal final (comentario en el PR #2). Producción validada por HTTP el mismo día (ver SEO_WORKLOG).
+- Cualquier guía nueva o cambio en el texto legal de una guía requiere de nuevo la revisión del propietario antes del merge.
 - Plan completo y roadmap de fases: `docs/SEO_PLAN.md`.
 - Sincronizada con `main` (`6946b7b`) mediante merge, sin force push; los documentos de cierre de la Fase 1 se tomaron de `main`.
 - Contenido: títulos orientados a la búsqueda (`seoTitle`), bloque «En qué consiste» y FAQs extra en los 9 servicios; sección `/guias/` con 4 guías en `content/guides.json` (licencia de edificación, declaratoria de fábrica, saneamiento físico legal, levantamiento topográfico).
@@ -124,4 +125,4 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 
 ## Próximo paso
 
-Revisión legal final del propietario sobre el texto de las 4 guías y los bloques «En qué consiste» en la preview del PR #2 (ya validada por HTTP). Con ella, el propietario decide el merge; tras el merge, verificar producción y enviar de nuevo el sitemap en Search Console. Mientras tanto, ningún agente hace merge ni toca `main`.
+Fases 1 a 3 en producción y paquete de la Fase 4 entregado. Acciones del propietario: enviar de nuevo el sitemap en Search Console (15 URLs) y pedir la indexación de `/guias/` y de las 4 guías; aplicar en Google Business las categorías secundarias y empezar a pedir reseñas (`docs/SEO_LOCAL_GBP.md`); exportar CSV de Search Console y GA4 para la Fase 5. Opcional: purgar en Cloudflare `https://conplanos.com/assets/main.js?v=c20b25d30fed`. Ningún agente hace merge ni toca `main` sin aprobación expresa.
