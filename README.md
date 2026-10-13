@@ -11,6 +11,7 @@ Web pública comercial estática, independiente de conplanos-app y conplanos-gns
 - `content/services.json`: textos editables de las nueve páginas de servicio.
 - `content/contacts.json`: fuente única de contactos. Contacto principal (también número de WhatsApp), contactos adicionales y mensaje predeterminado de WhatsApp.
 - `scripts/build.mjs`: generador de HTML con Node, sin paquetes externos.
+- `scripts/site-mode.mjs`: regla única de modo producción o preview, compartida por el build y los checks.
 - `scripts/serve.mjs`: servidor local estático, puerto 4173.
 - `scripts/check.mjs`: verificación de rutas, recursos y metadatos.
 - `docs/`: guía de publicación, fotografías, textos y conversión.
@@ -27,11 +28,23 @@ Repositorio: chris5logar/conplanos-web. Rama: main. Framework: None. Build: `nod
 
 ## Preview
 
-Para una preview sin indexación, definir `SITE_MODE=preview` y `SITE_ORIGIN` igual a su URL real antes del build. Para producción, quitar SITE_MODE y conservar el origen final. El sitemap y canonical se generan con SITE_ORIGIN. No subir a producción un build con noindex.
+En Cloudflare Pages el modo se decide solo: `scripts/site-mode.mjs` lee la variable oficial `CF_PAGES_BRANCH`. La rama `main` compila producción y cualquier otra rama compila preview, con `CF_PAGES_URL` como origen. No hace falta configurar variables en el panel. Fuera de Cloudflare esa variable no existe y se aplica lo siguiente.
+
+Para una preview sin indexación, definir `SITE_MODE=preview` y `SITE_ORIGIN` igual a su URL real antes del build, o ejecutar `npm run build:preview`. Validar con `npm run check:preview` usando el mismo SITE_ORIGIN. Preview usa `noindex, nofollow` y no instala GA4. Para producción, quitar SITE_MODE, usar `https://conplanos.com` como origen y ejecutar `npm run build` y `npm run check`. Las páginas comerciales usan `index, follow` y GA4 activo. No subir a producción un build de preview.
+
+## Política y validación técnica SEO
+
+La portada usa `/`; cada servicio usa `/<slug>/`. Canonical, og:url, BreadcrumbList, sitemap y enlaces internos deben coincidir con esa URL final. `_redirects` lleva las variantes sin barra y `index.html` directamente al destino con barra en un solo salto.
+
+Ejecutar `npm run build`, `npm run check` y `npm test`. Los checks conservan las verificaciones de contenido, contactos, recursos e imágenes y comprueban coherencia de URLs, 404, redirecciones y GA4. Las pruebas usan archivos temporales y no despliegan ni envían eventos reales a Google.
+
+Conservar `dist/404.html`: Cloudflare Pages lo necesita para responder HTTP 404 a rutas inexistentes. En producción usa `noindex, follow`, sin canonical ni og:url comercial. Cloudflare puede servir la ruta explícita `/404` con HTTP 200; permanece fuera de indexación y del sitemap. En preview también la página de error usa `noindex, nofollow`.
+
+Antes de publicar, validar en una preview de Cloudflare las diez URLs finales (200), variantes sin barra e `index.html` (un salto), y una ruta inexistente (404). El servidor local comprueba contenido y fallback 404, pero no reproduce las reglas `_redirects` de Cloudflare. Producción requiere revisión previa: no hacer push a main para esta validación.
 
 ## Contenido y activos
 
-Solo las fotografías suministradas aparecen como trabajo real. Los apoyos generados no representan obras ejecutadas por CONPLANOS. No se incluyen testimonios, matrículas, resultados, cifras o certificaciones no verificados. No se ha activado Google Maps API, formularios externos, analítica ni publicidad. Las consultas se abren en WhatsApp y no se envían automáticamente.
+Solo las fotografías suministradas aparecen como trabajo real. Los apoyos generados no representan obras ejecutadas por CONPLANOS. No se incluyen testimonios, matrículas, resultados, cifras o certificaciones no verificados. GA4 está instalado con `G-7DCRJN061J`; mide `click_whatsapp`, `click_phone` y `quote_request`. No se ha activado Google Maps API, formularios externos ni publicidad. Las consultas se abren en WhatsApp y no se envían automáticamente.
 
 Los derechos de marca y fotografías pertenecen a sus titulares. No se concede licencia sobre ellos.
 
