@@ -1,96 +1,233 @@
 # Entrega de CONPLANOS web
 
-## Alcance
+Última actualización general: 2026-10-15.
 
-Sitio comercial completamente separado de conplanos-app y conplanos-gnss. No se han modificado los repositorios existentes, app.conplanos.com, DNS, Render o Neon. No se han realizado pagos ni upgrades.
+## Estado actual
 
-## Estado de entrega
+La web oficial está publicada y operativa:
 
-Repositorio creado y primera versión subida: https://github.com/chris5logar/conplanos-web, rama main.
+- Producción: https://conplanos.com
+- Repositorio: `chris5logar/conplanos-web`
+- Rama de producción: `main`
+- Hosting: Cloudflare Pages
+- Build: `node scripts/build.mjs`
+- Salida: `dist`
+- HTTPS: activo
+- `www.conplanos.com`: redirección 301 al dominio raíz, conservando rutas y parámetros
+- Producción: `index, follow` y GA4 activo
+- Previews: `noindex, nofollow` y sin GA4
 
-Proyecto temporal creado en Cloudflare Pages: `conplanos-web-preview`. El panel confirma el hostname `conplanos-web-preview.pages.dev`, pero la carga no terminó: la extensión ChatGPT de Edge requiere habilitar «Permitir el acceso a las direcciones URL de archivo». No se debe presentar esa dirección como una preview publicada hasta completar la carga y verificar el despliegue.
+La web comercial está separada de `app.conplanos.com`. No tocar Render, Neon o el repositorio de la app desde este proyecto.
 
-Alternativa manual: abrir el proyecto de carga directa en Cloudflare y subir `conplanos-cloudflare-preview.zip`, después pulsar Deploy site. El ZIP tiene index.html en raíz, imágenes y noindex. No contiene credenciales. El proyecto definitivo puede crearse aparte con integración Git, nombre conplanos-web y salida dist.
+## Infraestructura y DNS
 
-La vía Sites se detuvo: la revisión automática rechazó pasar su credencial al proceso de publicación. No se ejecutó ese paso ni se publicó el borrador de Sites. El proyecto estático y GitHub están completos.
+Cloudflare administra la zona DNS del dominio.
+
+Estado conocido:
+- raíz y `www` asociados a Cloudflare Pages;
+- `app.conplanos.com` conserva su destino en Render y no debe modificarse desde este repositorio;
+- correo y FTP conservan la infraestructura anterior;
+- MX conserva `mail.conplanos.com`.
+
+Cambios de DNS, correo, FTP, app, Render o Neon requieren una tarea separada y aprobación expresa.
+
+## Arquitectura
+
+Sitio estático sin framework de cliente ni backend.
+
+Fuentes principales:
+- `scripts/build.mjs`: generador HTML.
+- `scripts/site-mode.mjs`: producción/preview.
+- `scripts/check.mjs`: validaciones.
+- `scripts/seo.test.mjs`: pruebas SEO.
+- `content/services.json`: servicios.
+- `content/contacts.json`: contactos y WhatsApp.
+- `content/guides.json`: guías SEO.
+- `dist/assets/styles.css`: estilos.
+- `dist/assets/main.js`: interacción ligera y eventos GA4.
+- `dist/assets/brand/`: activos de marca.
+- `dist/assets/images/`: fotografías e imágenes de apoyo.
+- `dist/`: salida final publicada.
+
+Node requerido: >= 20.11. No hay dependencias npm externas.
 
 ## Páginas
 
-Inicio `/`, `/proyectos-construccion/`, `/ejecucion-obra/`, `/levantamientos-topograficos/`, `/titulaciones/`, `/comunidades-campesinas/`, `/declaratoria-fabrica/`, `/puntos-geodesicos/`, `/habilitaciones-urbanas/`, `/asesoramiento-legal/`. Incluye 404.
+Producción incluye:
+- portada `/`;
+- 9 páginas de servicio;
+- `/guias/`;
+- guías informativas;
+- 404.
 
-La URL final de cada servicio lleva barra final. Las variantes sin barra y las terminadas en `index.html` redirigen con un 301 directo mediante `dist/_redirects`.
+La URL canónica de cada servicio usa barra final.
 
-Cada servicio contiene introducción propia, qué resuelve, alcance, información inicial, proceso, preguntas frecuentes, servicios relacionados elegidos en content/services.json, WhatsApp, dirección y fotografía de oficina. La portada agrupa los servicios en tres áreas: Topografía y geodesia, Saneamiento y propiedad, y Proyectos y obras.
+Los slugs de servicio están en `content/services.json`. Las guías están en `content/guides.json`.
 
-## Textos y contacto
+## Diseño y textos
 
-Hero: «Ingeniería, topografía y saneamiento de predios en Cusco»
+Hero principal:
+«Ingeniería, topografía y saneamiento de predios en Cusco».
 
-«Medimos tu terreno, desarrollamos tu proyecto u obra y ordenamos la documentación de tu propiedad, con ingenieros, arquitectos y abogados trabajando de forma coordinada.»
+Identidad:
+- negro/grafito;
+- blanco;
+- amarillo corporativo aproximado `#FFC63A`.
 
-Paleta tomada del logotipo original: amarillo #FFC63A sobre negro y blanco. Las variables de color, tipografía, espaciado, radios y anchos están al inicio de dist/assets/styles.css.
+La web prioriza apariencia técnica, empresarial, sobria y profesional.
 
-Identidad conservada: CONPLANOS, REGISTRA Y CONSTRUYE, ABOGADOS - ARQUITECTOS - INGENIEROS y CONSTRUIMOS CONFIANZA, ASEGURAMOS TU PATRIMONIO.
+No publicar afirmaciones no verificadas sobre:
+- años de experiencia;
+- cifras de clientes;
+- certificaciones;
+- colegiaturas;
+- premios;
+- garantías;
+- resultados;
+- testimonios.
 
-WhatsApp principal: +51 928 400 600, Ing. Loaiza. Todos los botones utilizan: «Hola, vengo de conplanos.com y quisiera información sobre sus servicios.»
+Las fotografías reales deben distinguirse de imágenes referenciales.
 
-Dirección comprobada en la ficha de Google Maps: Av. Micaela Bastidas 321, Cusco. Se evita publicar el horario de 24 horas sin confirmarlo. Visitas por coordinación. Botón al enlace suministrado: https://maps.app.goo.gl/65JH3DPn1SEizeC67. No mapa embebido, API ni facturación.
+## Contactos
 
-Ing. Kimberly Peñalva, +51 927 003 900, y Per. Ernesto, +51 955 593 110, se muestran como contactos adicionales en la sección de contacto y el footer. Todos los contactos y el mensaje de WhatsApp se editan en content/contacts.json; para ocultar uno, desactivar enabled y regenerar. No se inventan perfiles profesionales ni credenciales.
+Fuente única: `content/contacts.json`.
 
-## SEO
+Contacto principal:
+- Ing. Loaiza
+- +51 928 400 600
 
-Titles y descripciones propios por página; H1 único; canonical; Open Graph y tarjeta de marca; favicon; sitemap de diez URLs; robots; JSON-LD ProfessionalService con nombre, contacto, dirección, coordenadas comprobadas en Maps y área atendida (Cusco y Perú), más BreadcrumbList en las páginas de servicio. No se añaden reseñas, horarios, matrículas o garantías sin verificar.
+Contactos adicionales:
+- Ing. Kimberly Peñalva
+- +51 927 003 900
+- Per. Ernesto
+- +51 955 593 110
 
-Política canonical actual: canonical, og:url, BreadcrumbList, sitemap y enlaces internos usan la misma URL final, `/` para la portada y `/<slug>/` para cada servicio. La página 404 usa `noindex, follow` y no declara canonical ni og:url.
+WhatsApp principal:
+`https://wa.me/51928400600`
 
-Producción (conplanos.com, rama main): `index, follow` y GA4 `G-7DCRJN061J` activo. Preview (automática en Cloudflare Pages para toda rama distinta de main, mediante `CF_PAGES_BRANCH`; en local con `SITE_MODE=preview`): `noindex, nofollow`, `robots.txt` con `Disallow: /`, cabecera `X-Robots-Tag: noindex, nofollow` y sin GA4. No subir a producción un build de preview.
+Mensaje:
+«Hola, vengo de conplanos.com y quisiera información sobre sus servicios.»
 
-Validación: `npm run build`, `npm run check` y `npm test`; para preview, `npm run build:preview` y `npm run check:preview`. El estado vigente y las decisiones están en `docs/SEO_HANDOFF.md` y `docs/SEO_DECISIONS.md`.
+Dirección:
+Av. Micaela Bastidas 321, Cusco.
 
-Publicar archivos SEO no garantiza posiciones en Google: luego deben verificarse dominio, rastreo y contenido en Search Console.
+## SEO y medición
 
-HTML renderizado sin JavaScript, fuentes del sistema, sin frameworks de cliente ni dependencias, WebP responsive, dimensiones reservadas, lazy loading excepto imagen principal. Menú móvil (sin JavaScript la navegación se muestra como fila de enlaces), foco visible, enlace de salto, alt descriptivos, respeto a movimiento reducido. No se afirma una puntuación Lighthouse sin medirla.
+- Search Console: propiedad `conplanos.com` verificada.
+- Sitemap: https://conplanos.com/sitemap.xml
+- Robots: https://conplanos.com/robots.txt
+- GA4: `G-7DCRJN061J`
+- Eventos: `click_whatsapp`, `click_phone`, `quote_request`
+- Sin Google Tag Manager.
+- Sin PII en Analytics.
 
-## Cloudflare Pages: publicación gratuita sin DNS
+Estado SEO detallado:
+- `docs/SEO_HANDOFF.md`
+- `docs/SEO_DECISIONS.md`
+- `docs/SEO_WORKLOG.md`
+- `docs/SEO_PLAN.md`
 
-1. En Cloudflare, abrir Workers & Pages y crear un proyecto de Pages mediante importación de Git.
-2. Conectar GitHub y permitir acceso únicamente a `chris5logar/conplanos-web`.
-3. Seleccionar rama `main`, framework `None`, build `node scripts/build.mjs`, salida `dist`.
-4. Para la primera revisión en pages.dev, configurar `SITE_MODE=preview` y `SITE_ORIGIN=https://<nombre-asignado>.pages.dev`. El nombre real lo confirma Cloudflare; no se supone que esté disponible.
-5. Publicar y probar inicio, las nueve rutas, teléfono, Maps, menú y WhatsApp desde celular.
-6. No agregar dominio personalizado ni modificar DNS durante esta revisión.
-7. Antes de conectar conplanos.com: quitar SITE_MODE, configurar SITE_ORIGIN=https://conplanos.com y publicar de nuevo. Mantener previews de otras ramas en modo preview/noindex.
+## Producción y previews
 
-También puedes crear un proyecto de Direct Upload y subir únicamente dist. Elegir el método al inicio: un proyecto de Git integration no se puede convertir después a Direct Upload. Los pasos de interfaz pueden variar.
+Cloudflare Pages decide el modo a partir de `CF_PAGES_BRANCH` mediante `scripts/site-mode.mjs`:
 
-Fuentes oficiales revisadas:
-- https://developers.cloudflare.com/pages/get-started/git-integration/
-- https://developers.cloudflare.com/pages/framework-guides/deploy-anything/
-- https://developers.cloudflare.com/pages/configuration/custom-domains/
+- `main` -> producción, `index, follow`, GA4.
+- otra rama -> preview, `noindex, nofollow`, sin GA4.
 
-## DNS futuro: propuesta, no aplicada
+En local:
+- producción: `npm run build`
+- preview: `npm run build:preview`
 
-Primero exportar e inventariar los registros existentes, especialmente `app`, correo, MX, TXT, SPF, DKIM y DMARC. No borrar ni reemplazar registros de la aplicación.
+No publicar un build de preview en producción.
 
-Si conplanos.com ya está como zona en Cloudflare, asociar `conplanos.com` en Pages > Custom domains. Cloudflare creará o solicitará el CNAME de raíz hacia el hostname real del proyecto `*.pages.dev` mediante flattening. Confirmar el destino exacto en el panel antes de aprobar el cambio.
+## Comandos
 
-Si el DNS autoritativo está fuera de Cloudflare, el dominio raíz con Pages requiere incorporar la zona y cambiar los nameservers a los asignados por Cloudflare. Es una migración que se debe aprobar y revisar aparte; importar y verificar todos los registros, en especial app.conplanos.com y correo, antes del cambio.
+```bash
+npm run build
+npm run check
+npm test
+npm run dev
+```
 
-Opcionalmente asociar también `www.conplanos.com` en Pages y usar CNAME `www` hacia el hostname asignado. Configurar redirección 301 de www al dominio raíz y verificar HTTPS. Asociar los dominios en Pages antes de introducir el CNAME; un CNAME manual sin esa asociación puede fallar.
+Preview:
 
-No modificar el registro de `app.conplanos.com`, Render ni Neon. No introducir A records o IP inventadas. Mantener una copia para rollback de los registros que se autorice modificar.
+```bash
+npm run build:preview
+npm run check:preview
+```
 
-## Conversión y material audiovisual
+Servidor local:
+`http://127.0.0.1:4173`
 
-- Prioridad inmediata: casos reales con ubicación, necesidad del cliente, alcance contratado, entregables y resultado comprobable; obtener autorización antes de publicar personas o documentos.
-- Fotos y perfiles reales del equipo con nombres completos, especialidades y credenciales verificadas.
-- Confirmar horario, cobertura geográfica y tiempo realista de respuesta. Preparar respuestas rápidas de WhatsApp para ubicación, servicio y etapa.
-- Verificar Google Business Profile y actualizar el enlace a conplanos.com después del lanzamiento. Solicitar reseñas auténticas a clientes, sin inventar testimonios.
-- La medición ya está activa en producción con GA4 `G-7DCRJN061J`: eventos `click_whatsapp`, `click_phone` y `quote_request`, sin datos personales. `quote_request` y `click_whatsapp` pueden proceder del mismo clic y no son dos leads. Los clics a Maps no se miden.
-- Producir videos verticales de 20–40 s: «qué enviar para cotizar», medición GNSS real, avance de obra y revisión de planos. Subtítulos legibles y cierre con WhatsApp.
-- Producir un video de 60–90 s de presentación del equipo y oficina, y casos de 45–60 s con problema, proceso y entrega. Confirmar resultados y evitar mostrar DNI, firmas o expedientes legibles.
-- Grabaciones de obra con seguridad y permiso; tomas aéreas solo cuando exista autorización y operador habilitado según corresponda. No cargar videos pesados automáticamente en el hero; usar poster y reproducción voluntaria.
+## Flujo Git
 
-Consultar IMAGENES.md para fotos exactas, reemplazos y prompts por servicio.
+`main` es producción.
 
+Flujo recomendado:
+1. partir de `main` actualizado;
+2. crear rama de tarea;
+3. implementar;
+4. ejecutar build/check/tests;
+5. revisar diff;
+6. commit y push de la rama;
+7. PR;
+8. validar preview de Cloudflare;
+9. merge a `main` solo con aprobación;
+10. validar producción;
+11. actualizar handoff/worklog.
+
+No usar force push ni operaciones destructivas.
+
+## Carpeta local usada
+
+La copia local histórica usada en Windows es:
+
+```text
+C:\Cursor\CONPLANOS\conplanos-web
+```
+
+Comprobar:
+
+```powershell
+cd C:\Cursor\CONPLANOS\conplanos-web
+git remote -v
+git status
+git branch --show-current
+```
+
+Remoto esperado:
+`https://github.com/chris5logar/conplanos-web.git`
+
+GitHub es la fuente de verdad.
+
+## Continuidad para Claude y otros agentes
+
+Leer en orden:
+
+1. `AGENTS.md`
+2. `CLAUDE.md`
+3. `docs/PROJECT_HANDOFF.md`
+4. `docs/SEO_HANDOFF.md`
+5. `docs/SEO_DECISIONS.md`
+6. `docs/SEO_WORKLOG.md` si se requiere historial
+
+Si documentación y repositorio se contradicen, manda el repositorio. Corregir la documentación antes de continuar.
+
+## Historia resumida
+
+La primera versión se construyó como sitio estático generado con Node, se versionó en GitHub y se probó inicialmente mediante previews de Cloudflare Pages. Posteriormente se publicó `conplanos.com`, se migró/validó DNS en Cloudflare, se preservaron `app.conplanos.com`, correo y FTP, y se completaron las primeras fases de SEO técnico, contenido, rendimiento y analítica.
+
+El detalle histórico no debe usarse como estado vigente. Para estado actual consultar `docs/PROJECT_HANDOFF.md` y `docs/SEO_HANDOFF.md`.
+
+## Material audiovisual y conversión
+
+Prioridades de mejora futura:
+- casos reales autorizados;
+- más fotografías reales de obra, topografía y equipo;
+- logo vectorial/transparente cuando exista;
+- reseñas auténticas;
+- videos verticales cortos;
+- presentación del equipo;
+- seguimiento de conversiones.
+
+Consultar `docs/IMAGENES.md` para activos y reemplazos.
