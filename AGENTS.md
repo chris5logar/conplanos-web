@@ -24,12 +24,13 @@ No mezclar con, ni tocar desde aquí:
 Leer, en este orden:
 
 1. `AGENTS.md` (este archivo)
-2. `docs/SEO_HANDOFF.md` (estado actual y siguiente paso)
-3. `docs/SEO_DECISIONS.md` (decisiones activas)
-4. `docs/SEO_WORKLOG.md` solo si se necesita historial
-5. `git status`
-6. rama actual (`git branch --show-current`)
-7. último commit (`git log --oneline -5`)
+2. `docs/PROJECT_HANDOFF.md` (arquitectura, publicación, ruta local y continuidad general)
+3. `docs/SEO_HANDOFF.md` (estado SEO actual y siguiente paso)
+4. `docs/SEO_DECISIONS.md` (decisiones activas)
+5. `docs/SEO_WORKLOG.md` solo si se necesita historial
+6. `git status`
+7. rama actual (`git branch --show-current`)
+8. último commit (`git log --oneline -5`)
 
 Si el estado real del repositorio contradice el handoff, manda el repositorio: corregir el handoff antes de continuar.
 
