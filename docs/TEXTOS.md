@@ -6,7 +6,7 @@ Archivo generado por scripts/build.mjs. Los textos de cada servicio se editan en
 
 Ingeniería, topografía y saneamiento de predios en Cusco
 
-Medimos tu terreno, desarrollamos tu proyecto u obra y ordenamos la documentación de tu propiedad, con ingenieros, arquitectos y abogados trabajando de forma coordinada.
+Declaratoria de fábrica, licencias de funcionamiento, ejecución de obras y saneamiento de predios urbanos, rurales y de comunidades campesinas. Ingenieros, arquitectos y abogados en un solo equipo, desde la medición del terreno hasta el expediente final.
 
 ## Proyectos de construcción
 
@@ -200,6 +200,42 @@ Son alcances distintos que se evalúan según el inmueble y el objetivo. La coti
 **¿Puedo declarar una construcción hecha sin licencia?**
 Depende del caso. La vía registral de la Ley 27157, modificada por la Ley 30830, comprende según SUNARP edificaciones culminadas hasta el 31 de diciembre de 2016; para otras situaciones existe la regularización municipal con sus propios requisitos. Lo determinamos en la evaluación.
 
+## Licencia de funcionamiento
+
+Tu local en regla para abrir y operar.
+
+Preparamos la documentación técnica para tramitar la licencia de funcionamiento y la inspección técnica de seguridad en edificaciones (ITSE) de tu local en Cusco.
+
+### Qué resuelve
+- Vas a abrir un negocio y necesitas la licencia municipal.
+- Tu local ya funciona y todavía no tiene licencia.
+- Quieres cambiar de giro o ampliar el área del establecimiento.
+- La municipalidad observó el local por condiciones de seguridad.
+
+### Alcance
+- Evaluación del local, del giro del negocio y de su compatibilidad con la zonificación.
+- Levantamiento y planos de arquitectura y distribución, cuando se requieran.
+- Documentación técnica para la inspección de seguridad según el nivel de riesgo, como planos de señalización y evacuación, cuando corresponda.
+- Preparación y seguimiento del expediente ante la municipalidad, según el alcance acordado.
+
+### Información inicial
+- Dirección del local y giro del negocio
+- RUC y documento de identidad del titular
+- Título de propiedad o contrato de alquiler, y planos si existen
+
+### Preguntas
+**¿Qué es la ITSE?**
+Es la inspección técnica de seguridad en edificaciones que verifica las condiciones de seguridad del local. Su modalidad depende del nivel de riesgo del establecimiento.
+
+**¿Necesito planos para la licencia?**
+Depende del nivel de riesgo y de lo que exija la municipalidad. Al evaluar tu local te indicamos qué planos y documentos corresponden.
+
+**¿Puedo tramitarla si alquilo el local?**
+Sí. Normalmente se acredita el derecho a usar el local, por ejemplo con el contrato de alquiler. Confirmamos los requisitos con la municipalidad de tu distrito.
+
+**¿Cuánto demora el trámite?**
+Los plazos los fija la municipalidad según el procedimiento y el nivel de riesgo. Te damos una estimación al evaluar tu caso.
+
 ## Puntos geodésicos
 
 Una referencia precisa y georreferenciada para tu proyecto.
@@ -289,15 +325,15 @@ Empieza con una descripción general. Te indicaremos qué documentos son necesar
 
 ## Texto completo de portada
 
-Ingeniería · Topografía · Saneamiento
+Registra y construye · Abogados, arquitectos e ingenieros
 
 Ingeniería, topografía y saneamiento de predios en Cusco
 
-Medimos tu terreno, desarrollamos tu proyecto u obra y ordenamos la documentación de tu propiedad, con ingenieros, arquitectos y abogados trabajando de forma coordinada.
+Declaratoria de fábrica, licencias de funcionamiento, ejecución de obras y saneamiento de predios urbanos, rurales y de comunidades campesinas. Ingenieros, arquitectos y abogados en un solo equipo, desde la medición del terreno hasta el expediente final.
 
 Cotizar por WhatsApp Ver servicios Cusco y otras regiones del Perú · Oficina en Av. Micaela Bastidas 321, Cusco
 
-Visita técnica a un predio rural · fotografía de CONPLANOS
+Receptor GNSS sobre un hito en campo · fotografía de CONPLANOS
 
 Técnico y legal Ingenieros, arquitectos y abogados en un mismo equipo. 
 
@@ -306,6 +342,32 @@ Trabajo en campo Reconocimiento y medición topográfica y GNSS en el predio.
 Alcance por escrito Cotización con alcance, entregables y condiciones. 
 
 Oficina en Cusco Atención presencial previa coordinación. 
+
+Especialidades
+
+Lo que más nos encargan
+
+Trámites y obras en los que reunimos a ingenieros, arquitectos y abogados para que no tengas que coordinar con varias oficinas.
+
+01 Declaratoria de fábrica Regularizamos e inscribimos tu construcción, por vía municipal o registral según el caso.
+
+Ver servicio 
+
+02 Licencia de funcionamiento Expediente técnico, planos y documentación de seguridad para abrir u operar tu local.
+
+Ver servicio 
+
+03 Ejecución de proyectos de construcción Construimos tu proyecto con presupuesto por partidas y seguimiento de avances.
+
+Ver servicio 
+
+04 Comunidades campesinas Levantamiento, deslinde, parcelación y apoyo técnico para la titulación del territorio comunal.
+
+Ver servicio 
+
+05 Saneamiento y titulación Predios urbanos, rurales y eriazos: subdivisión, independización y rectificación de áreas y linderos.
+
+Ver servicio 
 
 Servicios
 
@@ -333,19 +395,21 @@ Declaratoria de fábrica Documentación para regularizar e inscribir lo construi
 
 Asesoramiento legal Revisión documental y orientación legal sobre predios. 
 
-03 Proyectos y obras
+03 Proyectos, obras y licencias
 
-Diseño, desarrollo urbano y ejecución de obra con coordinación técnica.
+Diseño, licencias, desarrollo urbano y ejecución de obra con coordinación técnica.
 
 Proyectos de construcción Diseño arquitectónico y coordinación de especialidades. 
 
 Ejecución de obra Planificación, presupuesto por partidas y seguimiento de la obra. 
 
+Licencia de funcionamiento Expediente técnico para la licencia municipal y la inspección de seguridad. 
+
 Habilitaciones urbanas Evaluación, planos y documentación para lotizar, parcelar o habilitar. 
 
 También atendemos consultas sobre:
 
-Parcelaciones Lotizaciones Independizaciones Subdivisiones Diseño de proyectos Licencias de construcción 
+Parcelaciones Lotizaciones Independizaciones Subdivisiones Prescripción adquisitiva Rectificación de áreas y linderos Sucesión intestada Permisos de uso de agua (ANA) Diseño de interiores Licencias de construcción Compra y venta de lotes 
 
 Medición GNSS en campo · fotografía de CONPLANOS
 
@@ -362,6 +426,24 @@ Antes de proponer una solución revisamos los antecedentes y, cuando el caso lo 
 03 Revisión de antecedentes Documentos técnicos y legales del inmueble.
 
 Consultar mi proyecto 
+
+Nuestro trabajo
+
+Fotografías de campo y obra
+
+Imágenes tomadas por nuestro equipo durante mediciones, monumentación de puntos geodésicos y obras. No muestran datos de clientes.
+
+Placa de punto geodésico CONPLANOS · fotografía de CONPLANOS
+
+Medición sobre un punto geodésico · fotografía de CONPLANOS
+
+Excavación en obra · fotografía de CONPLANOS
+
+Brigada de medición en zona altoandina · fotografía de CONPLANOS
+
+Medición de altura de antena GNSS · fotografía de CONPLANOS
+
+Visita técnica a un predio rural · fotografía de CONPLANOS
 
 Cómo trabajamos
 
@@ -385,7 +467,7 @@ Recibes una cotización con el alcance, los entregables y las condiciones.
 
 Desarrollamos el trabajo acordado y te mantenemos informado del avance.
 
-Proyectos y obras
+Proyectos, obras y licencias
 
 Del proyecto a la obra, con una misma coordinación
 
@@ -395,9 +477,11 @@ Proyectos de construcción
 
 Ejecución de obra 
 
+Licencia de funcionamiento 
+
 Habilitaciones urbanas 
 
-Imagen referencial
+Demolición y preparación de obra · fotografía de CONPLANOS
 
 Equipo
 
@@ -409,15 +493,15 @@ Contacto principal Ing. Loaiza
 
 +51 928 400 600 Primer contacto para consultas, cotizaciones y coordinación de visitas.
 
-Escribir por WhatsApp 
+WhatsApp Llamar 
 
 Contacto Ing. Kimberly Peñalva
 
-+51 927 003 900 Llamar 
++51 927 003 900 WhatsApp Llamar 
 
 Contacto Per. Ernesto
 
-+51 955 593 110 Llamar 
++51 955 593 110 WhatsApp Llamar 
 
 Guías
 
@@ -439,11 +523,11 @@ Cuéntanos tu caso
 
 Envíanos la ubicación del predio, lo que necesitas y los documentos que tengas. Te indicaremos el siguiente paso y si hace falta una visita técnica.
 
-Escribir por WhatsApp Llamar al +51 928 400 600 Contacto principal Ing. Loaiza +51 928 400 600 
+Escribir por WhatsApp Llamar al +51 928 400 600 Contacto principal Ing. Loaiza +51 928 400 600 WhatsApp Llamar 
 
-Contacto Ing. Kimberly Peñalva +51 927 003 900 
+Contacto Ing. Kimberly Peñalva +51 927 003 900 WhatsApp Llamar 
 
-Contacto Per. Ernesto +51 955 593 110 
+Contacto Per. Ernesto +51 955 593 110 WhatsApp Llamar 
 
 Oficina Av. Micaela Bastidas 321, Cusco Ver en Google Maps 
 

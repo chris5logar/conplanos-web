@@ -255,3 +255,14 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - GA4 sigue sin autorización OAuth dentro de GSC Wizard; requiere una única acción manual de conexión. No es un fallo de la web.
 - Decisión de medición: `quote_request` y `click_phone` como eventos clave. `click_whatsapp` permanece informativo para evitar doble conteo cuando un mismo clic también dispara `quote_request`.
 - El seguimiento de indexación queda automatizado. No abrir nuevas páginas SEO solo por esta línea base mientras el volumen siga siendo insuficiente.
+
+## 2026-10-15 — portada con especialidades, fotos reales, licencia de funcionamiento y WhatsApp por persona
+
+- Agente: Claude Code, a petición del propietario en el proyecto «Web conplanos.com». Rama `claude/project-thread-v1txop`.
+- Portada: nueva franja «Especialidades» (declaratoria de fábrica, licencia de funcionamiento, ejecución de obra, comunidades campesinas, saneamiento y titulación), galería «Fotografías de campo y obra» con 6 fotos reales, foto real en el hero y en el bloque de obras (sustituye la imagen generada), más consultas en «También atendemos» según los volantes del propietario. H1 y title sin cambios.
+- Nueva página `/licencia-funcionamiento/` en `content/services.json`; `ejecucion-obra`, `puntos-geodesicos` y `comunidades-campesinas` usan ahora fotos reales.
+- 8 fotos reales del propietario procesadas con Pillow (autocontraste suave, color y nitidez leves, WebP calidad 82, sin metadatos) en `dist/assets/images/projects/`.
+- Botones de WhatsApp y llamada para cada contacto (incluida la Ing. Kimberly Peñalva) en equipo y contacto.
+- Pruebas (Node 22): `npm run build` 16 páginas; `npm run check` OK (3047 validaciones, 17 documentos); `npm test` 31/31; `npm run build:preview` + `npm run check:preview` OK. Revisión visual con Chromium en 1366 px y 390 px.
+- Pendiente: revisión legal del propietario del texto de licencia de funcionamiento; validación en la preview de Cloudflare.
+- Añadido enlace «Acceso equipo» a https://app.conplanos.com/ en la navegación y el pie (con `rel="nofollow"`), a petición del propietario. Solo es un enlace; app.conplanos.com no se toca.

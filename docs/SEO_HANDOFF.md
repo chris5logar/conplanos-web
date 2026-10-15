@@ -24,7 +24,7 @@ Asignación de páginas por defecto (decisión «asignación de páginas a la pr
 ## Arquitectura
 
 - HTML estático generado por `scripts/build.mjs`, sin dependencias.
-- En producción: portada + 9 páginas de servicio + `/guias/` + 4 guías + 404. Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
+- En producción: portada + 9 páginas de servicio (10 con `licencia-funcionamiento` cuando se mergee la rama `claude/project-thread-v1txop`) + `/guias/` + 4 guías + 404. Slugs en `content/services.json`: `proyectos-construccion`, `ejecucion-obra`, `levantamientos-topograficos`, `titulaciones`, `comunidades-campesinas`, `declaratoria-fabrica`, `puntos-geodesicos`, `habilitaciones-urbanas`, `asesoramiento-legal`.
 - `sitemap.xml` (15 URLs), `robots.txt`, `_headers`, `_redirects`.
 - JSON-LD `ProfessionalService` en todas las páginas comerciales y `BreadcrumbList` en los servicios.
 - Imágenes WebP con srcset y lazy loading.
@@ -130,6 +130,10 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - No se comprobó en el panel de Cloudflare si hay variables `SITE_MODE` o `SITE_ORIGIN` definidas. Por los resultados no las hay. Si `SITE_MODE=preview` se definiera para Producción, `main` saldría sin indexar: no definirla ahí.
 - Google puede tardar en recoger los canonical nuevos; en Search Console pueden verse durante un tiempo las URLs sin barra como «Página con redirección». Es lo esperado.
 - Preguntas abiertas para el propietario: confirmar la asignación de páginas a «Ingeniería»; GBP tiene 10 servicios (incluye «Lotizaciones y parcelaciones», que en la web cae dentro de `habilitaciones-urbanas`) frente a 9 páginas.
+
+## Rama en revisión (2026-10-15)
+
+- `claude/project-thread-v1txop`: portada con especialidades y galería de fotos reales, nueva página `/licencia-funcionamiento/` (sitemap 16 URLs), botones de WhatsApp y llamada por persona. Pendiente de revisión legal del propietario y validación en preview antes del merge.
 
 ## Próximo paso
 
