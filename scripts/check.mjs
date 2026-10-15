@@ -113,8 +113,10 @@ for(const file of files){
  }
  for(const match of html.matchAll(/<img\b[^>]*>/g)){assert(/alt="[^"]+"/.test(match[0]),'Alt ausente');assert(/width="\d+"/.test(match[0])&&/height="\d+"/.test(match[0]),'Dimensiones ausentes');}
  for(const match of html.matchAll(/href="(https:\/\/wa.me\/[^\"]+)"/g)){
-  const u=new URL(match[1]);assert.equal(u.pathname,'/'+contacts.primary.phone.slice(1));assert.equal(u.searchParams.get('text'),contacts.whatsappMessage);
+  const u=new URL(match[1]);assert(team.some(c=>u.pathname==='/'+c.phone.slice(1)),`${file}: WhatsApp a un número que no está en contacts.json`);assert.equal(u.searchParams.get('text'),contacts.whatsappMessage);
  }
+ // Quotes always go to the primary contact; personal chats are for reaching one person directly.
+ for(const tag of html.matchAll(/<a\b[^>]*data-lead="quote"[^>]*>/g))assert(tag[0].includes(`href="https://wa.me/${contacts.primary.phone.slice(1)}?`),`${file}: cotización fuera del contacto principal`);
  for(const match of html.matchAll(/srcset="([^"]+)"/g))for(const item of match[1].split(', ')){assert(fs.existsSync(path.join(root,item.split(' ')[0])),'Srcset no encontrado');}
 }
 for (const file of files) {

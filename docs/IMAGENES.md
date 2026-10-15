@@ -10,6 +10,10 @@
 
 2.png y las tarjetas de presentación se usan como referencia de identidad; no como carteles completos en la web. Sus textos pequeños y proporciones perjudican la lectura móvil. Gemini_Generated_Image_46ivzc46ivzc46iv.png es un emblema circular con fondo blanco, poco adecuado como wordmark horizontal. 3.png tiene composición publicitaria y una escena sintética de familia/profesionales: no se usa como fotografía de clientes, equipo ni caso real.
 
+## Añadidas el 2026-10-15
+
+Ocho fotos reales aportadas por el propietario, editadas de forma leve (luz, color, nitidez; sin añadir ni quitar elementos): equipo con receptor GNSS sobre hito (hero), excavación y demolición en obra, brigada en zona altoandina, hito con placa, receptor sobre hito, medición de altura de antena y placa de punto geodésico. Se usan con su pie «fotografía de CONPLANOS». Las fotos retocadas con IA (casco, chaleco u otros elementos añadidos) no se usan como fotografía real.
+
 ## Fotos que debes aportar
 
 | Tema | Fotos exactas | Ubicación futura |

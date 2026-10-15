@@ -122,3 +122,17 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Motivo: revisión del propietario en el PR #2 (2026-10-13) y prompt maestro del proyecto (reglas de contenido).
 - Consecuencias: ninguna guía legal se publica sin revisión final del propietario. Al añadir o cambiar una guía, revisar estas reglas antes del PR.
 - Estado: Activa.
+
+## 2026-10-15 — página de servicio «Licencia de funcionamiento»
+
+- Decisión: se crea `/licencia-funcionamiento/` (área «Proyectos, obras y licencias») y la portada destaca cinco especialidades: declaratoria de fábrica, licencia de funcionamiento, ejecución de obra, comunidades campesinas y saneamiento/titulación.
+- Motivo: petición expresa del propietario (2026-10-15); es un servicio que CONPLANOS ofrece (figura en sus volantes como «Licencias de funcionamiento – Defensa Civil») y no tenía página. No es una página geográfica ni duplica otra.
+- Consecuencias: el sitemap pasa de 15 a 16 URLs. El texto cita la Ley 28976 y la ITSE de forma general, con las reglas de redacción prudente; requiere revisión legal del propietario antes del merge. El H1 y el title de la portada no cambian.
+- Estado: Activa, pendiente de revisión del propietario en el PR.
+
+## 2026-10-15 — WhatsApp directo por persona del equipo
+
+- Decisión: cada contacto habilitado en `content/contacts.json` tiene botones propios de WhatsApp y llamada en las secciones de equipo y contacto. Las cotizaciones (`data-lead="quote"`) siguen yendo solo al contacto principal.
+- Motivo: petición del propietario de añadir botones para la Ing. Kimberly (927 003 900).
+- Consecuencias: `check.mjs` acepta enlaces `wa.me` a cualquier contacto habilitado y exige que las cotizaciones apunten al principal. GA4 sigue sin PII: el evento solo registra `contact_type`.
+- Estado: Activa.

@@ -61,7 +61,7 @@
     "summary": "Planificación, presupuesto por partidas y seguimiento de la obra.",
     "headline": "Construye con planificación, presupuesto y seguimiento.",
     "description": "Planificación y ejecución de obras con coordinación técnica, seguimiento de avances y un alcance definido desde el inicio.",
-    "image": "construccion-conplanos",
+    "image": "conplanos-obra-excavacion-cimientos",
     "solves": [
       "Ya tienes el proyecto y necesitas un equipo que ejecute la obra.",
       "Quieres un presupuesto por partidas antes de empezar a construir.",
@@ -211,7 +211,7 @@
     "summary": "Áreas, linderos y documentación del territorio comunal.",
     "headline": "Apoyo técnico y legal para el territorio de tu comunidad.",
     "description": "Apoyo técnico y legal para comunidades campesinas: evaluación territorial, áreas, linderos y documentación de sus predios.",
-    "image": "conplanos-visita-tecnica-predio-rural",
+    "image": "conplanos-brigada-gnss-zona-altoandina",
     "solves": [
       "La comunidad necesita conocer o actualizar sus áreas y linderos.",
       "Existen diferencias de linderos con predios o comunidades colindantes.",
@@ -295,9 +295,63 @@
     "related": [
       "titulaciones",
       "proyectos-construccion",
-      "asesoramiento-legal"
+      "licencia-funcionamiento"
     ],
     "guide": "declaratoria-de-fabrica"
+  },
+  {
+    "slug": "licencia-funcionamiento",
+    "name": "Licencia de funcionamiento",
+    "seoTitle": "Licencia de funcionamiento e ITSE en Cusco | CONPLANOS",
+    "area": "proyectos",
+    "summary": "Expediente técnico para la licencia municipal y la inspección de seguridad.",
+    "headline": "Tu local en regla para abrir y operar.",
+    "description": "Preparamos la documentación técnica para tramitar la licencia de funcionamiento y la inspección técnica de seguridad en edificaciones (ITSE) de tu local en Cusco.",
+    "image": "arquitectura-conplanos",
+    "solves": [
+      "Vas a abrir un negocio y necesitas la licencia municipal.",
+      "Tu local ya funciona y todavía no tiene licencia.",
+      "Quieres cambiar de giro o ampliar el área del establecimiento.",
+      "La municipalidad observó el local por condiciones de seguridad."
+    ],
+    "scope": [
+      "Evaluación del local, del giro del negocio y de su compatibilidad con la zonificación.",
+      "Levantamiento y planos de arquitectura y distribución, cuando se requieran.",
+      "Documentación técnica para la inspección de seguridad según el nivel de riesgo, como planos de señalización y evacuación, cuando corresponda.",
+      "Preparación y seguimiento del expediente ante la municipalidad, según el alcance acordado."
+    ],
+    "requirements": [
+      "Dirección del local y giro del negocio",
+      "RUC y documento de identidad del titular",
+      "Título de propiedad o contrato de alquiler, y planos si existen"
+    ],
+    "intro": [
+      "La licencia de funcionamiento la otorga la municipalidad del distrito donde está el local, conforme a la Ley Marco de Licencia de Funcionamiento (Ley 28976) y sus modificatorias. Antes de solicitarla conviene confirmar que el giro es compatible con la zonificación del predio.",
+      "Según el nivel de riesgo del establecimiento, la municipalidad exige una inspección técnica de seguridad en edificaciones (ITSE), antes conocida como inspección de Defensa Civil. Revisamos el local, preparamos los planos y la documentación técnica que correspondan y te indicamos qué adecuaciones pueden hacer falta. Los requisitos, costos y plazos los fija cada municipalidad en su TUPA."
+    ],
+    "faq": [
+      [
+        "¿Qué es la ITSE?",
+        "Es la inspección técnica de seguridad en edificaciones que verifica las condiciones de seguridad del local. Su modalidad depende del nivel de riesgo del establecimiento."
+      ],
+      [
+        "¿Necesito planos para la licencia?",
+        "Depende del nivel de riesgo y de lo que exija la municipalidad. Al evaluar tu local te indicamos qué planos y documentos corresponden."
+      ],
+      [
+        "¿Puedo tramitarla si alquilo el local?",
+        "Sí. Normalmente se acredita el derecho a usar el local, por ejemplo con el contrato de alquiler. Confirmamos los requisitos con la municipalidad de tu distrito."
+      ],
+      [
+        "¿Cuánto demora el trámite?",
+        "Los plazos los fija la municipalidad según el procedimiento y el nivel de riesgo. Te damos una estimación al evaluar tu caso."
+      ]
+    ],
+    "related": [
+      "declaratoria-fabrica",
+      "proyectos-construccion",
+      "asesoramiento-legal"
+    ]
   },
   {
     "slug": "puntos-geodesicos",
@@ -307,7 +361,7 @@
     "summary": "Medición GNSS de puntos de referencia para proyectos y georreferenciación.",
     "headline": "Una referencia precisa y georreferenciada para tu proyecto.",
     "description": "Planificación y medición de puntos geodésicos con GNSS en Cusco para proyectos de ingeniería, topografía y saneamiento de predios.",
-    "image": "conplanos-medicion-gnss-campo",
+    "image": "conplanos-receptor-gnss-sobre-hito",
     "solves": [
       "Tu proyecto necesita puntos de control con coordenadas confiables.",
       "Debes georreferenciar un levantamiento topográfico.",
