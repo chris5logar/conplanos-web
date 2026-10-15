@@ -265,3 +265,4 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Botones de WhatsApp y llamada para cada contacto (incluida la Ing. Kimberly Peñalva) en equipo y contacto.
 - Pruebas (Node 22): `npm run build` 16 páginas; `npm run check` OK (3047 validaciones, 17 documentos); `npm test` 31/31; `npm run build:preview` + `npm run check:preview` OK. Revisión visual con Chromium en 1366 px y 390 px.
 - Pendiente: revisión legal del propietario del texto de licencia de funcionamiento; validación en la preview de Cloudflare.
+- Añadido enlace «Acceso equipo» a https://app.conplanos.com/ en la navegación y el pie (con `rel="nofollow"`), a petición del propietario. Solo es un enlace; app.conplanos.com no se toca.

@@ -338,3 +338,4 @@ details p{padding-bottom:1.25rem;max-width:var(--measure);color:var(--text-muted
   html{scroll-behavior:auto}
   *{transition:none!important}
 }
+.nav-app{color:var(--text-subtle)}
