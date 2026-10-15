@@ -48,3 +48,9 @@ Solo las fotografías suministradas aparecen como trabajo real. Los apoyos gener
 
 Los derechos de marca y fotografías pertenecen a sus titulares. No se concede licencia sobre ellos.
 
+
+## Continuidad entre agentes
+
+Antes de continuar trabajo en Claude, ChatGPT, Jules, Antigravity, Cursor u otro agente, leer `AGENTS.md`, `CLAUDE.md` y `docs/PROJECT_HANDOFF.md`. El estado SEO vigente está en `docs/SEO_HANDOFF.md` y las decisiones activas en `docs/SEO_DECISIONS.md`.
+
+La copia local usada durante el desarrollo en Windows es `C:\\Cursor\\CONPLANOS\\conplanos-web`. GitHub sigue siendo la fuente de verdad; `main` es producción y publica https://conplanos.com.
