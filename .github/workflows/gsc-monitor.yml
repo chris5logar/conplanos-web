@@ -6,6 +6,7 @@ on:
   pull_request:
     paths:
       - 'scripts/gsc-monitor.mjs'
+      - 'scripts/gsc-queries.mjs'
       - '.github/workflows/gsc-monitor.yml'
 permissions:
   contents: write
@@ -44,6 +45,11 @@ jobs:
           PREVIOUS_STATE: seo-previous.json
           OUTPUT_STATE: seo-state.json
         run: node scripts/gsc-monitor.mjs
+      - name: Report search queries and local SEO visibility
+        continue-on-error: true
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+        run: node scripts/gsc-queries.mjs
       - name: Publish state in isolated branch (not website)
         if: github.event_name != 'pull_request'
         env:
@@ -83,5 +89,6 @@ jobs:
           path: |
             seo-state.json
             seo-alerts.json
+            seo-search-queries.json
           if-no-files-found: ignore
           retention-days: 7
