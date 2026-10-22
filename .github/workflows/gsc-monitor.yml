@@ -1,0 +1,22 @@
+name: SEO monitor manual test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        id: auth
+        with:
+          workload_identity_provider: projects/457338254204/locations/global/workloadIdentityPools/conplanos-github-seo/providers/github-seo
+          service_account: conplanos-seo-monitor@conplanos.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/webmasters.readonly
+      - name: Check index status
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+        run: node scripts/gsc-monitor.mjs
