@@ -1,6 +1,12 @@
 name: CONPLANOS Search Console monitor
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/gsc-monitor.yml'
+      - 'scripts/gsc-monitor.mjs'
+      - 'scripts/gsc-queries.mjs'
   schedule:
     - cron: '18 14 * * *'
   pull_request:
