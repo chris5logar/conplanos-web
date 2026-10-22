@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-10-22T06:50:42.646Z",
+  "sitemap": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "urls": {
+    "https://conplanos.com/": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED"
+    },
+    "https://conplanos.com/proyectos-construccion/": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED"
+    },
+    "https://conplanos.com/ejecucion-obra/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/levantamientos-topograficos/": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED"
+    },
+    "https://conplanos.com/titulaciones/": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED"
+    },
+    "https://conplanos.com/comunidades-campesinas/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/declaratoria-fabrica/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/licencia-funcionamiento/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/puntos-geodesicos/": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED"
+    },
+    "https://conplanos.com/habilitaciones-urbanas/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/asesoramiento-legal/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/guias/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/guias/licencia-de-edificacion/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/guias/declaratoria-de-fabrica/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/guias/saneamiento-fisico-legal/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    },
+    "https://conplanos.com/guias/levantamiento-topografico/": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED"
+    }
+  }
+}
