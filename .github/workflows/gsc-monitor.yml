@@ -1,32 +1,82 @@
-name: SEO monitor manual test
+name: CONPLANOS Search Console monitor
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '18 14 * * *'
   pull_request:
     paths:
       - 'scripts/gsc-monitor.mjs'
       - '.github/workflows/gsc-monitor.yml'
 permissions:
-  contents: read
+  contents: write
+  issues: write
   id-token: write
+concurrency:
+  group: gsc-seo-monitor
+  cancel-in-progress: false
 jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: google-github-actions/auth@v2
+      - name: Authenticate to Google Cloud (no JSON key)
         id: auth
+        uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: projects/457338254204/locations/global/workloadIdentityPools/conplanos-github-seo/providers/github-seo
           service_account: conplanos-seo-monitor@conplanos.iam.gserviceaccount.com
           token_format: access_token
           access_token_scopes: https://www.googleapis.com/auth/webmasters.readonly
-      - name: Check index status
+      - name: Load previous valid snapshot
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/contents/seo-state.json?ref=seo-monitor-state" --jq '.content' | base64 --decode > seo-previous.json || rm -f seo-previous.json
+      - name: Inspect Search Console and compare 16 URLs
         env:
           GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+          PREVIOUS_STATE: seo-previous.json
+          OUTPUT_STATE: seo-state.json
         run: node scripts/gsc-monitor.mjs
-      - uses: actions/upload-artifact@v4
-        if: success()
+      - name: Publish state in isolated branch (not website)
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {execFileSync} from 'node:child_process';
+          const repo = process.env.GITHUB_REPOSITORY;
+          let sha;
+          try { const obj=JSON.parse(execFileSync('gh',['api',`repos/${repo}/contents/seo-state.json?ref=seo-monitor-state`],{encoding:'utf8'})); sha=obj.sha; }
+          catch(e) { if (!String(e.stderr||'').includes('404')) throw e; }
+          const payload = {message:'data(seo): update inspection snapshot',branch:'seo-monitor-state',content:fs.readFileSync('seo-state.json').toString('base64')};
+          if (sha) payload.sha=sha;
+          fs.writeFileSync('/tmp/gsc-payload.json',JSON.stringify(payload));
+          execFileSync('gh',['api',`repos/${repo}/contents/seo-state.json`,'--method','PUT','--input','/tmp/gsc-payload.json'],{stdio:'inherit'});
+          NODE
+      - name: Create GitHub notification only when meaningful changes occur
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {execFileSync} from 'node:child_process';
+          const a=JSON.parse(fs.readFileSync('seo-alerts.json','utf8'));
+          if(!a.alerts.length){console.log('No important changes: no notification');process.exit(0);}
+          const body='@chris5logar\n\nSearch Console detected important changes for 16 tracked URLs on '+a.checkedAt+':\n\n'+a.alerts.map(x=>'- '+x).join('\n')+'\n\nSource: https://conplanos.com/sitemap.xml';
+          fs.writeFileSync('/tmp/gsc-issue.txt',body);
+          execFileSync('gh',['issue','create','--title','CONPLANOS SEO: cambio importante de indexación','--body-file','/tmp/gsc-issue.txt'],{stdio:'inherit'});
+          NODE
+      - name: Save QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: gsc-first-inspection
-          path: seo-state.json
+          name: gsc-inspection
+          path: |
+            seo-state.json
+            seo-alerts.json
+          if-no-files-found: ignore
           retention-days: 7
