@@ -70,4 +70,5 @@ try { previous = JSON.parse(await readFile(process.env.PREVIOUS_STATE || 'seo-st
 catch (e) { if (e.code !== 'ENOENT') throw e; }
 const alerts = meaningful(previous, current);
 await writeFile(process.env.OUTPUT_STATE || 'seo-state.json', JSON.stringify(current, null, 2) + '\n');
+await writeFile('seo-alerts.json', JSON.stringify({checkedAt:current.checkedAt,alerts},null,2)+'\n');
 console.log(JSON.stringify({ count: urls.length, indexed: Object.values(current.urls).filter(indexed).length, alerts, isBaseline: !previous }, null, 2));
