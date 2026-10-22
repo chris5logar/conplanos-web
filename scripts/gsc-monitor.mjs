@@ -51,7 +51,7 @@ const meaningful = (prev, cur) => {
   if (Object.values(cur.urls).length === EXPECTED && Object.values(cur.urls).every(indexed) && !Object.values(prev.urls).every(indexed)) alerts.push('ALL 16 INDEXED');
   return alerts;
 };
-const token = await getToken();
+const token = process.env.GOOGLE_ACCESS_TOKEN || await getToken();
 const siteParam = encodeURIComponent(SITE);
 const apiSitemap = await jsonRequest(apiRoot + '/sites/' + siteParam + '/sitemaps/' + encodeURIComponent(SITEMAP), token);
 const xmlRes = await fetch(SITEMAP);
