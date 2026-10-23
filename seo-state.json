@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-22T18:32:43.470Z",
+  "checkedAt": "2026-10-23T18:20:42.555Z",
   "sitemap": {
     "errors": 0,
     "warnings": 0
@@ -17,7 +17,7 @@
     },
     "https://conplanos.com/ejecucion-obra/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/levantamientos-topograficos/": {
@@ -37,7 +37,7 @@
     },
     "https://conplanos.com/declaratoria-fabrica/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/licencia-funcionamiento/": {
@@ -52,7 +52,7 @@
     },
     "https://conplanos.com/habilitaciones-urbanas/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/asesoramiento-legal/": {
@@ -67,12 +67,12 @@
     },
     "https://conplanos.com/guias/licencia-de-edificacion/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/declaratoria-de-fabrica/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/saneamiento-fisico-legal/": {
