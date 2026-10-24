@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-23T18:20:42.555Z",
+  "checkedAt": "2026-10-24T17:27:22.677Z",
   "sitemap": {
     "errors": 0,
     "warnings": 0
@@ -17,7 +17,7 @@
     },
     "https://conplanos.com/ejecucion-obra/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/levantamientos-topograficos/": {
@@ -32,7 +32,7 @@
     },
     "https://conplanos.com/comunidades-campesinas/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/declaratoria-fabrica/": {
@@ -42,7 +42,7 @@
     },
     "https://conplanos.com/licencia-funcionamiento/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/puntos-geodesicos/": {
@@ -52,7 +52,7 @@
     },
     "https://conplanos.com/habilitaciones-urbanas/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/asesoramiento-legal/": {
@@ -67,17 +67,17 @@
     },
     "https://conplanos.com/guias/licencia-de-edificacion/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/declaratoria-de-fabrica/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/saneamiento-fisico-legal/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/levantamiento-topografico/": {
