@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-25T17:38:52.031Z",
+  "checkedAt": "2026-10-26T19:56:35.798Z",
   "sitemap": {
     "errors": 0,
     "warnings": 0
@@ -57,12 +57,12 @@
     },
     "https://conplanos.com/asesoramiento-legal/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/licencia-de-edificacion/": {
@@ -82,7 +82,7 @@
     },
     "https://conplanos.com/guias/levantamiento-topografico/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     }
   }
