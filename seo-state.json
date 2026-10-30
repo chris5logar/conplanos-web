@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-29T19:37:55.973Z",
+  "checkedAt": "2026-10-30T19:21:26.764Z",
   "sitemap": {
     "errors": 0,
     "warnings": 0
@@ -32,7 +32,7 @@
     },
     "https://conplanos.com/comunidades-campesinas/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/declaratoria-fabrica/": {
@@ -72,12 +72,12 @@
     },
     "https://conplanos.com/guias/declaratoria-de-fabrica/": {
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/saneamiento-fisico-legal/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/levantamiento-topografico/": {
