@@ -67,3 +67,7 @@ Después:
 - indicar commit resultante y siguiente paso.
 
 `main` es producción: no hacer push a `main` ni merge sin aprobación expresa del propietario.
+
+## Skill de cierre y continuidad
+
+Al finalizar una tarea relevante, aplicar `.claude/skills/cierre-tarea/SKILL.md` y mantener los MD existentes (`docs/SEO_HANDOFF.md`, `docs/SEO_WORKLOG.md`, `docs/SEO_DECISIONS.md`) sin crear documentos paralelos de estado. La skill complementa, pero no reemplaza, las reglas de `AGENTS.md`.
