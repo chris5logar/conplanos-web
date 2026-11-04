@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-03T20:30:15.356Z",
+  "checkedAt": "2026-11-04T20:49:48.652Z",
   "sitemap": {
     "errors": 0,
     "warnings": 0
@@ -17,7 +17,7 @@
     },
     "https://conplanos.com/ejecucion-obra/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/levantamientos-topograficos/": {
