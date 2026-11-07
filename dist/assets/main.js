@@ -18,6 +18,22 @@ document.addEventListener('keydown', event => {
     toggle.focus();
   }
 });
+// Hide the floating WhatsApp button while the hero or the contact section, which carry their own buttons, are on screen.
+const floating = document.querySelector('.wa-float');
+const covered = [...document.querySelectorAll('.hero, #contacto')];
+if (floating && covered.length && 'IntersectionObserver' in window) {
+  const visible = new Set();
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) visible.add(entry.target);
+      else visible.delete(entry.target);
+    }
+    const hidden = visible.size > 0;
+    floating.classList.toggle('is-hidden', hidden);
+    floating.inert = hidden;
+  });
+  covered.forEach(el => observer.observe(el));
+}
 function safePagePath() {
   const path = location.pathname;
   return /^\/(?:[a-z0-9-]+\/?)?$/.test(path) ? path : '/';
