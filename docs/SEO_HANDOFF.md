@@ -2,7 +2,7 @@
 
 Estado real del proyecto. Actualizar al terminar cada tarea importante. Historial en `SEO_WORKLOG.md`; decisiones en `SEO_DECISIONS.md`; reglas en `../AGENTS.md`.
 
-Última actualización: 2026-10-13, ChatGPT, tras validar Search Console con GSC Wizard y preparar la línea base de la Fase 5.
+Última actualización: 2026-11-07, Claude Code, al abrir el PR de la Fase 1 de diseño (rama `claude/project-thread-bv7div`).
 
 ## Proyecto
 
@@ -16,10 +16,10 @@ Estado real del proyecto. Actualizar al terminar cada tarea importante. Historia
 
 1. Ingeniería
 2. Construcción
-3. Saneamiento de predios
+3. Saneamiento físico legal
 4. Declaratoria de fábrica
 
-Asignación de páginas por defecto (decisión «asignación de páginas a la prioridad comercial» en `SEO_DECISIONS.md`, pendiente de confirmación del propietario): Ingeniería = `levantamientos-topograficos`, `puntos-geodesicos`, `habilitaciones-urbanas`; Construcción = `proyectos-construccion`, `ejecucion-obra`; Saneamiento = `titulaciones`, `comunidades-campesinas`, `asesoramiento-legal`; Declaratoria = `declaratoria-fabrica`. No crear una landing «Ingeniería» sin analizar antes intención de búsqueda y canibalización.
+Asignación de páginas confirmada por el propietario el 2026-11-02 (decisión del 2026-11-02 en `SEO_DECISIONS.md`): Ingeniería = `levantamientos-topograficos`, `puntos-geodesicos`, `habilitaciones-urbanas` (abarca topografía y geodesia, GNSS y georreferenciación, replanteos y ortofotografía con dron cuando forma parte del trabajo técnico); Construcción = `proyectos-construccion`, `ejecucion-obra`, `licencia-funcionamiento`; Saneamiento físico legal = `titulaciones`, `comunidades-campesinas`, `asesoramiento-legal`; Declaratoria = `declaratoria-fabrica`. La tabla vive en `priorities` de `scripts/build.mjs`, que falla si un servicio queda fuera. No crear una landing «Ingeniería» sin analizar antes intención de búsqueda y canibalización.
 
 ## Arquitectura
 
@@ -129,12 +129,16 @@ No verificado: la recepción real de eventos en GA4 (no se hicieron clics de pru
 - `node` no está en el PATH del equipo Windows del propietario; ver «Entorno» en `AGENTS.md`.
 - No se comprobó en el panel de Cloudflare si hay variables `SITE_MODE` o `SITE_ORIGIN` definidas. Por los resultados no las hay. Si `SITE_MODE=preview` se definiera para Producción, `main` saldría sin indexar: no definirla ahí.
 - Google puede tardar en recoger los canonical nuevos; en Search Console pueden verse durante un tiempo las URLs sin barra como «Página con redirección». Es lo esperado.
-- Preguntas abiertas para el propietario: confirmar la asignación de páginas a «Ingeniería»; GBP tiene 10 servicios (incluye «Lotizaciones y parcelaciones», que en la web cae dentro de `habilitaciones-urbanas`) frente a 9 páginas.
+- Pregunta abierta para el propietario: GBP tiene 10 servicios (incluye «Lotizaciones y parcelaciones», que en la web cae dentro de `habilitaciones-urbanas`) frente a las páginas de servicio de la web.
 
-## Rama en revisión (2026-10-15)
+## Rediseño visual · Fase 1 en revisión (2026-11-07)
 
-- `claude/project-thread-v1txop`: portada con especialidades y galería de fotos reales, nueva página `/licencia-funcionamiento/` (sitemap 16 URLs), botones de WhatsApp y llamada por persona. Pendiente de revisión legal del propietario y validación en preview antes del merge.
+- La rama `claude/project-thread-v1txop` (especialidades, fotos reales, licencia de funcionamiento) ya está en `main` (PR #12); la web sirve 16 URLs.
+- El propietario aprobó el 2026-11-02 la alternativa B «El terreno primero», en fases, empezando por las correcciones seguras de la alternativa A. Informe de auditoría y alternativas: entregado en el hilo del proyecto, no versionado.
+- Fase 1 en la rama `claude/project-thread-bv7div`, PR en borrador: portada ordenada por prioridad comercial, una sola lista de servicios, H1 «Ingeniería y construcción en Cusco», sin antetítulos, numeración decorativa ni líneas finas, texto de 16 px o más, zonas táctiles de 44 px y botón flotante de WhatsApp que no tapa contenido. Tokens de dorado separados (`--gold`, `--action`) con el color actual: el dorado definitivo está pendiente.
+- SEO sin cambios: `<head>` idéntico en las 17 páginas salvo el hash de versión de `styles.css` y `main.js`; sitemap, robots, `_headers` y `_redirects` iguales; eventos GA4 sin cambios. Solo cambia el texto visible del H1 de la portada (el title no cambia).
+- Fase 2 («El terreno primero») no empieza hasta que el propietario revise la Fase 1 en la preview.
 
 ## Próximo paso
 
-Seguimiento automático: ChatGPT consulta Search Console directamente mediante GSC Wizard y monitoriza la indexación de las 15 URLs. Cuando exista volumen suficiente, comparar consultas, páginas, CTR y posiciones contra la línea base de la Fase 5. GA4 requiere una autorización OAuth manual única en GSC Wizard; después podrá analizarse directamente junto con Search Console. Mientras el volumen sea mínimo, no crear nuevas páginas SEO solo por estos datos. Los merges seguros se rigen por `docs/AUTOMATION_POLICY.md`.
+Revisión visual de la Fase 1 por el propietario en la preview de Cloudflare del PR. Mientras tanto, seguimiento automático: ChatGPT consulta Search Console directamente mediante GSC Wizard y monitoriza la indexación de las URLs. Cuando exista volumen suficiente, comparar consultas, páginas, CTR y posiciones contra la línea base de la Fase 5. GA4 requiere una autorización OAuth manual única en GSC Wizard; después podrá analizarse directamente junto con Search Console. Mientras el volumen sea mínimo, no crear nuevas páginas SEO solo por estos datos. Los merges seguros se rigen por `docs/AUTOMATION_POLICY.md`.
