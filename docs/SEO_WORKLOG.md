@@ -266,3 +266,13 @@ Append-only: añadir entradas nuevas al final y no reescribir las anteriores. Un
 - Pruebas (Node 22): `npm run build` 16 páginas; `npm run check` OK (3047 validaciones, 17 documentos); `npm test` 31/31; `npm run build:preview` + `npm run check:preview` OK. Revisión visual con Chromium en 1366 px y 390 px.
 - Pendiente: revisión legal del propietario del texto de licencia de funcionamiento; validación en la preview de Cloudflare.
 - Añadido enlace «Acceso equipo» a https://app.conplanos.com/ en la navegación y el pie (con `rel="nofollow"`), a petición del propietario. Solo es un enlace; app.conplanos.com no se toca.
+
+## 2026-11-07 — rediseño visual, Fase 1 (correcciones seguras)
+
+- Agente: Claude Code, en el equipo del propietario, a petición suya (aprobación del 2026-11-02 en el proyecto «Ccd SEO Web CONPLANOS»). Rama `claude/project-thread-bv7div` creada desde `origin/main` (`bf0f669`), cuyo `dist/index.html` coincide byte a byte con lo que sirve conplanos.com.
+- Auditoría previa (2026-11-02): skill design-taste-frontend (inspector en Chrome a 1440, 768 y 390 px) y skill web-design-guidelines de Vercel, instalada en `~/.claude/skills` del propietario (no en el repositorio). Playwright no está instalado en el equipo; las capturas las hizo el inspector de la skill, que controla el Chrome instalado.
+- Cambios: `scripts/build.mjs` (tabla `priorities`, hero, sección única de servicios, sin antetítulos ni numeración, teléfonos con espacios no separables), `dist/assets/styles.css` (tokens de dorado, escala tipográfica, superficies por tono en lugar de líneas, zonas táctiles, WhatsApp flotante), `dist/assets/main.js` (oculta el WhatsApp flotante mientras se ven el hero o el contacto; eventos GA4 intactos), HTML regenerado y `docs/TEXTOS.md`.
+- Inspector design-taste-frontend: portada de 12 FAIL / 3 WARN a 2 FAIL / 3 WARN; `/proyectos-construccion/` de 10 FAIL / 5 WARN a 3 FAIL / 3 WARN. Lo que queda es de la Fase 2 (movimiento, fotos, imagen dominante en servicios) o se acepta: H1 en 3 líneas a 390 px (cinco palabras) y lema del logo de menos de 13 px (identidad).
+- Pruebas (Node 24 empaquetado por Codex): `node scripts/build.mjs` 16 páginas; `node scripts/check.mjs` OK (3029 validaciones, 17 documentos); `node --test scripts/seo.test.mjs` 31/31; `build-preview.mjs` + `check.mjs --preview` OK en un directorio temporal.
+- Comprobación SEO: `<head>` idéntico en las 17 páginas salvo el hash de versión de CSS y JS; sitemap, robots, `_headers` y `_redirects` sin cambios; la portada sigue enlazando los 10 servicios.
+- Pendiente: validar la preview de Cloudflare del PR y la revisión visual del propietario. Fase 2 sin empezar.

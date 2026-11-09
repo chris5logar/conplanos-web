@@ -107,7 +107,7 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Decisión: «Ingeniería» agrupa `levantamientos-topograficos`, `puntos-geodesicos` y `habilitaciones-urbanas`; «Construcción», `proyectos-construccion` y `ejecucion-obra`; «Saneamiento de predios», `titulaciones`, `comunidades-campesinas` y `asesoramiento-legal`; «Declaratoria de fábrica», `declaratoria-fabrica`.
 - Motivo: la pregunta estaba abierta en el handoff y el propietario pidió no consultar decisiones rutinarias. Es la agrupación que mejor coincide con la categoría «Ingeniero» de la ficha de Google.
 - Consecuencias: el orden de contenido, enlazado y medición de `SEO_PLAN.md` sigue esta tabla. El propietario puede cambiarla; si lo hace, marcar esta decisión como sustituida.
-- Estado: Activa. Decisión por defecto de Claude Code, pendiente de confirmación del propietario.
+- Estado: Sustituida el 2026-11-02 por «asignación confirmada de páginas a la prioridad comercial».
 
 ## 2026-10-13 — sección de guías informativas
 
@@ -125,7 +125,7 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 
 ## 2026-10-15 — página de servicio «Licencia de funcionamiento»
 
-- Decisión: se crea `/licencia-funcionamiento/` (área «Proyectos, obras y licencias») y la portada destaca cinco especialidades: declaratoria de fábrica, licencia de funcionamiento, ejecución de obra, comunidades campesinas y saneamiento/titulación.
+- Decisión: se crea `/licencia-funcionamiento/` (área «Proyectos, obras y licencias») y la portada destaca cinco especialidades: declaratoria de fábrica, licencia de funcionamiento, ejecución de obra, comunidades campesinas y saneamiento/titulación. (La franja de cinco especialidades queda sustituida el 2026-11-02 por «portada ordenada por prioridad comercial»; la página sigue vigente.)
 - Motivo: petición expresa del propietario (2026-10-15); es un servicio que CONPLANOS ofrece (figura en sus volantes como «Licencias de funcionamiento – Defensa Civil») y no tenía página. No es una página geográfica ni duplica otra.
 - Consecuencias: el sitemap pasa de 15 a 16 URLs. El texto cita la Ley 28976 y la ITSE de forma general, con las reglas de redacción prudente; requiere revisión legal del propietario antes del merge. El H1 y el title de la portada no cambian.
 - Estado: Activa, pendiente de revisión del propietario en el PR.
@@ -136,3 +136,17 @@ Las once primeras decisiones fueron dictadas por el propietario a través del or
 - Motivo: petición del propietario de añadir botones para la Ing. Kimberly (927 003 900).
 - Consecuencias: `check.mjs` acepta enlaces `wa.me` a cualquier contacto habilitado y exige que las cotizaciones apunten al principal. GA4 sigue sin PII: el evento solo registra `contact_type`.
 - Estado: Activa.
+
+## 2026-11-02 — asignación confirmada de páginas a la prioridad comercial
+
+- Decisión: el orden oficial es Ingeniería > Construcción > Saneamiento físico legal > Declaratoria de fábrica. «Ingeniería» agrupa `levantamientos-topograficos`, `puntos-geodesicos` y `habilitaciones-urbanas`, y abarca topografía y geodesia, GNSS y georreferenciación, replanteos y ortofotografía con dron cuando forma parte del trabajo técnico. «Construcción»: `proyectos-construccion`, `ejecucion-obra` y `licencia-funcionamiento`. «Saneamiento físico legal»: `titulaciones`, `comunidades-campesinas` y `asesoramiento-legal`. «Declaratoria de fábrica»: `declaratoria-fabrica`.
+- Motivo: confirmado por el propietario el 2026-11-02 al aprobar la Fase 1 del rediseño. Que `licencia-funcionamiento` vaya en Construcción lo decidió Claude Code (es un expediente técnico de obra/local y la página ya estaba en el área «Proyectos, obras y licencias»); el propietario puede moverla.
+- Consecuencias: la tabla vive en `priorities` de `scripts/build.mjs`; el build falla si un servicio no tiene prioridad. No se crean páginas para replanteos ni ortofotografía mientras no haya contenido propio.
+- Estado: Activa.
+
+## 2026-11-02 — portada ordenada por prioridad comercial (rediseño, Fase 1)
+
+- Decisión: el propietario aprueba la alternativa B «El terreno primero» del informe de auditoría visual, en fases. La Fase 1 aplica solo correcciones seguras de la alternativa A, sin fotos nuevas: H1 «Ingeniería y construcción en Cusco», una sola sección de servicios con las cuatro prioridades en orden (sustituye a «Lo que más nos encargan» y «Lo que hacemos»), sin antetítulos, numeración decorativa, mayúsculas espaciadas ni líneas y bordes finos (las superficies se separan por tono), texto de 16 px o más, zonas táctiles de 44 px y botón flotante de WhatsApp que se oculta sobre el hero y el contacto (en móvil, solo icono).
+- Motivo: la portada anterior invertía la prioridad comercial (empezaba por la declaratoria de fábrica y no nombraba la construcción en el H1) y la auditoría con design-taste-frontend y web-design-guidelines marcó el exceso de adornos de plantilla, el texto de 14 px y el botón flotante que tapaba contenido.
+- Consecuencias: el dorado se prepara en tokens (`--gold` para detalles, `--action` para el relleno de botones, `--gold-ink` sobre claro) sin cambiar el color: el dorado definitivo requiere aprobación y comprobar contraste AA con el texto oscuro del botón. Title, meta, canonical, JSON-LD, sitemap, redirecciones y eventos GA4 no cambian. La Fase 2 (foto de campo dominante, selector «¿Qué necesitas hacer con tu predio?») requiere la revisión visual de la Fase 1.
+- Estado: Activa, en el PR de la rama `claude/project-thread-bv7div`, pendiente de revisión del propietario.

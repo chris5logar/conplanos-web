@@ -4,9 +4,9 @@ Archivo generado por scripts/build.mjs. Los textos de cada servicio se editan en
 
 ## Inicio
 
-Ingeniería, topografía y saneamiento de predios en Cusco
+Ingeniería y construcción en Cusco
 
-Declaratoria de fábrica, licencias de funcionamiento, ejecución de obras y saneamiento de predios urbanos, rurales y de comunidades campesinas. Ingenieros, arquitectos y abogados en un solo equipo, desde la medición del terreno hasta el expediente final.
+Topografía, GNSS y georreferenciación, proyectos y ejecución de obra, saneamiento físico legal y declaratoria de fábrica. Ingenieros, arquitectos y abogados en un solo equipo, desde la medición del terreno hasta el expediente final.
 
 ## Proyectos de construcción
 
@@ -107,6 +107,9 @@ Sí. Evaluamos el sistema de referencia y la metodología que requiere tu encarg
 **¿Qué diferencia hay entre un plano perimétrico y uno topográfico?**
 El perimétrico muestra los linderos, las medidas y el área del predio. El topográfico añade el relieve, con curvas de nivel y cotas, y los elementos existentes en el terreno.
 
+**¿Realizan levantamiento de planos o planos perimétricos en Cusco?**
+Sí. Primero evaluamos para qué necesitas los planos: medición del terreno, plano perimétrico, ubicación, curvas de nivel o apoyo a un trámite. La visita, el levantamiento y los entregables se definen según el predio.
+
 ## Titulaciones
 
 Ordena la situación de tu predio para formalizar su propiedad.
@@ -138,6 +141,9 @@ La propuesta define nuestro alcance. Los tiempos y decisiones de las entidades c
 
 **¿Atienden predios urbanos y rurales?**
 Sí. La ruta y las entidades que intervienen cambian según el tipo de predio; las identificamos en la evaluación inicial.
+
+**¿Cómo empezar el saneamiento físico legal o la titulación de un terreno en Cusco?**
+Revisamos la partida registral, los documentos de posesión o propiedad y la información topográfica disponible. Según los antecedentes y la ubicación, identificamos el procedimiento aplicable y los documentos que faltan.
 
 ## Comunidades campesinas
 
@@ -199,6 +205,9 @@ Son alcances distintos que se evalúan según el inmueble y el objetivo. La coti
 
 **¿Puedo declarar una construcción hecha sin licencia?**
 Depende del caso. La vía registral de la Ley 27157, modificada por la Ley 30830, comprende según SUNARP edificaciones culminadas hasta el 31 de diciembre de 2016; para otras situaciones existe la regularización municipal con sus propios requisitos. Lo determinamos en la evaluación.
+
+**¿Dónde tramitar una declaratoria de fábrica o declaratoria de edificación en Cusco?**
+El procedimiento depende de cómo se construyó el inmueble, sus licencias y los antecedentes registrales. Evaluamos los planos y documentos para definir la vía correspondiente ante la municipalidad y/o Registros Públicos, según el caso.
 
 ## Licencia de funcionamiento
 
@@ -265,6 +274,9 @@ Se especifica en la propuesta. La certificación corresponde al IGN y está suje
 **¿Trabajan con GNSS?**
 Sí. Evaluamos la metodología GNSS y los entregables adecuados para el proyecto y sus requisitos de referencia.
 
+**¿Pueden realizar mediciones GNSS y expedientes para puntos geodésicos en Cusco?**
+Evaluamos la ubicación, categoría y finalidad del punto; definimos las observaciones GNSS y la documentación necesaria. Cuando corresponde una certificación ante el IGN, revisamos los requisitos vigentes antes de preparar el expediente.
+
 ## Habilitaciones urbanas
 
 Planifica la lotización o habilitación de tu terreno.
@@ -293,6 +305,9 @@ Sí. Comparte la ubicación y la documentación disponible para revisar la viabi
 
 **¿La consulta equivale a una autorización?**
 No. La evaluación ayuda a definir la ruta de trabajo. Las autorizaciones corresponden a las entidades competentes.
+
+**¿Atienden lotización, parcelación e independización de terrenos en Cusco?**
+Revisamos la clasificación del suelo, los antecedentes registrales, las medidas y el trámite solicitado. La viabilidad de una habilitación, parcelación o independización depende de la normativa y del estado legal del predio.
 
 ## Asesoramiento legal
 
@@ -325,15 +340,77 @@ Empieza con una descripción general. Te indicaremos qué documentos son necesar
 
 ## Texto completo de portada
 
-Registra y construye · Abogados, arquitectos e ingenieros
+Ingeniería y construcción en Cusco
 
-Ingeniería, topografía y saneamiento de predios en Cusco
-
-Declaratoria de fábrica, licencias de funcionamiento, ejecución de obras y saneamiento de predios urbanos, rurales y de comunidades campesinas. Ingenieros, arquitectos y abogados en un solo equipo, desde la medición del terreno hasta el expediente final.
+Topografía, GNSS y georreferenciación, proyectos y ejecución de obra, saneamiento físico legal y declaratoria de fábrica. Ingenieros, arquitectos y abogados en un solo equipo, desde la medición del terreno hasta el expediente final.
 
 Cotizar por WhatsApp Ver servicios Cusco y otras regiones del Perú · Oficina en Av. Micaela Bastidas 321, Cusco
 
 Receptor GNSS sobre un hito en campo · fotografía de CONPLANOS
+
+Servicios
+
+Ingeniería y construcción primero, con el respaldo legal para formalizar el predio y lo construido. Un solo equipo, sin coordinar con varias oficinas.
+
+Ingeniería
+
+Topografía y geodesia, GNSS y georreferenciación, puntos geodésicos, replanteos y habilitaciones urbanas. Incluimos ortofotografía con dron cuando el trabajo técnico lo requiere.
+
+Levantamientos topográficos Medidas, áreas, linderos y relieve del terreno. 
+
+Puntos geodésicos Medición GNSS de puntos de referencia para proyectos y georreferenciación. 
+
+Habilitaciones urbanas Evaluación, planos y documentación para lotizar, parcelar o habilitar. 
+
+Construcción
+
+Proyecto arquitectónico con sus especialidades, ejecución de obra con presupuesto por partidas y expedientes para licencias.
+
+Proyectos de construcción Diseño arquitectónico y coordinación de especialidades. 
+
+Ejecución de obra Planificación, presupuesto por partidas y seguimiento de la obra. 
+
+Licencia de funcionamiento Expediente técnico para la licencia municipal y la inspección de seguridad. 
+
+Saneamiento físico legal
+
+Formalización de predios urbanos, rurales y de comunidades campesinas, con evaluación técnica y legal.
+
+Titulaciones Saneamiento físico legal para formalizar la propiedad de tu predio. 
+
+Comunidades campesinas Áreas, linderos y documentación del territorio comunal. 
+
+Asesoramiento legal Revisión documental y orientación legal sobre predios. 
+
+Declaratoria de fábrica
+
+Regularización e inscripción de lo construido, por vía municipal o registral según el caso.
+
+Declaratoria de fábrica Documentación para regularizar e inscribir lo construido. 
+
+También atendemos consultas sobre:
+
+Parcelaciones 
+
+Lotizaciones 
+
+Independizaciones 
+
+Subdivisiones 
+
+Prescripción adquisitiva 
+
+Rectificación de áreas y linderos 
+
+Sucesión intestada 
+
+Permisos de uso de agua (ANA) 
+
+Diseño de interiores 
+
+Licencias de construcción 
+
+Compra y venta de lotes 
 
 Técnico y legal Ingenieros, arquitectos y abogados en un mismo equipo. 
 
@@ -343,91 +420,19 @@ Alcance por escrito Cotización con alcance, entregables y condiciones.
 
 Oficina en Cusco Atención presencial previa coordinación. 
 
-Especialidades
-
-Lo que más nos encargan
-
-Trámites y obras en los que reunimos a ingenieros, arquitectos y abogados para que no tengas que coordinar con varias oficinas.
-
-01 Declaratoria de fábrica Regularizamos e inscribimos tu construcción, por vía municipal o registral según el caso.
-
-Ver servicio 
-
-02 Licencia de funcionamiento Expediente técnico, planos y documentación de seguridad para abrir u operar tu local.
-
-Ver servicio 
-
-03 Ejecución de proyectos de construcción Construimos tu proyecto con presupuesto por partidas y seguimiento de avances.
-
-Ver servicio 
-
-04 Comunidades campesinas Levantamiento, deslinde, parcelación y apoyo técnico para la titulación del territorio comunal.
-
-Ver servicio 
-
-05 Saneamiento y titulación Predios urbanos, rurales y eriazos: subdivisión, independización y rectificación de áreas y linderos.
-
-Ver servicio 
-
-Servicios
-
-Lo que hacemos
-
-Tres áreas que se complementan: conocer el terreno, formalizar la propiedad y desarrollar el proyecto o la obra.
-
-01 Topografía y geodesia
-
-Información precisa del terreno para proyectar, delimitar y sanear.
-
-Levantamientos topográficos Medidas, áreas, linderos y relieve del terreno. 
-
-Puntos geodésicos Medición GNSS de puntos de referencia para proyectos y georreferenciación. 
-
-02 Saneamiento y propiedad
-
-Evaluación técnica y legal para formalizar y registrar tu propiedad.
-
-Titulaciones Saneamiento físico legal para formalizar la propiedad de tu predio. 
-
-Comunidades campesinas Áreas, linderos y documentación del territorio comunal. 
-
-Declaratoria de fábrica Documentación para regularizar e inscribir lo construido. 
-
-Asesoramiento legal Revisión documental y orientación legal sobre predios. 
-
-03 Proyectos, obras y licencias
-
-Diseño, licencias, desarrollo urbano y ejecución de obra con coordinación técnica.
-
-Proyectos de construcción Diseño arquitectónico y coordinación de especialidades. 
-
-Ejecución de obra Planificación, presupuesto por partidas y seguimiento de la obra. 
-
-Licencia de funcionamiento Expediente técnico para la licencia municipal y la inspección de seguridad. 
-
-Habilitaciones urbanas Evaluación, planos y documentación para lotizar, parcelar o habilitar. 
-
-También atendemos consultas sobre:
-
-Parcelaciones Lotizaciones Independizaciones Subdivisiones Prescripción adquisitiva Rectificación de áreas y linderos Sucesión intestada Permisos de uso de agua (ANA) Diseño de interiores Licencias de construcción Compra y venta de lotes 
-
 Medición GNSS en campo · fotografía de CONPLANOS
-
-Trabajo en campo
 
 Cada encargo empieza en el terreno
 
 Antes de proponer una solución revisamos los antecedentes y, cuando el caso lo requiere, visitamos el predio. Esa información es la base de los planos, expedientes y presupuestos que preparamos.
 
-01 Reconocimiento del predio Ubicación, accesos, colindancias y situación actual.
+Reconocimiento del predio Ubicación, accesos, colindancias y situación actual.
 
-02 Medición topográfica y GNSS Datos de campo para planos y georreferenciación.
+Medición topográfica y GNSS Datos de campo para planos y georreferenciación.
 
-03 Revisión de antecedentes Documentos técnicos y legales del inmueble.
+Revisión de antecedentes Documentos técnicos y legales del inmueble.
 
 Consultar mi proyecto 
-
-Nuestro trabajo
 
 Fotografías de campo y obra
 
@@ -447,29 +452,25 @@ Visita técnica a un predio rural · fotografía de CONPLANOS
 
 Cómo trabajamos
 
-De la consulta a un alcance definido
-
 Los plazos y aprobaciones de trámites dependen de las entidades competentes. Por eso cada encargo empieza con una evaluación de tu caso.
 
-01 Consulta
+Consulta
 
 Nos cuentas qué necesitas y dónde está el predio, por WhatsApp o en la oficina.
 
-02 Evaluación
+Evaluación
 
 Revisamos la información disponible y definimos si hace falta una visita técnica.
 
-03 Propuesta
+Propuesta
 
 Recibes una cotización con el alcance, los entregables y las condiciones.
 
-04 Ejecución
+Ejecución
 
 Desarrollamos el trabajo acordado y te mantenemos informado del avance.
 
-Proyectos, obras y licencias
-
-Del proyecto a la obra, con una misma coordinación
+Del proyecto a la obra
 
 Diseñamos el proyecto, coordinamos sus especialidades y planificamos la ejecución con presupuesto por partidas y seguimiento de avances.
 
@@ -479,11 +480,7 @@ Ejecución de obra
 
 Licencia de funcionamiento 
 
-Habilitaciones urbanas 
-
 Demolición y preparación de obra · fotografía de CONPLANOS
-
-Equipo
 
 Abogados, arquitectos e ingenieros
 
@@ -491,43 +488,39 @@ Coordinamos las especialidades que requiere cada encargo, desde la medición del
 
 Contacto principal Ing. Loaiza
 
-+51 928 400 600 Primer contacto para consultas, cotizaciones y coordinación de visitas.
++51 928 400 600 Primer contacto para consultas, cotizaciones y coordinación de visitas.
 
 WhatsApp Llamar 
 
 Contacto Ing. Kimberly Peñalva
 
-+51 927 003 900 WhatsApp Llamar 
++51 927 003 900 WhatsApp Llamar 
 
 Contacto Per. Ernesto
 
-+51 955 593 110 WhatsApp Llamar 
++51 955 593 110 WhatsApp Llamar 
 
-Guías
-
-Antes de empezar tu trámite
+Guías antes de empezar tu trámite
 
 Explicamos en lenguaje claro los procedimientos con los que más nos consultan.
 
-Guía Licencia de edificación: modalidades y documentos para construir Qué es, cómo se define la modalidad y qué documentos se preparan antes de construir.
+Licencia de edificación: modalidades y documentos para construir Qué es, cómo se define la modalidad y qué documentos se preparan antes de construir.
 
-Guía Declaratoria de fábrica: qué es y cómo se inscribe una construcción Para qué sirve, qué ruta sigue una obra con o sin licencia y qué documentos se preparan.
+Declaratoria de fábrica: qué es y cómo se inscribe una construcción Para qué sirve, qué ruta sigue una obra con o sin licencia y qué documentos se preparan.
 
-Guía Saneamiento físico legal de un predio: qué es y por dónde empezar Los problemas que resuelve, cómo se diagnostica un predio y las rutas más comunes.
+Saneamiento físico legal de un predio: qué es y por dónde empezar Los problemas que resuelve, cómo se diagnostica un predio y las rutas más comunes.
 
-Guía Levantamiento topográfico: qué entrega y cuándo lo necesitas Qué planos entrega, cuándo hace falta y qué información enviar para cotizarlo.
-
-Contacto
+Levantamiento topográfico: qué entrega y cuándo lo necesitas Qué planos entrega, cuándo hace falta y qué información enviar para cotizarlo.
 
 Cuéntanos tu caso
 
 Envíanos la ubicación del predio, lo que necesitas y los documentos que tengas. Te indicaremos el siguiente paso y si hace falta una visita técnica.
 
-Escribir por WhatsApp Llamar al +51 928 400 600 Contacto principal Ing. Loaiza +51 928 400 600 WhatsApp Llamar 
+Escribir por WhatsApp Llamar al +51 928 400 600 Contacto principal Ing. Loaiza +51 928 400 600 WhatsApp Llamar 
 
-Contacto Ing. Kimberly Peñalva +51 927 003 900 WhatsApp Llamar 
+Contacto Ing. Kimberly Peñalva +51 927 003 900 WhatsApp Llamar 
 
-Contacto Per. Ernesto +51 955 593 110 WhatsApp Llamar 
+Contacto Per. Ernesto +51 955 593 110 WhatsApp Llamar 
 
 Oficina Av. Micaela Bastidas 321, Cusco Ver en Google Maps 
 
