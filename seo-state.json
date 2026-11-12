@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-11T21:25:19.079Z",
+  "checkedAt": "2026-11-12T21:28:12.958Z",
   "sitemap": {
     "errors": 0,
     "warnings": 0
@@ -17,7 +17,7 @@
     },
     "https://conplanos.com/ejecucion-obra/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/levantamientos-topograficos/": {
@@ -32,7 +32,7 @@
     },
     "https://conplanos.com/comunidades-campesinas/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/declaratoria-fabrica/": {
@@ -42,7 +42,7 @@
     },
     "https://conplanos.com/licencia-funcionamiento/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/puntos-geodesicos/": {
@@ -57,7 +57,7 @@
     },
     "https://conplanos.com/asesoramiento-legal/": {
       "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
+      "coverageState": "URL is unknown to Google",
       "indexingState": "INDEXING_STATE_UNSPECIFIED"
     },
     "https://conplanos.com/guias/": {
